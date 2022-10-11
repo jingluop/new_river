@@ -9,7 +9,7 @@ import pytest
 import requests
 
 from common.data_load import ReadFileData, get_yaml_data
-from api.collection import collection
+from api.collection_details import collection
 
 BASE_PATH = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 data_file_path = os.path.join(BASE_PATH, "config", "config.ini")
