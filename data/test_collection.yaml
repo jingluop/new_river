@@ -1,0 +1,24 @@
+count_collection_num:
+  -
+    count_num: 2996
+
+ethereum:
+  # Ethereum看板
+  -
+    timeRange: 'ONE_DAY'
+    type: 'TRANSACTION_FEE_ETH'
+    code: 200
+    countValue: 465.2264229546994
+    date: '2022-09-14'
+    message: '操作成功'
+
+buy_and_trade_app:
+  # 集合详情-低价购买和交易统计图-APP
+  -
+    collectionUuid: 100001
+    execute_sql: ['select * from `hk-manhattan`.chain_collection_statistics where collection_uuid = "100001"', 'select * from `hk-manhattan`.chain_collection_statistics where collection_uuid = "100002"']
+    message: ''
+  -
+    collectionUuid: 100002
+    execute_sql: ['select * from `hk-manhattan`.chain_collection_statistics where collection_uuid = "100002"', 'select * from `hk-manhattan`.chain_collection_statistics where collection_uuid = "100001"']
+    message: ''

@@ -1,0 +1,31 @@
+[2022-09-29 11:09:08,203][data_load.py 44][INFO]: 加载 D:\code\newriver_api\config\config.ini 文件......
+[2022-09-29 11:09:08,209][data_load.py 48][INFO]: 读到数据 ==>>  {'host': {'api_root_url': 'https://newrivertest.agentgo.me/dc/pc'}, 'mysql': {'MYSQL_HOST': '16.162.21.39', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}} 
+[2022-09-29 11:09:08,210][base_api.py 70][INFO]: 接口请求地址 ==>> https://newrivertest.agentgo.me/dc/pc/countCollectionNum
+[2022-09-29 11:09:08,211][base_api.py 72][INFO]: 接口请求方式 ==>> GET
+[2022-09-29 11:20:10,044][data_load.py 44][INFO]: 加载 D:\code\newriver_api\config\config.ini 文件......
+[2022-09-29 11:20:10,045][data_load.py 48][INFO]: 读到数据 ==>>  {'host': {'api_root_url': 'https://newrivertest.agentgo.me/dc/pc'}, 'mysql': {'MYSQL_HOST': '18.162.133.134', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}, 'shardingsphere-proxy': {'MYSQL_HOST': '18.163.3.196', 'MYSQL_PORT': '3307', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}} 
+[2022-09-29 11:20:10,048][data_load.py 44][INFO]: 加载 D:\code\newriver_api\config\config.ini 文件......
+[2022-09-29 11:20:10,050][data_load.py 48][INFO]: 读到数据 ==>>  {'host': {'api_root_url': 'https://newrivertest.agentgo.me/dc/pc'}, 'mysql': {'MYSQL_HOST': '18.162.133.134', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}, 'shardingsphere-proxy': {'MYSQL_HOST': '18.163.3.196', 'MYSQL_PORT': '3307', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}} 
+[2022-09-29 11:20:10,051][base_api.py 70][INFO]: 接口请求地址 ==>> https://newrivertest.agentgo.me/dc/pc/countCollectionNum
+[2022-09-29 11:20:10,051][base_api.py 72][INFO]: 接口请求方式 ==>> GET
+[2022-09-29 11:21:58,084][data_load.py 44][INFO]: 加载 D:\code\newriver_api\config\config.ini 文件......
+[2022-09-29 11:21:58,085][data_load.py 48][INFO]: 读到数据 ==>>  {'host': {'api_root_url': 'https://newrivertest.agentgo.me/dc/pc'}, 'mysql': {'MYSQL_HOST': '18.162.133.134', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}, 'shardingsphere-proxy': {'MYSQL_HOST': '18.163.3.196', 'MYSQL_PORT': '3307', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}} 
+[2022-09-29 11:21:58,085][data_load.py 44][INFO]: 加载 D:\code\newriver_api\config\config.ini 文件......
+[2022-09-29 11:21:58,086][data_load.py 48][INFO]: 读到数据 ==>>  {'host': {'api_root_url': 'https://newrivertest.agentgo.me/dc/pc'}, 'mysql': {'MYSQL_HOST': '18.162.133.134', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}, 'shardingsphere-proxy': {'MYSQL_HOST': '18.163.3.196', 'MYSQL_PORT': '3307', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}} 
+[2022-09-29 11:21:58,086][base_api.py 70][INFO]: 接口请求地址 ==>> https://newrivertest.agentgo.me/dc/pc/countCollectionNum
+[2022-09-29 11:21:58,086][base_api.py 72][INFO]: 接口请求方式 ==>> GET
+[2022-09-29 11:21:58,566][base_api.py 20][INFO]: 接口返回数据 ==>> {'code': 200, 'message': '操作成功', 'data': 92}
+[2022-09-29 11:22:15,532][data_load.py 44][INFO]: 加载 D:\code\newriver_api\config\config.ini 文件......
+[2022-09-29 11:22:15,533][data_load.py 48][INFO]: 读到数据 ==>>  {'host': {'api_root_url': 'https://newrivertest.agentgo.me/dc/pc'}, 'mysql': {'MYSQL_HOST': '18.162.133.134', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}, 'shardingsphere-proxy': {'MYSQL_HOST': '18.163.3.196', 'MYSQL_PORT': '3307', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}} 
+[2022-09-29 11:22:15,534][data_load.py 44][INFO]: 加载 D:\code\newriver_api\config\config.ini 文件......
+[2022-09-29 11:22:15,534][data_load.py 48][INFO]: 读到数据 ==>>  {'host': {'api_root_url': 'https://newrivertest.agentgo.me/dc/pc'}, 'mysql': {'MYSQL_HOST': '18.162.133.134', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}, 'shardingsphere-proxy': {'MYSQL_HOST': '18.163.3.196', 'MYSQL_PORT': '3307', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}} 
+[2022-09-29 11:22:15,534][base_api.py 70][INFO]: 接口请求地址 ==>> https://newrivertest.agentgo.me/dc/pc/countCollectionNum
+[2022-09-29 11:22:15,535][base_api.py 72][INFO]: 接口请求方式 ==>> GET
+[2022-09-29 11:22:16,004][base_api.py 20][INFO]: 接口返回数据 ==>> {'code': 200, 'message': '操作成功', 'data': 92}
+[2022-09-29 11:25:04,779][data_load.py 44][INFO]: 加载 D:\code\newriver_api\config\config.ini 文件......
+[2022-09-29 11:25:04,780][data_load.py 48][INFO]: 读到数据 ==>>  {'host': {'api_root_url': 'https://newrivertest.agentgo.me/dc/pc'}, 'mysql': {'MYSQL_HOST': '18.162.133.134', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}, 'shardingsphere-proxy': {'MYSQL_HOST': '18.163.3.196', 'MYSQL_PORT': '3307', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}} 
+[2022-09-29 11:25:04,781][data_load.py 44][INFO]: 加载 D:\code\newriver_api\config\config.ini 文件......
+[2022-09-29 11:25:04,782][data_load.py 48][INFO]: 读到数据 ==>>  {'host': {'api_root_url': 'https://newrivertest.agentgo.me/dc/pc'}, 'mysql': {'MYSQL_HOST': '18.162.133.134', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}, 'shardingsphere-proxy': {'MYSQL_HOST': '18.163.3.196', 'MYSQL_PORT': '3307', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}} 
+[2022-09-29 11:25:04,782][base_api.py 72][INFO]: 接口请求地址 ==>> https://newrivertest.agentgo.me/dc/pc/countCollectionNum
+[2022-09-29 11:25:04,782][base_api.py 74][INFO]: 接口请求方式 ==>> GET
+[2022-09-29 11:25:05,249][base_api.py 22][INFO]: 接口返回数据 ==>> {'code': 200, 'message': '操作成功', 'data': 92}

@@ -1,0 +1,57 @@
+get_date_button_show:
+  # 获取dateButton是否显示
+  -
+    configKey: ""
+    code: 200
+    execute_sql: [
+      "select distinct create_time  from `hk-manhattan`.chain_daily_stats order by create_time asc limit 1",
+      "select distinct create_time  from `hk-manhattan`.chain_collection_quotation order by create_time asc limit 1"
+    ]
+  -
+    configKey: "MARKET_CAP_VOLUME"
+    code: 200
+    execute_sql: [
+      "select distinct create_time  from `hk-manhattan`.chain_collection_quotation order by create_time asc limit 1"
+    ]
+  -
+    configKey: "PRICE_LIST"
+    code: 200
+    execute_sql: [
+      "select distinct create_time  from `hk-manhattan`.chain_collection_quotation order by create_time asc limit 1"
+    ]
+  -
+    configKey: "TOP_TEN"
+    code: 200
+    execute_sql: [
+      "select distinct create_time  from `hk-manhattan`.chain_collection_quotation order by create_time asc limit 1"
+    ]
+  -
+    configKey: "ETHEREUM"
+    code: 200
+    execute_sql: [
+      "select distinct create_time  from `hk-manhattan`.chain_daily_stats order by create_time asc limit 1"
+    ]
+  -
+    configKey: "TOP_SALES"
+    code: 200
+    execute_sql: [
+      "select distinct create_time  from `hk-manhattan`.chain_collection_quotation order by create_time asc limit 1"
+    ]
+  -
+    configKey: "TOP_COLLECTION"
+    code: 200
+    execute_sql: [
+      "select distinct create_time  from `hk-manhattan`.chain_collection_quotation order by create_time asc limit 1"
+    ]
+  -
+    configKey: "HOT_COLLECTION"
+    code: 200
+    execute_sql: [
+      "select distinct create_time  from `hk-manhattan`.chain_collection_quotation order by create_time asc limit 1"
+    ]
+  -
+    configKey: "TRANSACTION_COUNT"
+    code: 200
+    execute_sql: [
+      "select distinct create_time  from `hk-manhattan`.chain_daily_stats order by create_time asc limit 1"
+    ]

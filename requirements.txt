@@ -1,0 +1,8 @@
+pytest~=5.4.3
+PyMySQL~=1.0.2
+allure-pytest
+requests~=2.24.0
+PyYAML~=5.3.1
+urllib3~=1.25.9
+yaml~=0.2.5
+pandas~=1.0.5
