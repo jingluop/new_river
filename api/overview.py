@@ -25,7 +25,7 @@ class Overview(BaseApi):
 
     def heat_map_app(self, **kwargs):
         """APP 热力图"""
-        return self.get("heatMap/app", **kwargs)
+        return self.get("/heatMap/app", **kwargs)
 
     def market_cap_and_volume_app(self, **kwargs):
         """统计市值和交易量"""
@@ -33,7 +33,7 @@ class Overview(BaseApi):
 
     def top_ten_app(self, **kwargs):
         """top10排行app"""
-        return self.get("topTen/app", **kwargs)
+        return self.get("/topTen/app", **kwargs)
 
     def ethereum_app(self, **kwargs):
         """以太坊看板"""

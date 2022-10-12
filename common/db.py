@@ -36,6 +36,7 @@ class MysqlDb:
     def select_db(self, sql):
         """查询"""
         # 检查连接是否断开，如果断开就进行重连
+        logger.info("查询的sql为：{}".format(sql))
         self.conn.ping(reconnect=True)
         # 使用 execute() 执行sql
         self.cur.execute(sql)

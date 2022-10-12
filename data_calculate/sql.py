@@ -68,6 +68,36 @@ class Sql:
 
     # 查询sales top 10
     sales_top_10 = """
-        SELECT collect_name FROM chain_collection_statistics WHERE date_type={} ORDER BY sales  desc LIMIT 10
+        SELECT collect_name, sales FROM `hk-manhattan`.chain_collection_statistics WHERE date_type={} ORDER BY sales
+        desc LIMIT 10
     """
 
+    # 查询热力图上涨数据
+    heat_map_rise = """
+        SELECT collect_name, volume_change, volume FROM `hk-manhattan`.chain_collection_statistics 
+        WHERE date_type={} AND volume_change>0 ORDER BY volume desc limit {}
+    """
+
+    # 查询热力图上涨的总条数
+    heat_map_rise_count = """
+        SELECT count(*) rise_count FROM `hk-manhattan`.chain_collection_statistics 
+        WHERE date_type={} AND volume_change>0 ORDER BY volume desc limit {}
+    """
+
+    # 查询热力图下跌数据
+    heat_map_fall = """
+        SELECT collect_name, volume_change, volume FROM `hk-manhattan`.chain_collection_statistics 
+        WHERE date_type={} AND volume_change<0 ORDER BY volume desc limit {}
+    """
+
+    # 查询热力图下跌总条数
+    heat_map_fall_count = """
+        SELECT count(*) fall_count FROM `hk-manhattan`.chain_collection_statistics 
+        WHERE date_type={} AND volume_change<0 ORDER BY volume desc limit {}
+     """
+
+    # 查询美元的汇率
+    last_price = """
+        select last_price  from `hk-manhattan`.token_last_price where token_type = 'ETH' and unit = 'USD' order by create_time 
+        desc limit 1
+    """
