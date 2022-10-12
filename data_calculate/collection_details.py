@@ -76,3 +76,15 @@ class CollectionDetailCal:
         # 9. last7days折线图数据
 
         return result
+
+    def calculate_recent_transactions(self, collection_uuid, limit_num=30):
+        """
+        计算集合详情下面的最近交易
+        :param collection_uuid:
+        :param limit_num:app-30，web-10
+        :return:
+        """
+        res = Collection().recent_transactions_app(params={"collectionUuid": collection_uuid})
+        recent_transactions_interface = res['data']
+        recent_transactions_sql = db_proxy.select_db(Sql.recent_transactions.format(collection_uuid, limit_num))
+        return recent_transactions_interface, recent_transactions_sql

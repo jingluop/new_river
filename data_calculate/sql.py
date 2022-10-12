@@ -101,3 +101,27 @@ class Sql:
         select last_price  from `hk-manhattan`.token_last_price where token_type = 'ETH' and unit = 'USD' order by create_time 
         desc limit 1
     """
+
+    # 查询最近交易
+    recent_transactions = """
+    select collection_name, transaction_price,
+        from(
+        SELECT
+            case protocol_type
+                when 'ERC1155' then collection_name
+                when 'ERC721' then CONCAT( collection_name , ' #' , token_id)
+            end collection_name,
+            time_stamp, collection_uuid, event, transaction_price, id, rank() over(partition by token_id
+        order by
+            time_stamp desc,
+            id desc)rk
+        from
+            `hk-chaindata-new`.chain_collection_nft_activity
+        where
+            collection_uuid = {}
+            and event = 'SALE'
+        )a
+    where a.rk = 1
+    order by time_stamp DESC
+    limit {}
+    """
