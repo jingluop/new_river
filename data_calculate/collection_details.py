@@ -37,13 +37,13 @@ class CollectionDetailCal:
         market_cap_interface = float(res['data']['marketCap'])
         market_cap_sql = float(
             db_mysql.select_db(Sql.one_collection_market_cap.format(0, collection_uuid))[0]['market_cap'])
-        result.append([market_cap_sql, market_cap_interface])
+        result.append([market_cap_interface, market_cap_sql])
 
         # 4. 计算holders
         holders_interface = float(res['data']['numOwners'])
         holders_sql = float(
             db_mysql.select_db(Sql.one_collection_holders.format(0, collection_uuid))[0]['holders'])
-        result.append([holders_sql, holders_interface])
+        result.append([holders_interface, holders_sql])
 
         # 5. 计算地板价24h的变化率
         floor_price_change_rate_interface = float(res['data']['floorPriceChange'])
@@ -87,4 +87,11 @@ class CollectionDetailCal:
         res = Collection().recent_transactions_app(params={"collectionUuid": collection_uuid})
         recent_transactions_interface = res['data']
         recent_transactions_sql = db_proxy.select_db(Sql.recent_transactions.format(collection_uuid, limit_num))
-        return recent_transactions_interface, recent_transactions_sql
+        recent_transactions_name_interface = [i['tokenName'] for i in recent_transactions_interface]
+        recent_transactions_last_price_interface = [float(i['lastPrice']) for i in recent_transactions_interface]
+
+        recent_transactions_name_sql = [i['collection_name'] for i in recent_transactions_sql]
+        recent_transactions_last_price_sql = [float(i['transaction_price']) / 1E+18 for i in recent_transactions_sql]
+        return recent_transactions_name_interface, recent_transactions_last_price_interface, recent_transactions_name_sql, recent_transactions_last_price_sql
+
+

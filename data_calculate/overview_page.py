@@ -81,8 +81,8 @@ class OverViewCal:
         fall_list_interface = []
         rise_list_interface.append(res['data']['riseList'])
         fall_list_interface.append(res['data']['fallList'])
-        rise_num_sql = int(db_mysql.select_db(Sql.heat_map_rise_count.format(self.time_dict[time_type], int(total_num / 2)))[0]['rise_count'])
-        fall_num_sql = int(db_mysql.select_db(Sql.heat_map_fall_count.format(self.time_dict[time_type], int(total_num / 2)))[0]['fall_count'])
+        rise_num_sql = int(db_mysql.select_db(Sql.heat_map_rise_count.format(self.time_dict[time_type]))[0]['rise_count'])
+        fall_num_sql = int(db_mysql.select_db(Sql.heat_map_fall_count.format(self.time_dict[time_type]))[0]['fall_count'])
         min_num = min(rise_num_sql, fall_num_sql)
         if min_num >= total_num / 2:
             rise_num = total_num / 2

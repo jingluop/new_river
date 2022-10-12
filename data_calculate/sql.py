@@ -81,7 +81,7 @@ class Sql:
     # 查询热力图上涨的总条数
     heat_map_rise_count = """
         SELECT count(*) rise_count FROM `hk-manhattan`.chain_collection_statistics 
-        WHERE date_type={} AND volume_change>0 ORDER BY volume desc limit {}
+        WHERE date_type={} AND volume_change>0
     """
 
     # 查询热力图下跌数据
@@ -93,7 +93,7 @@ class Sql:
     # 查询热力图下跌总条数
     heat_map_fall_count = """
         SELECT count(*) fall_count FROM `hk-manhattan`.chain_collection_statistics 
-        WHERE date_type={} AND volume_change<0 ORDER BY volume desc limit {}
+        WHERE date_type={} AND volume_change<0
      """
 
     # 查询美元的汇率
@@ -104,7 +104,7 @@ class Sql:
 
     # 查询最近交易
     recent_transactions = """
-    select collection_name, transaction_price,
+    select collection_name, transaction_price
         from(
         SELECT
             case protocol_type
