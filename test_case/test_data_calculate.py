@@ -23,15 +23,15 @@ class TestCalculate:
     # 随机取10个集合
     start_index = random.randint(0, len(collection_uuid) - 20)
     collection_uuid = collection_uuid[start_index: start_index + 50]
-    logger.info("选取到的集合的uuid为：{}".format(collection_uuid))
+    logger.info("选取到的集合的uuid为：{}, start_index为：{}".format(collection_uuid, start_index))
 
     @pytest.mark.parametrize("time_type", [0, 1, 2, 3])
     @pytest.mark.parametrize("page_size,page_num", [(random.randint(10, 30), random.randint(1, 3))])
     def test_top_sales(self, time_type, page_size, page_num):
         results = TopSalesCal().calculate_top_collection(time_type, page_size, page_num)
         for result in results:
-            logger.info("最近交易列表测试数据接口返回：{}".format(result[0]))
-            logger.info("最近交易列表测试数据sql查询：{}".format(result[1]))
+            logger.info("top sales页面测试数据接口返回：{}".format(result[0]))
+            logger.info("top sales页面测试数据sql查询：{}".format(result[1]))
             assert result[0] == result[1]
 
     @pytest.mark.parametrize("time_type", [0, 1, 2, 3])
@@ -39,8 +39,8 @@ class TestCalculate:
     def test_top_collections(self, time_type, page_size, page_num):
         results = TopCollectionsCal().calculate_top_collection(time_type, page_size, page_num)
         for result in results:
-            logger.info("最近交易列表测试数据接口返回：{}".format(result[0]))
-            logger.info("最近交易列表测试数据sql查询：{}".format(result[1]))
+            logger.info("top collections页面测试数据接口返回：{}".format(result[0]))
+            logger.info("top collections页面测试数据sql查询：{}".format(result[1]))
             assert result[0] == result[1]
 
     @pytest.mark.parametrize("time_type", [0, 1, 2, 3])
@@ -48,8 +48,8 @@ class TestCalculate:
     def test_hot_collections(self, time_type, page_size, page_num):
         results = HotCollectionsCal().calculate_hot_collection(time_type, page_size, page_num)
         for result in results:
-            logger.info("最近交易列表测试数据接口返回：{}".format(result[0]))
-            logger.info("最近交易列表测试数据sql查询：{}".format(result[1]))
+            logger.info("hot collections页面测试数据接口返回：{}".format(result[0]))
+            logger.info("hot collections页面测试数据sql查询：{}".format(result[1]))
             assert result[0] == result[1]
 
     @pytest.mark.parametrize("time_type", [0, 1, 2, 3])
@@ -57,8 +57,8 @@ class TestCalculate:
     def test_collection_detail(self, time_type, collection_uuid):
         results = CollectionDetailCal().calculate_collection_details(collection_uuid)
         for result in results:
-            logger.info("最近交易列表测试数据接口返回：{}".format(result[0]))
-            logger.info("最近交易列表测试数据sql查询：{}".format(result[1]))
+            logger.info("集合详情接口测试数据接口返回：{}".format(result[0]))
+            logger.info("集合详情接口测试数据sql查询：{}".format(result[1]))
             assert result[0] == result[1]
 
     def test_market_cap(self):
@@ -66,31 +66,31 @@ class TestCalculate:
         for result in results:
             assert result[0] == result[1]
 
-    @pytest.mark.parametrize('time_type', ['ONE_DAY', 'ONE_WEEK', 'ONE_MONTH', 'THREE_MONTHS'])
+    @pytest.mark.parametrize('time_type', [0, 1, 2, 3])
     def test_sales_top_10(self, time_type):
         result = OverViewCal().calculate_sales_top_10(time_type)
         collection_name_interface = result[0]
         collection_sales_interface = result[1]
         collection_name_sql = result[2]
         collection_sales_sql = result[3]
-        logger.info("最近交易列表测试数据接口返回：{},{}".format(result[0], result[1]))
-        logger.info("最近交易列表测试数据sql查询：{},{}".format(result[2], result[3]))
+        logger.info("overview页面sales top10测试数据接口返回：{},{}".format(result[0], result[1]))
+        logger.info("overview页面sales top10测试数据sql查询：{},{}".format(result[2], result[3]))
         assert collection_name_interface == collection_name_sql
         assert collection_sales_interface == collection_sales_sql
 
-    @pytest.mark.parametrize('time_type', ['ONE_DAY', 'ONE_WEEK', 'ONE_MONTH', 'THREE_MONTHS'])
+    @pytest.mark.parametrize('time_type', [0, 1, 2, 3])
     def test_volume_top_10(self, time_type):
         result = OverViewCal().calculate_sales_top_10(time_type)
         collection_name_interface = result[0]
         collection_sales_interface = result[1]
         collection_name_sql = result[2]
         collection_sales_sql = result[3]
-        logger.info("最近交易列表测试数据接口返回：{},{}".format(result[0], result[1]))
-        logger.info("最近交易列表测试数据sql查询：{},{}".format(result[2], result[3]))
+        logger.info("overview页面volume top10测试数据接口返回：{},{}".format(result[0], result[1]))
+        logger.info("overview页面volume top10测试数据sql查询：{},{}".format(result[2], result[3]))
         assert collection_name_interface == collection_name_sql
         assert collection_sales_interface == collection_sales_sql
 
-    @pytest.mark.parametrize('time_type', ['ONE_DAY', 'ONE_WEEK', 'ONE_MONTH', 'THREE_MONTHS'])
+    @pytest.mark.parametrize('time_type', [0, 1, 2, 3])
     def test_heat_map(self, time_type):
         result = OverViewCal().calculate_heat_map(time_type)
         rise_list_interface = result[0][0]
@@ -129,4 +129,16 @@ class TestCalculate:
         logger.info("最近交易列表测试数据sql查询：{},{}".format(result[2], result[3]))
         assert result[0] == result[2]
         assert result[1] == result[3]
-        # 100367 起始有问题
+
+    @pytest.mark.parametrize('time_type', [0, 1])
+    @pytest.mark.parametrize('collection_uuid', collection_uuid)
+    def test_floor_price_chart(self, time_type, collection_uuid):
+        result = CollectionDetailCal().calculate_floor_price_chart(collection_uuid, time_type)
+        logger.info("集合详情地板价图表测试数据接口返回：{},{}".format(result[0], result[1]))
+        logger.info("集合详情地板价图表测试数据sql查询：{},{}".format(result[2][0], result[3][0]))
+        assert result[0] == result[2][0]
+        assert result[1] == result[3][0]
+
+    def test_analytics(self):
+        result = CollectionDetailCal().calculate_analytics(101008)
+        print(result)

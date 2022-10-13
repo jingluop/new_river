@@ -7,18 +7,19 @@
 import random
 import pytest
 from common.db import db_mysql, db_proxy
-from api.collection_details import Collection
+from api.collection_details import collection_detail
 from data_calculate.sql import Sql
 
 
 class CollectionDetailCal:
+    time_dict = {0: 'ONE_DAY', 1: 'ONE_WEEK', 2: 'ONE_MONTH', 3: 'THREE_MONTHS'}
 
     def calculate_collection_details(self, collection_uuid):
         """计算集合详情页面的数据"""
         # 1.计算地板价
         # 接口返回值
         result = []
-        res = Collection().select_collection_details_app(json={"collectionUuid": collection_uuid})
+        res = collection_detail.select_collection_details_app(json={"collectionUuid": collection_uuid})
         floor_price_interface = float(res['data']['floorPrice'])
         # 数据库查询的值
         floor_price_sql = float(db_mysql.select_db(Sql.floor_price.format(collection_uuid))[0]['floor_price'])
@@ -84,7 +85,7 @@ class CollectionDetailCal:
         :param limit_num:app-30，web-10
         :return:
         """
-        res = Collection().recent_transactions_app(params={"collectionUuid": collection_uuid})
+        res = collection_detail.recent_transactions_app(params={"collectionUuid": collection_uuid})
         recent_transactions_interface = res['data']
         recent_transactions_sql = db_proxy.select_db(Sql.recent_transactions.format(collection_uuid, limit_num))
         recent_transactions_name_interface = [i['tokenName'] for i in recent_transactions_interface]
@@ -94,4 +95,66 @@ class CollectionDetailCal:
         recent_transactions_last_price_sql = [float(i['transaction_price']) / 1E+18 for i in recent_transactions_sql]
         return recent_transactions_name_interface, recent_transactions_last_price_interface, recent_transactions_name_sql, recent_transactions_last_price_sql
 
+    def calculate_floor_price_chart(self, collection_uuid, time_type):
+        """
+        计算集合详情下面的地板价图表
+        :param collection_uuid:
+        :param time_type：0-ONE_DAY,1-ONE_WEEK,2-ONE_MONTH,3-THREE_MONTHS
+        :return:
+        """
+        hour_dict = {0: 24, 1: 24 * 7 - 1, 2: 30 * 24, 3: 90 * 24}
+        res = collection_detail.collection_floor_price_chart_app(
+            params={"collectionUuid": collection_uuid, "timeType": self.time_dict[time_type]})
+        floor_price_interface = [float(i['floorPrice']) for i in res['data']]
+        avg_price_interface = [float(i['avgPrice']) for i in res['data']]
+        floor_price_sql = []
+        avg_price_sql = []
+        floor_price = [float(i['floor_price']) for i in
+                       db_mysql.select_db(
+                           Sql.history_floor_price_list.format(collection_uuid, hour_dict[time_type] - 1, 0))]
+        floor_price.reverse()
+        avg_price = [float(i['avg_price']) for i in
+                     db_mysql.select_db(Sql.avg_price_list.format(collection_uuid, hour_dict[time_type] - 1, 0))]
+        avg_price.reverse()
+        if time_type == 0:
+            floor_price_sql.append(floor_price)
+            avg_price_sql.append(avg_price)
+        elif time_type == 1:
+            floor_price_sql.append(floor_price[::2])
+            avg_price_sql.append(avg_price[::2])
+        elif time_type == 2:
+            floor_price_sql.append(floor_price[::24])
+            avg_price_sql.append(avg_price[::24])
+        else:
+            floor_price_sql.append(floor_price[::120])
+            avg_price_sql.append(avg_price[::120])
+        return floor_price_interface, avg_price_interface, floor_price_sql, avg_price_sql
 
+    def calculate_market_cap_and_volume_one_collection(self, collection_uuid, time_type):
+        """
+        计算集合详情下面的市值和交易量的图表
+        :param collection_uuid:
+        :param time_type：0-ONE_DAY,1-ONE_WEEK,2-ONE_MONTH,3-THREE_MONTHS
+        :return:
+        """
+        pass
+
+    def calculate_analytics(self, collection_uuid):
+        """
+        计算集合详情下面的市值和交易量的图表
+        :param collection_uuid:
+        :return:
+        """
+        res = collection_detail.get_thermodynamic_diagram_app(params={"collectionUuid": collection_uuid})
+        # 1. 低于地板价购买
+        floor_price = float(db_mysql.select_db(Sql.history_floor_price.format(collection_uuid, 0))[0]['floor_price'])
+        below_floor_price = int(
+            db_proxy.select_db(Sql.below_floor_price.format(collection_uuid, floor_price))[0]['count'])
+        above_floor_price = int(
+            db_proxy.select_db(Sql.above_floor_price.format(collection_uuid, floor_price))[0]['count'])
+        # 2. 从未交易
+
+        # 3. 蓝筹股持有人
+
+        # 4. NFT in pending orders
+        return below_floor_price, above_floor_price, res

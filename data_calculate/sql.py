@@ -49,7 +49,7 @@ class Sql:
         and collection_uuid = {}
     """
 
-    # 查询历史的地板价
+    # 查询单个集合历史的地板价
     history_floor_price = """
         select
             floor_price
@@ -60,6 +60,46 @@ class Sql:
             and create_time = str_to_date( date_format( DATE_sub(CURRENT_TIMESTAMP(), interval {} hour), '%Y-%m-%d %H'),
             '%Y-%m-%d %H%i%m') 
     """
+
+    # 查询某个时间段内的地板价列表
+    history_floor_price_list = """
+            select
+                floor_price
+            from
+                `hk-manhattan`.chain_collection_quotation
+            where
+                collection_uuid = {}
+                and create_time between str_to_date( date_format( DATE_sub(CURRENT_TIMESTAMP(), interval {} hour), '%Y-%m-%d %H'),
+                '%Y-%m-%d %H%i%m') and str_to_date( date_format( DATE_sub(CURRENT_TIMESTAMP(), interval {} hour), '%Y-%m-%d %H'),
+                '%Y-%m-%d %H%i%m') 
+                order by create_time desc
+        """
+
+    # 查询单个集合历史的平均价
+    avg_price = """
+        select
+            avg_price
+        from
+            `hk-manhattan`.chain_collection_quotation
+        where
+            collection_uuid = {}
+            and create_time = str_to_date( date_format( DATE_sub(CURRENT_TIMESTAMP(), interval {} hour), '%Y-%m-%d %H'),
+            '%Y-%m-%d %H%i%m')
+        """
+
+    # 查询某个时间段内的平均价的列表
+    avg_price_list = """
+        select
+            avg_price
+        from
+            `hk-manhattan`.chain_collection_quotation
+        where
+            collection_uuid = {}
+            and create_time between str_to_date( date_format( DATE_sub(CURRENT_TIMESTAMP(), interval {} hour), '%Y-%m-%d %H'),
+            '%Y-%m-%d %H%i%m') and str_to_date( date_format( DATE_sub(CURRENT_TIMESTAMP(), interval {} hour), '%Y-%m-%d %H'),
+            '%Y-%m-%d %H%i%m')
+            order by create_time desc
+        """
 
     # 查询单个集合的sales的数据
     one_collection_sales = """
@@ -122,6 +162,21 @@ class Sql:
             and event = 'SALE'
         )a
     where a.rk = 1
-    order by time_stamp DESC
+    order by time_stamp DESC, id desc
     limit {}
+    """
+
+    # 查询低于地板价购买
+    below_floor_price = """
+    select count(*) count from `hk-chaindata-new`.chain_collection_nft_activity where collection_uuid = {} and event = 'SALE' and transaction_price<{}*1000000000000000000
+    """
+
+    # 查询高于地板价购买
+    above_floor_price = """
+    select count(*) count from `hk-chaindata-new`.chain_collection_nft_activity where collection_uuid = {} and event = 'SALE' and transaction_price>={}*1000000000000000000
+    """
+
+    # 查询从未交易的集合
+    never_traded_distribution = """
+    select count(DISTINCT token_id) from chain_collection_nft_activity where collection_uuid = 100028 and event = 'MINT'
     """
