@@ -20,7 +20,7 @@ from data_calculate.top_sales_page import TopSalesCal
 
 class TestCalculate:
     collection_uuid = [collection['collection_uuid'] for collection in db_mysql.select_db(Sql.collection_uuid)]
-    # 随机取10个集合
+    # 随机取50个集合
     start_index = random.randint(0, len(collection_uuid) - 20)
     collection_uuid = collection_uuid[start_index: start_index + 50]
     logger.info("选取到的集合的uuid为：{}, start_index为：{}".format(collection_uuid, start_index))

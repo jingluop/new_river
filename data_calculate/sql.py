@@ -178,5 +178,5 @@ class Sql:
 
     # 查询从未交易的集合
     never_traded_distribution = """
-    select count(DISTINCT token_id) from chain_collection_nft_activity where collection_uuid = 100028 and event = 'MINT'
+    select count(DISTINCT token_id) count from `hk-chaindata-new`.chain_collection_nft_activity where collection_uuid = {} and event = {}
     """

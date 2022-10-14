@@ -153,8 +153,13 @@ class CollectionDetailCal:
         above_floor_price = int(
             db_proxy.select_db(Sql.above_floor_price.format(collection_uuid, floor_price))[0]['count'])
         # 2. 从未交易
-
+        mint_total = int(
+            db_proxy.select_db(Sql.never_traded_distribution.format(collection_uuid, 'MINT'))[0]['count'])
+        sale_total = int(
+            db_proxy.select_db(Sql.never_traded_distribution.format(collection_uuid, 'SALE'))[0]['count'])
+        nerve_trade = mint_total - sale_total
         # 3. 蓝筹股持有人
 
+
         # 4. NFT in pending orders
-        return below_floor_price, above_floor_price, res
+        return below_floor_price, above_floor_price, nerve_trade, sale_total, res
