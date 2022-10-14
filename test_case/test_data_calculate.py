@@ -25,7 +25,7 @@ class TestCalculate:
     collection_uuid = collection_uuid[start_index: start_index + 50]
     logger.info("选取到的集合的uuid为：{}, start_index为：{}".format(collection_uuid, start_index))
 
-    @pytest.mark.parametrize("time_type", [0, 1, 2, 3])
+    @pytest.mark.parametrize("time_type", [0])
     @pytest.mark.parametrize("page_size,page_num", [(random.randint(10, 30), random.randint(1, 3))])
     def test_top_sales(self, time_type, page_size, page_num):
         results = TopSalesCal().calculate_top_collection(time_type, page_size, page_num)

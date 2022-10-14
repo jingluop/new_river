@@ -20,7 +20,7 @@ class TopSales(BaseApi):
 
     def select_collection_info(self, **kwargs):
         """获取集合列表"""
-        return self.post("/listTopSales/app", **kwargs)
+        return self.get("/listTopSales/app", **kwargs)
 
 
 top_sales = TopSales()

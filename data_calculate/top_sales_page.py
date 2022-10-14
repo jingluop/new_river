@@ -6,13 +6,15 @@
 """
 import random
 import pytest
-from common.db import db_mysql, db_proxy
-from api.top_collections import top_collections
+
+from api.top_sales import top_sales
+from common.db import db_mysql
 from common.logger import logger
 from data_calculate.sql import Sql
 
 
 class TopSalesCal:
+    time_dict = {0: 'ONE_DAY', 1: 'ONE_WEEK', 2: 'ONE_MONTH', 3: 'THREE_MONTHS'}
 
     def calculate_top_collection(self, time_type, page_size, page_num):
         if time_type == 0:
@@ -25,8 +27,8 @@ class TopSalesCal:
             days = 90
         time_now = 0  # 取当前时间的数据就传0
         time_before = days * 24 - 1  # 根据时间类型取之前的时间
-        res = top_collections.select_collection_info(
-            json={"timeType": time_type, "pageSize": page_size, "hot": "0", "pageNum": page_num})
+        res = top_sales.select_collection_info(
+            params={"timeRange": self.time_dict[time_type], "pageSize": page_size, "pageNum": page_num})
         result = []
         for collection in res['data']['list']:
             collection_uuid = collection['collectionUuid']
@@ -40,12 +42,15 @@ class TopSalesCal:
 
             # 交易量
             volume_interface = float(collection['volume'])
-            volume_sql = float(
+            volume_now = float(
                 db_mysql.select_db(Sql.one_collection_volume.format(time_now, collection_uuid))[0]['volume'])
+            volume_before = float(
+                db_mysql.select_db(Sql.one_collection_volume.format(time_before, collection_uuid))[0]['volume'])
+            volume_sql = volume_now - volume_before
             result.append([volume_interface, volume_sql])
 
             # 地板价的变化率
-            floor_price_change_rate_interface = float(res['data']['floorChange'])
+            floor_price_change_rate_interface = float(collection['floorChange'])
             floor_price_now = db_mysql.select_db(Sql.history_floor_price.format(collection_uuid, time_now))[0][
                 'floor_price']
             floor_price_before = db_mysql.select_db(Sql.history_floor_price.format(collection_uuid, time_before))[0][
@@ -54,7 +59,7 @@ class TopSalesCal:
             result.append([floor_price_change_rate_interface, floor_price_change_rate_sql])
 
             # sales
-            sales_interface = float(res['data']['sales'])
+            sales_interface = float(collection['sales'])
             sales_sql = db_mysql.select_db(Sql.one_collection_sales.format(collection_uuid, time_type))[0]['sales']
             result.append([sales_interface, sales_sql])
             return result
