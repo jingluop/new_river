@@ -1,0 +1,4 @@
+count_collection_num:
+  -
+    code: 200
+    execute_sql: ["SELECT count(distinct collection_uuid) count  FROM `hk-manhattan`.chain_collection_aggregation_data"]

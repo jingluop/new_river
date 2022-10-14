@@ -13,7 +13,9 @@ from api.config import config
 from common.data_load import ReadFileData, get_yaml_data
 import sys
 
+from common.db import db_mysql
 from common.logger import logger
+from data_calculate.sql import Sql
 
 sys.path.extend(["D:/code/newriver_api"])
 
@@ -26,6 +28,7 @@ class TestConfig:
 
     @pytest.mark.parametrize('test_data', get_yaml_data('test_config.yaml', 'get_date_button_show', db_type='mysql'))
     def test_get_date_button_show(self, test_data):
+        logger.info("当前测试数据：{}".format(test_data))
         res = config.get_date_button_show(params={"configKey": test_data['configKey']})
         now = datetime.datetime.now()
         assert res['code'] == test_data['code']
@@ -35,6 +38,7 @@ class TestConfig:
                 min_time = time['create_time']
                 date_diff = (now - min_time).days
                 min_day.append(date_diff)
+            logger.info("数据查询出来的最大时间差为：{}".format(min_day))
             if min_day[0] >= 90:
                 assert '3M' in res['data']['ethereum'][-1]
                 assert '3M' in res['data']['transactionCount'][-1]
@@ -87,6 +91,47 @@ class TestConfig:
             else:
                 assert '24H' in res['data'][-1]
 
-
-if __name__ == '__main__':
-    pytest.main(['-sv'])
+    @pytest.mark.parametrize('test_data', get_yaml_data('test_config.yaml', 'check_version_update', db_type='mysql'))
+    def test_check_version_update(self, test_data):
+        logger.info("当前测试数据：{}".format(test_data))
+        # 先查询当前版本号
+        ios_need_update_version = db_mysql.select_db(Sql.version.format('iosLastNewVersion'))[0]['CONFIG_VALUE']
+        ios_force_update_version = db_mysql.select_db(Sql.version.format('iosForcedUpdateVersion'))[0]['CONFIG_VALUE']
+        and_need_update_version = db_mysql.select_db(Sql.version.format('andLastNewVersion'))[0]['CONFIG_VALUE']
+        and_force_update_version = db_mysql.select_db(Sql.version.format('andForcedUpdateVersion'))[0]['CONFIG_VALUE']
+        logger.info("ios_need_update_version：{}".format(ios_need_update_version),
+                    "ios_force_update_version：{}".format(ios_force_update_version),
+                    "and_need_update_version：{}".format(and_need_update_version),
+                    "and_force_update_version：{}".format(and_force_update_version))
+        # 算版本号
+        if test_data['version'] == "equal_now_force_version":
+            if test_data['terminalType'] == "IOS":
+                version = ios_force_update_version
+            else:
+                version = and_force_update_version
+        elif test_data['version'] == "above_now_force_version":
+            version = '100.0.0'
+        elif test_data['version'] == "equal_now_update_version":
+            if test_data['terminalType'] == "IOS":
+                version = ios_need_update_version
+            else:
+                version = and_need_update_version
+        elif test_data['version'] == "above_now_update_version":
+            version = '100.0.0'
+        elif test_data['version'] == "below_now_force_version":
+            version = '1.0.0'
+        elif test_data['version'] == "below_now_update_version":
+            version = '1.0.0'
+        else:
+            logger.info("version输入有有误")
+            raise
+        logger.info("当前接口入参需要输入的版本号为：{}".format(version))
+        res = config.check_version_update(
+            params={"version": version, "terminalType": test_data['terminalType']})
+        need_update_interface = res['data']['needUpdate']
+        force_update_interface = res['data']['forceUpdate']
+        assert test_data['code'] == res['code']
+        if 'forceUpdate' in test_data:
+            assert test_data['forceUpdate'] == force_update_interface
+        elif 'needUpdate' in test_data:
+            assert test_data['needUpdate'] == need_update_interface

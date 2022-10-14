@@ -55,3 +55,57 @@ get_date_button_show:
     execute_sql: [
       "select distinct create_time  from `hk-manhattan`.chain_daily_stats order by create_time asc limit 1"
     ]
+
+check_version_update:
+  -
+    code: 200
+    version: equal_now_force_version
+    terminalType: IOS
+    forceUpdate: False
+  -
+    code: 200
+    version: above_now_force_version
+    terminalType: IOS
+    forceUpdate: False
+  - code: 200
+    version: equal_now_update_version
+    terminalType: IOS
+    needUpdate: False
+  - code: 200
+    version: above_now_update_version
+    terminalType: IOS
+    needUpdate: False
+  -
+    code: 200
+    version: below_now_force_version
+    terminalType: IOS
+    forceUpdate: True
+  -
+    code: 200
+    version: below_now_update_version
+    terminalType: IOS
+    needUpdate: True
+  - code: 200
+    version: equal_now_force_version
+    terminalType: AND
+    forceUpdate: False
+  - code: 200
+    version: above_now_force_version
+    terminalType: AND
+    forceUpdate: False
+  - code: 200
+    version: equal_now_update_version
+    terminalType: AND
+    needUpdate: False
+  - code: 200
+    version: above_now_update_version
+    terminalType: AND
+    needUpdate: False
+  - code: 200
+    version: below_now_update_version
+    terminalType: AND
+    needUpdate: True
+  - code: 200
+    version: below_now_force_version
+    terminalType: AND
+    forceUpdate: True
