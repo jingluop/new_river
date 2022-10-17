@@ -22,5 +22,9 @@ class TopCollections(BaseApi):
         """获取集合列表"""
         return self.post("/selectCollectionInfo", **kwargs)
 
+    def get_type_str(self, **kwargs):
+        """获取配置的集合查询类型"""
+        return self.get("/getTypeStr", **kwargs)
+
 
 top_collections = TopCollections()

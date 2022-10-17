@@ -1,0 +1,8 @@
+get_type_str:
+  # 获取配置的集合查询类型
+  -
+    # 校验接口返回
+    code: 200
+    categories: ["All", "Collectibles", "Game", "Domain name", "Art", "Music", "Photography", "Sports", "PFP", "Metaverse", "Defi", "IP", "Social", "Land"]
+    ranks: [ "Market Cap", "Volume", "Floor Price", "Floor Change", "Owners", "Owners Change" ]
+    chains: [ "All", "Ethereum", "Polygon", "BnbChain" ]
