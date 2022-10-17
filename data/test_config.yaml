@@ -1,8 +1,11 @@
 get_date_button_show:
   # 获取dateButton是否显示
   -
+    # 入参
     configKey: ""
+    # 校验接口返回
     code: 200
+    # 查询数据库用来校验接口返回的数据
     execute_sql: [
       "select distinct create_time  from `hk-manhattan`.chain_daily_stats order by create_time asc limit 1",
       "select distinct create_time  from `hk-manhattan`.chain_collection_quotation order by create_time asc limit 1"
@@ -58,6 +61,7 @@ get_date_button_show:
 
 check_version_update:
   -
+    # 校验接口返回的对应的字段
     code: 200
     version: equal_now_force_version
     terminalType: IOS

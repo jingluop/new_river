@@ -1,12 +1,16 @@
 count_collection_num:
   -
+    # 校验接口返回
     code: 200
+    # 需要执行sql，用来查询数据进行校验
     execute_sql: ["SELECT count(distinct collection_uuid) count  FROM `hk-manhattan`.chain_collection_aggregation_data"]
 
 market_cap_and_volume:
   # 总金额和交易量图表
   -
+    # 入参
     timeRange: ONE_DAY
+    # 校验接口返回
     code: 200
   -
     timeRange: ONE_WEEK
@@ -27,9 +31,12 @@ market_cap_and_volume:
 heat_map:
   #  热力图
   -
+    # 入参
     timeRange: ONE_DAY
+    # 校验接口返回
     code: 200
     # dataNum不传默认50
+    # 校验接口返回得数据长度
     rise_list_len: 50
     fall_list_len: 50
   -
@@ -108,11 +115,14 @@ heat_map:
 
 top_ten:
 #  - top10排行app
+  - # 入参
   - timeRange: 'ONE_DAY'
     type: 'SALES'
+    # 校验接口返回
     code: 200
-    # 看返回的数据条数
+    # 校验接口返回的数据条数
     len_list: 10
+    # 接口返回的json的键的名称，多个的话用逗号隔开
     len_list_name: sales
   - timeRange: 'ONE_DAY'
     type: 'VOLUME'
@@ -183,11 +193,14 @@ top_ten:
 ethereum:
   # Ethereum看板
   -
+    # 入参
     timeRange: 'ONE_DAY'
     type: 'TRANSACTION_FEE_ETH'
+    # 校验接口返回
     code: 200
-    # 看返回的数据条数
+    # 校验返回的数据条数
     len_list: 7
+    # 接口返回的json的键的名称，多个的话用逗号隔开
     len_list_name: transactionFeeEth
   -
     timeRange: 'ONE_DAY'
