@@ -2,3 +2,40 @@ count_collection_num:
   -
     code: 200
     execute_sql: ["SELECT count(distinct collection_uuid) count  FROM `hk-manhattan`.chain_collection_aggregation_data"]
+
+ethereum:
+  # Ethereum看板
+  -
+    timeRange: 'ONE_DAY'
+    type: 'TRANSACTION_FEE_ETH'
+    code: 200
+    countValue: 465.2264229546994
+    date: '2022-09-14'
+    message: '操作成功'
+
+market_cap_and_volume:
+  # 总金额和交易量图表
+  -
+    timeRange: ONE_DAY
+    code: 200
+  -
+    timeRange: ONE_WEEK
+    code: 200
+  -
+    timeRange: ONE_MONTH
+    code: 200
+  -
+    timeRange: THREE_MONTHS
+    code: 200
+  - timeRange: ONE_DAYSSSSSSSSS
+    status: 400
+  - timeRange: ''
+    status: 500
+  -
+    status: 400
+
+
+
+
+
+

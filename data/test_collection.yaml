@@ -1,13 +1,3 @@
-ethereum:
-  # Ethereum看板
-  -
-    timeRange: 'ONE_DAY'
-    type: 'TRANSACTION_FEE_ETH'
-    code: 200
-    countValue: 465.2264229546994
-    date: '2022-09-14'
-    message: '操作成功'
-
 buy_and_trade_app:
   # 集合详情-低价购买和交易统计图-APP
   -
