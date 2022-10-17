@@ -34,6 +34,88 @@ market_cap_and_volume:
   -
     status: 400
 
+heat_map:
+  #  热力图
+  -
+    timeRange: ONE_DAY
+    code: 200
+    # dataNum不传默认50
+    rise_list_len: 50
+    fall_list_len: 50
+  -
+    timeRange: ONE_DAY
+    dataNum: 20
+    code: 200
+    rise_list_len: 10
+    fall_list_len: 10
+  -
+    timeRange: ONE_DAY
+    dataNum: 0
+    code: 200
+    rise_list_len: 0
+    fall_list_len: 0
+  -
+    dataNum: 20
+    status: 400
+  -
+    timeRange: ''
+    dataNum: 20
+    status: 500
+  -
+    timeRange: ssssssssss
+    dataNum: 20
+    status: 400
+  -
+    timeRange: ONE_WEEK
+    code: 200
+    # dataNum不传默认50
+    rise_list_len: 50
+    fall_list_len: 50
+  -
+    timeRange: ONE_WEEK
+    dataNum: 30
+    code: 200
+    rise_list_len: 15
+    fall_list_len: 15
+  -
+    timeRange: ONE_WEEK
+    dataNum: 0
+    code: 200
+    rise_list_len: 0
+    fall_list_len: 0
+  -
+    timeRange: ONE_MONTH
+    code: 200
+    # dataNum不传默认50
+    rise_list_len: 50
+    fall_list_len: 50
+  - timeRange: ONE_MONTH
+    dataNum: 40
+    code: 200
+    rise_list_len: 20
+    fall_list_len: 20
+  - timeRange: ONE_MONTH
+    dataNum: 0
+    code: 200
+    rise_list_len: 0
+    fall_list_len: 0
+  -
+    timeRange: THREE_MONTHS
+    code: 200
+    # dataNum不传默认50
+    rise_list_len: 50
+    fall_list_len: 50
+  - timeRange: THREE_MONTHS
+    dataNum: 60
+    code: 200
+    rise_list_len: 30
+    fall_list_len: 30
+  - timeRange: THREE_MONTHS
+    dataNum: 0
+    code: 200
+    rise_list_len: 0
+    fall_list_len: 0
+
 
 
 
