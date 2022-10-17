@@ -3,16 +3,6 @@ count_collection_num:
     code: 200
     execute_sql: ["SELECT count(distinct collection_uuid) count  FROM `hk-manhattan`.chain_collection_aggregation_data"]
 
-ethereum:
-  # Ethereum看板
-  -
-    timeRange: 'ONE_DAY'
-    type: 'TRANSACTION_FEE_ETH'
-    code: 200
-    countValue: 465.2264229546994
-    date: '2022-09-14'
-    message: '操作成功'
-
 market_cap_and_volume:
   # 总金额和交易量图表
   -
@@ -116,8 +106,160 @@ heat_map:
     rise_list_len: 0
     fall_list_len: 0
 
+top_ten:
+  -
+    code: 200
 
-
+ethereum:
+  # Ethereum看板
+  -
+    timeRange: 'ONE_DAY'
+    type: 'TRANSACTION_FEE_ETH'
+    code: 200
+    # 看返回的数据条数
+    len_list: 7
+    len_list_name: transactionFeeEth
+  -
+    timeRange: 'ONE_DAY'
+    type: 'NEW_ADDRESS_COUNT'
+    code: 200
+    len_list: 7
+    len_list_name: newAddressCount
+  -
+    timeRange: 'ONE_DAY'
+    type: 'NETWORK_UTILIZATION'
+    code: 200
+    len_list: 7
+    len_list_name: networkUtilization
+  -
+    timeRange: 'ONE_DAY'
+    type: 'NETWORK_HASH_RATE'
+    code: 200
+    len_list: 7
+    len_list_name: networkHashRate
+  -
+    timeRange: 'ONE_DAY'
+    type: 'TRANSACTION_COUNT'
+    code: 200
+    len_list: 7
+    len_list_name: transactionCount
+  -
+    timeRange: 'ONE_WEEK'
+    type: 'TRANSACTION_FEE_ETH'
+    code: 200
+    len_list: 7
+    len_list_name: transactionFeeEth
+  -
+    timeRange: 'ONE_WEEK'
+    type: 'NEW_ADDRESS_COUNT'
+    code: 200
+    len_list: 7
+    len_list_name: newAddressCount
+  -
+    timeRange: 'ONE_WEEK'
+    type: 'NETWORK_UTILIZATION'
+    code: 200
+    len_list: 7
+    len_list_name: networkUtilization
+  -
+    timeRange: 'ONE_WEEK'
+    type: 'NETWORK_HASH_RATE'
+    code: 200
+    len_list: 7
+    len_list_name: networkHashRate
+  -
+    timeRange: 'ONE_WEEK'
+    type: 'TRANSACTION_COUNT'
+    code: 200
+    len_list: 7
+    len_list_name: transactionCount
+  -
+    timeRange: 'ONE_MONTH'
+    type: 'TRANSACTION_FEE_ETH'
+    code: 200
+    len_list: 30
+    len_list_name: transactionFeeEth
+  -
+    timeRange: 'ONE_MONTH'
+    type: 'NEW_ADDRESS_COUNT'
+    code: 200
+    len_list: 30
+    len_list_name: newAddressCount
+  -
+    timeRange: 'ONE_MONTH'
+    type: 'NETWORK_UTILIZATION'
+    code: 200
+    len_list: 30
+    len_list_name: networkUtilization
+  -
+    timeRange: 'ONE_MONTH'
+    type: 'NETWORK_HASH_RATE'
+    code: 200
+    len_list: 30
+    len_list_name: networkHashRate
+  -
+    timeRange: 'ONE_MONTH'
+    type: 'TRANSACTION_COUNT'
+    code: 200
+    len_list: 30
+    len_list_name: transactionCount
+  -
+    timeRange: 'THREE_MONTHS'
+    type: 'TRANSACTION_FEE_ETH'
+    code: 200
+    len_list: 90
+    len_list_name: transactionFeeEth
+  -
+    timeRange: 'THREE_MONTHS'
+    type: 'NEW_ADDRESS_COUNT'
+    code: 200
+    len_list: 90
+    len_list_name: newAddressCount
+  -
+    timeRange: 'THREE_MONTHS'
+    type: 'NETWORK_UTILIZATION'
+    code: 200
+    len_list: 90
+    len_list_name: networkUtilization
+  -
+    timeRange: 'THREE_MONTHS'
+    type: 'NETWORK_HASH_RATE'
+    code: 200
+    len_list: 90
+    len_list_name: networkHashRate
+  -
+    timeRange: 'THREE_MONTHS'
+    type: 'TRANSACTION_COUNT'
+    code: 200
+    len_list: 90
+    len_list_name: transactionCount
+  -
+    type: 'TRANSACTION_COUNT'
+    status: 400
+  -
+    timeRange: 'THREE_MONTHS'
+    status: 400
+  -
+    timeRange: ''
+    type: 'TRANSACTION_COUNT'
+    status: 500
+  -
+    timeRange: 'THREE_MONTHS'
+    type: ''
+    status: 500
+  -
+    timeRange: 'THREE_MONTHS'
+    type: 'aaaaaa'
+    status: 400
+  -
+    timeRange: 'aaaaaaa'
+    type: 'TRANSACTION_COUNT'
+    status: 400
+  - timeRange: 'ONE_WEEK'
+    type: 'TRANSACTION_FEE_ETH,NEW_ADDRESS_COUNT,NETWORK_UTILIZATION,NETWORK_HASH_RATE,TRANSACTION_COUNT'
+    code: 200
+    len_list: 7
+    len_list_name: transactionFeeEth,newAddressCount,networkUtilization,networkHashRate,transactionCount
 
 
 
