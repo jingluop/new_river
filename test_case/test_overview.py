@@ -58,6 +58,19 @@ class TestOverview:
     @pytest.mark.parametrize('test_data', get_yaml_data('test_overview.yaml', 'top_ten'))
     def test_top_ten(self, test_data):
         logger.info("top ten测试数据为：{}".format(test_data))
+        params = {}
+        if 'timeRange' in test_data:
+            params['timeRange'] = test_data['timeRange']
+        if 'type' in test_data:
+            params['type'] = test_data['type']
+        res = overview.top_ten_app(params=params)
+        if 'code' in test_data:
+            assert test_data['code'] == res['code']
+        else:
+            assert test_data['status'] == res['status']
+        if 'len_list' in test_data:
+            for name in test_data['len_list_name'].split(','):
+                assert test_data['len_list'] == len(res['data'][name])
 
     @pytest.mark.parametrize('test_data', get_yaml_data('test_overview.yaml', 'ethereum'))
     def test_ethereum(self, test_data):
