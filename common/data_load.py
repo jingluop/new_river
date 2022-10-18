@@ -67,7 +67,7 @@ def get_yaml_data(yaml_file_name, interface_name, db_type='mysql'):
                 data['sql_data'] = []
                 for sql in data['execute_sql']:
                     db_data = mysql.select_db(sql)
-                    data['sql_data'].append(db_data[0])
+                    data['sql_data'].append(db_data)
     except Exception as ex:
         pytest.skip(str(ex))
     else:

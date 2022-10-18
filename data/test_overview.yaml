@@ -114,9 +114,10 @@ heat_map:
     fall_list_len: 0
 
 top_ten:
-#  - top10排行app
-  - # 入参
-  - timeRange: 'ONE_DAY'
+  # top10排行app
+  -
+    # 入参
+    timeRange: 'ONE_DAY'
     type: 'SALES'
     # 校验接口返回
     code: 200

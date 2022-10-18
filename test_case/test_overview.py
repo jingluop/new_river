@@ -23,7 +23,7 @@ class TestOverview:
         res = overview.count_collection_num()
         assert res['code'] == test_data['code']
         count_interface = res['data']
-        count_sql = test_data['sql_data'][0]['count']
+        count_sql = test_data['sql_data'][0][0]['count']
         logger.info(
             "首页overview统计集合总数接口测试数据为（数据库查询，接口返回）：[{}，{}]".format(count_sql, count_interface))
         assert count_sql == count_interface

@@ -1,9 +1,0 @@
-get_type_str:
-  # 获取配置的集合查询类型
-  - # 校验接口返回
-    code: 200
-    execute_sql: [
-      "select CONFIG_VALUE from `hk-manhattan`.chain_config_sys ccs where CONFIG_ID = 'categories'",
-      "select CONFIG_VALUE from `hk-manhattan`.chain_config_sys ccs where CONFIG_ID = 'chains'",
-      "select CONFIG_VALUE from `hk-manhattan`.chain_config_sys ccs where CONFIG_ID = 'ranks'"
-    ]

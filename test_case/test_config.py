@@ -35,7 +35,7 @@ class TestConfig:
         if test_data['configKey'] == '':
             min_day = []
             for time in test_data['sql_data']:
-                min_time = time['create_time']
+                min_time = time[0]['create_time']
                 date_diff = (now - min_time).days
                 min_day.append(date_diff)
             logger.info("数据查询出来的最大时间差为：{}".format(min_day))
@@ -80,7 +80,7 @@ class TestConfig:
                 assert '24H' in res['data']['priceList'][-1]
                 assert '24H' in res['data']['marketCapVolume'][-1]
         else:
-            min_time = test_data['sql_data'][0]['create_time']
+            min_time = test_data['sql_data'][0][0]['create_time']
             date_diff = (now - min_time).days
             if date_diff >= 90:
                 assert '3M' in res['data'][-1]

@@ -18,9 +18,9 @@ class Search(BaseApi):
         api_root_url = ReadFileData().load_ini(data_file_path)["host"]["api_root_url"]
         super(Search, self).__init__(api_root_url)
 
-    def count_collection_num(self, **kwargs):
+    def like_collection_name(self, **kwargs):
         """全局搜索-全局搜索"""
-        return self.get("/countCollectionNum", **kwargs)
+        return self.get("/likeCollectionName", **kwargs)
 
 
 search = Search()

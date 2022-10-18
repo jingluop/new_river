@@ -1,0 +1,26 @@
+get_type_str:
+  # 获取配置的集合查询类型
+  - # 校验接口返回
+    code: 200
+    execute_sql: [
+      "select CONFIG_VALUE from `hk-manhattan`.chain_config_sys ccs where CONFIG_ID = 'categories'",
+      "select CONFIG_VALUE from `hk-manhattan`.chain_config_sys ccs where CONFIG_ID = 'chains'",
+      "select CONFIG_VALUE from `hk-manhattan`.chain_config_sys ccs where CONFIG_ID = 'ranks'"
+    ]
+
+select_collection_info:
+  # 集合列表
+  # 参数列表blueChip，chainType，collectionName，collectionNum，collectionStatus，
+  #  collectionType，collectionUuid，contractAddress，deleted，hot，pageNum，pageSize，
+  #  paramName，rankType，sort，status，timeType，type，userId
+  -
+    #请求参数
+    type:
+    pageNum:
+    pageSize:
+    timeType:
+    chainType:
+    rankType:
+    hot:
+
+
