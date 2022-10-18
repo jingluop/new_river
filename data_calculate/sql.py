@@ -185,3 +185,18 @@ class Sql:
     version = """
     select CONFIG_VALUE FROM `hk-manhattan`.chain_config_sys where CONFIG_ID = '{}'
     """
+
+    # 查询筛选条件categories
+    categories = """
+    select CONFIG_VALUE from chain_config_sys ccs where CONFIG_ID = 'categories'
+    """
+
+    # 查询筛选条件chains
+    chains = """
+    select CONFIG_VALUE from chain_config_sys ccs where CONFIG_ID = 'chains'
+    """
+
+    # 查询筛选条件ranks
+    ranks = """
+    select CONFIG_VALUE from chain_config_sys ccs where CONFIG_ID = 'ranks'
+    """

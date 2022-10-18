@@ -22,8 +22,8 @@ class TestHotCollection:
         logger.info("获取筛选类型测试数据为：{}".format(test_data))
         res = top_collections.get_type_str()
         assert test_data['code'] == res['code']
-        assert test_data['categories'] == res['data']['categories']
-        assert test_data['ranks'] == res['data']['ranks']
-        assert test_data['chains'] == res['data']['chains']
+        assert test_data['sql_data'][0]['CONFIG_VALUE'].split(',') == res['data']['categories']
+        assert test_data['sql_data'][1]['CONFIG_VALUE'].split(',') == res['data']['chains']
+        assert test_data['sql_data'][2]['CONFIG_VALUE'].split(',') == res['data']['ranks']
 
 
