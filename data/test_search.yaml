@@ -10,3 +10,9 @@ like_collect_name:
       'select distinct collect_name collect_name from `hk-manhattan`.chain_collection_aggregation_data 
        where collect_name like "%bored%" order by market_cap desc limit 10'
     ]
+  -
+    collectName: aaaaa
+    code: 200
+    collect_name_list: []
+  -
+    status: 400
