@@ -50,12 +50,22 @@ class CollectionDetailCal:
         floor_price_change_rate_interface = float(res['data']['floorPriceChange'])
         floor_price_now = db_mysql.select_db(Sql.history_floor_price.format(collection_uuid, 0))[0]['floor_price']
         floor_price_24 = db_mysql.select_db(Sql.history_floor_price.format(collection_uuid, 23))[0]['floor_price']
-        floor_price_change_rate_sql = float((floor_price_now - floor_price_24) / floor_price_24)
+        if floor_price_now == floor_price_24 == 0:
+            floor_price_change_rate_sql = 0
+        elif floor_price_now != 0 and floor_price_24 == 0:
+            floor_price_change_rate_sql = 1
+        else:
+            floor_price_change_rate_sql = float((floor_price_now - floor_price_24) / floor_price_24)
         result.append([floor_price_change_rate_interface, floor_price_change_rate_sql])
 
         # 6. 计算24h volume变化率
         volume_change_rate_interface = float(res['data']['volumeChange'])
-        volume_change_rate_sql = (volume_now - volume_24) / volume_24
+        if volume_now == volume_24 == 0:
+            volume_change_rate_sql = 0
+        elif volume_now != 0 and volume_24 == 0:
+            volume_change_rate_sql = 1
+        else:
+            volume_change_rate_sql = (volume_now - volume_24) / volume_24
         result.append([volume_change_rate_interface, volume_change_rate_sql])
 
         # 7. 计算24h总市值的变化率
@@ -63,7 +73,12 @@ class CollectionDetailCal:
         market_cap_now = market_cap_sql
         market_cap_24 = float(
             db_mysql.select_db(Sql.one_collection_market_cap.format(23, collection_uuid))[0]['market_cap'])
-        market_cap_change_rate_sql = (market_cap_now - market_cap_24) / market_cap_24
+        if market_cap_now == market_cap_24 == 0:
+            market_cap_change_rate_sql = 0
+        elif market_cap_now != 0 and market_cap_24 == 0:
+            market_cap_change_rate_sql = 1
+        else:
+            market_cap_change_rate_sql = (market_cap_now - market_cap_24) / market_cap_24
         result.append([market_cap_change_rate_interface, market_cap_change_rate_sql])
 
         # 8. 计算24h持有人的变化率
@@ -71,7 +86,12 @@ class CollectionDetailCal:
         holders_now = holders_sql
         holders_24 = float(
             db_mysql.select_db(Sql.one_collection_holders.format(23, collection_uuid))[0]['holders'])
-        holders_change_rate_sql = (holders_now - holders_24) / holders_24
+        if holders_now == holders_24 == 0:
+            holders_change_rate_sql = 0
+        elif holders_now != 0 and holders_24 == 0:
+            holders_change_rate_sql = 1
+        else:
+            holders_change_rate_sql = (holders_now - holders_24) / holders_24
         result.append([holders_sql_change_rate_interface, holders_change_rate_sql])
 
         # 9. last7days折线图数据
@@ -147,14 +167,24 @@ class CollectionDetailCal:
             db_mysql.select_db(Sql.one_collection_market_cap.format(hour_dict[time_type], collection_uuid))[0][
                 'market_cap'])
         # 2. 总市值的变化率
-        market_cap_rate = (market_cap_sql_now - market_cap_sql_before) / market_cap_sql_before
+        if market_cap_sql_now == market_cap_sql_before == 0:
+            market_cap_rate = 0
+        elif market_cap_sql_now != 0 and market_cap_sql_before == 0:
+            market_cap_rate = 1
+        else:
+            market_cap_rate = (market_cap_sql_now - market_cap_sql_before) / market_cap_sql_before
         # 3.计算总交易量
         volume_now = float(
             db_mysql.select_db(Sql.one_collection_volume.format(0, collection_uuid))[0]['volume'])
         volume_before = float(
             db_mysql.select_db(Sql.one_collection_volume.format(hour_dict[time_type], collection_uuid))[0]['volume'])
         # 4. 总交易量的变化率
-        volume_rate = (volume_now - volume_before) / volume_before
+        if volume_now == volume_before == 0:
+            volume_rate = 0
+        elif volume_now != 0 and volume_before == 0:
+            volume_rate = 1
+        else:
+            volume_rate = (volume_now - volume_before) / volume_before
         return market_cap_sql_now, market_cap_sql_before, market_cap_rate, volume_now, volume_before, volume_rate, res
 
     def calculate_analytics(self, collection_uuid):

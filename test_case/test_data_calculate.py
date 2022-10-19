@@ -22,35 +22,35 @@ class TestCalculate:
     collection_uuid = [collection['collection_uuid'] for collection in db_mysql.select_db(Sql.collection_uuid)]
     # 随机取50个集合
     start_index = random.randint(0, len(collection_uuid) - 20)
-    collection_uuid = collection_uuid[start_index: start_index + 50]
+    collection_uuid = collection_uuid[start_index: start_index + 1]
     logger.info("选取到的集合的uuid为：{}, start_index为：{}".format(collection_uuid, start_index))
 
-    @pytest.mark.parametrize("time_type", [0, 1, 2, 3])
-    @pytest.mark.parametrize("page_size,page_num", [(random.randint(10, 30), random.randint(1, 3))])
+    @pytest.mark.parametrize("time_type", [0])
+    @pytest.mark.parametrize("page_size,page_num", [(random.randint(5, 10), random.randint(1, 3))])
     def test_top_sales(self, time_type, page_size, page_num):
         results = TopSalesCal().calculate_top_collection(time_type, page_size, page_num)
-        for result in results:
-            logger.info("top sales页面测试数据接口返回：{}".format(result[0]))
-            logger.info("top sales页面测试数据sql查询：{}".format(result[1]))
-            assert result[0] == result[1]
+        for i in range(len(results)):
+            logger.info("top sales页面测试数据为(接口返回，数据库查询)：{}------>{}".format(i, results[i]))
+            for result in results[i]:
+                assert result[0] == result[1]
 
     @pytest.mark.parametrize("time_type", [0, 1, 2, 3])
     @pytest.mark.parametrize("page_size,page_num", [(random.randint(10, 30), random.randint(1, 50))])
     def test_top_collections(self, time_type, page_size, page_num):
         results = TopCollectionsCal().calculate_top_collection(time_type, page_size, page_num)
-        for result in results:
-            logger.info("top collections页面测试数据接口返回：{}".format(result[0]))
-            logger.info("top collections页面测试数据sql查询：{}".format(result[1]))
-            assert result[0] == result[1]
+        for i in range(len(results)):
+            logger.info("top sales页面测试数据为(接口返回，数据库查询)：{}------>{}".format(i, results[i]))
+            for result in results[i]:
+                assert result[0] == result[1]
 
     @pytest.mark.parametrize("time_type", [0, 1, 2, 3])
     @pytest.mark.parametrize("page_size,page_num", [(20, 1)])
     def test_hot_collections(self, time_type, page_size, page_num):
         results = HotCollectionsCal().calculate_hot_collection(time_type, page_size, page_num)
-        for result in results:
-            logger.info("hot collections页面测试数据接口返回：{}".format(result[0]))
-            logger.info("hot collections页面测试数据sql查询：{}".format(result[1]))
-            assert result[0] == result[1]
+        for i in range(len(results)):
+            logger.info("top sales页面测试数据为(接口返回，数据库查询)：{}------>{}".format(i, results[i]))
+            for result in results[i]:
+                assert result[0] == result[1]
 
     @pytest.mark.parametrize("time_type", [0, 1, 2, 3])
     @pytest.mark.parametrize("collection_uuid", collection_uuid)
@@ -59,11 +59,6 @@ class TestCalculate:
         for result in results:
             logger.info("集合详情接口测试数据接口返回：{}".format(result[0]))
             logger.info("集合详情接口测试数据sql查询：{}".format(result[1]))
-            assert result[0] == result[1]
-
-    def test_market_cap(self):
-        results = OverViewCal().calculate_calculate_market_cap_total()
-        for result in results:
             assert result[0] == result[1]
 
     @pytest.mark.parametrize('time_type', [0, 1, 2, 3])
@@ -147,8 +142,12 @@ class TestCalculate:
         if 'blueChipVo' in res_interface['data']:
             total_holders = res[4]
             total_blue_chip_address = res[5]
-            total_blue_chip_address_rate = total_blue_chip_address / total_holders
-            not_blue_chip_address_rate = (total_holders - total_blue_chip_address) / total_holders
+            if total_holders == 0:
+                total_blue_chip_address_rate = 0
+                not_blue_chip_address_rate = 0
+            else:
+                total_blue_chip_address_rate = total_blue_chip_address / total_holders
+                not_blue_chip_address_rate = (total_holders - total_blue_chip_address) / total_holders
             assert total_blue_chip_address == res['data']['holdersQuantity']
             assert total_holders - total_blue_chip_address == res['data']['noHoldersQuantity']
             assert total_blue_chip_address_rate == res['data']['holdersPercentage']
@@ -156,8 +155,11 @@ class TestCalculate:
         if 'belowFloorPriceVo' in res_interface['data']:
             below_floor_price = res[0]
             above_floor_price = res[1]
-            below_floor_price_rate = below_floor_price / (below_floor_price + above_floor_price)
-            above_floor_price_rate = above_floor_price / (below_floor_price + above_floor_price)
+            if below_floor_price + above_floor_price == 0:
+                below_floor_price_rate = above_floor_price_rate = 0
+            else:
+                below_floor_price_rate = below_floor_price / (below_floor_price + above_floor_price)
+                above_floor_price_rate = above_floor_price / (below_floor_price + above_floor_price)
             assert below_floor_price == res['data']['holdersQuantity']
             assert above_floor_price == res['data']['noHoldersQuantity']
             assert below_floor_price_rate == res['data']['holdersPercentage']
@@ -165,8 +167,11 @@ class TestCalculate:
         if 'listingVo' in res_interface['data']:
             total_listing_price = res[6]
             total_nft = res[7]
-            total_listing_price_rate = total_listing_price / total_nft
-            no_listing_price_rate = (total_nft - total_listing_price) / total_nft
+            if total_nft == 0:
+                total_listing_price_rate = no_listing_price_rate = 0
+            else:
+                total_listing_price_rate = total_listing_price / total_nft
+                no_listing_price_rate = (total_nft - total_listing_price) / total_nft
             assert total_listing_price == res['data']['holdersQuantity']
             assert total_nft - total_listing_price == res['data']['noHoldersQuantity']
             assert total_listing_price_rate == res['data']['holdersPercentage']
@@ -174,8 +179,11 @@ class TestCalculate:
         if 'tradeVO' in res_interface['data']:
             nerve_trade = res[2]
             sale_total = res[3]
-            nerve_trade_rate = nerve_trade / (nerve_trade + sale_total)
-            sale_total_rate = sale_total / (nerve_trade_rate + sale_total)
+            if nerve_trade + sale_total == 0:
+                nerve_trade_rate = sale_total_rate = 0
+            else:
+                nerve_trade_rate = nerve_trade / (nerve_trade + sale_total)
+                sale_total_rate = sale_total / (nerve_trade_rate + sale_total)
             assert nerve_trade == res['data']['holdersQuantity']
             assert sale_total == res['data']['noHoldersQuantity']
             assert nerve_trade_rate == res['data']['holdersPercentage']

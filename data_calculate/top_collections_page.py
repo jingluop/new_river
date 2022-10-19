@@ -27,8 +27,9 @@ class TopCollectionsCal:
         time_before = days * 24 - 1  # 根据时间类型取之前的时间
         res = top_collections.select_collection_info(
             json={"timeType": time_type, "pageSize": page_size, "hot": "0", "pageNum": page_num})
-        result = []
+        result_total = []
         for collection in res['data']['list']:
+            result = []
             collection_uuid = collection['collectionUuid']
 
             # 1. 地板价
@@ -49,7 +50,12 @@ class TopCollectionsCal:
             owners_now = owners_sql
             owners_before = float(
                 db_mysql.select_db(Sql.one_collection_holders.format(time_before, collection_uuid))[0]['holders'])
-            owners_change_rate_sql = (owners_now - owners_before) / owners_before
+            if owners_now == owners_before == 0:
+                owners_change_rate_sql = 0
+            elif owners_now != 0 and owners_before == 0:
+                owners_change_rate_sql = 1
+            else:
+                owners_change_rate_sql = (owners_now - owners_before) / owners_before
             result.append([owners_change_rate_interface, owners_change_rate_sql])
 
             # 交易量
@@ -63,7 +69,12 @@ class TopCollectionsCal:
 
             # 交易量的变化率
             volume_change_interface = float(collection['dayChange'])
-            volume_change_rate_sql = (volume_now - volume_before) / volume_before
+            if volume_now == volume_before == 0:
+                volume_change_rate_sql = 0
+            elif volume_now != 0 and volume_before == 0:
+                volume_change_rate_sql = 1
+            else:
+                volume_change_rate_sql = (volume_now - volume_before) / volume_before
             result.append([volume_change_interface, volume_change_rate_sql])
 
             # 市值
@@ -71,4 +82,5 @@ class TopCollectionsCal:
             market_cap_sql = float(
                 db_mysql.select_db(Sql.one_collection_market_cap.format(time_now, collection_uuid))[0]['market_cap'])
             result.append([market_cap_interface, market_cap_sql])
-            return result
+            result_total.append(result)
+        return result_total

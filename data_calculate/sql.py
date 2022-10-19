@@ -12,7 +12,7 @@ class Sql:
     floor_price = """SELECT floor_price FROM `hk-manhattan`.chain_collection WHERE collection_uuid = {}"""
 
     # 查询现有的所有集合的uuid
-    collection_uuid = """SELECT distinct collection_uuid  FROM `hk-manhattan`.chain_collection_quotation"""
+    collection_uuid = """SELECT distinct collection_uuid collection_uuid FROM `hk-manhattan`.chain_collection_aggregation_data"""
 
     # 计算单个集合的总交易量
     one_collection_volume = """

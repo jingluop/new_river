@@ -25,14 +25,24 @@ class OverViewCal:
         market_cap_sql_before = float(
             db_mysql.select_db(Sql.total_market.format(hour_dict[time_type]))[0]['market_cap'])
         # 2. 总市值的变化率
-        market_cap_rate = (market_cap_sql_now - market_cap_sql_before) / market_cap_sql_before
+        if market_cap_sql_now == market_cap_sql_before == 0:
+            market_cap_rate = 0
+        elif market_cap_sql_now != 0 and market_cap_sql_before == 0:
+            market_cap_rate = 1
+        else:
+            market_cap_rate = (market_cap_sql_now - market_cap_sql_before) / market_cap_sql_before
         # 3.计算总交易量
         volume_now = float(
             db_mysql.select_db(Sql.total_volume.format(0))[0]['volume'])
         volume_before = float(
             db_mysql.select_db(Sql.total_volume.format(hour_dict[time_type]))[0]['volume'])
         # 4. 总交易量的变化率
-        volume_rate = (volume_now - volume_before) / volume_before
+        if volume_now == volume_before == 0:
+            volume_rate = 0
+        elif volume_now != 0 and volume_before == 0:
+            volume_rate = 1
+        else:
+            volume_rate = (volume_now - volume_before) / volume_before
         return market_cap_sql_now, market_cap_sql_before, market_cap_rate, volume_now, volume_before, volume_rate, res
 
     def calculate_sales_top_10(self, time_type):
