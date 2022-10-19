@@ -222,4 +222,27 @@ class Sql:
     SELECT total_nft from `hk-manhattan`.chain_collection WHERE collection_uuid={}
     """
 
+    # 计算总市值
+    total_market = """
+    select
+        sum(market_cap) market_cap
+    from
+        `hk-manhattan`.chain_collection_quotation ccq
+    where
+        create_time = str_to_date( date_format( DATE_sub(CURRENT_TIMESTAMP(), interval {} hour), '%Y-%m-%d %H'),
+        '%Y-%m-%d %H%i%m')
+    """
+
+    # 计算总的交易量
+    total_volume = """
+    select
+        sum(volume) volume
+    from
+        `hk-manhattan`.chain_collection_quotation ccq
+    where
+        create_time = str_to_date( date_format( DATE_sub(CURRENT_TIMESTAMP(), interval {} hour), '%Y-%m-%d %H'),
+        '%Y-%m-%d %H%i%m')
+    """
+
+
 

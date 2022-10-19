@@ -15,12 +15,25 @@ class OverViewCal:
     def calculate_calculate_market_cap_total(self, time_type):
         """
         计算24小时的总市值
-        time_type：0-ONE_DAY,1-ONE_WEEK,2-ONE_MONTH,3-THREE_MONTHS
+        :param time_type：0-ONE_DAY,1-ONE_WEEK,2-ONE_MONTH,3-THREE_MONTHS
         """
-        res = Overview().market_cap_and_volume_app(params={"timeRange": time_type})
-        # 接口返回的总市值
-        market_cap_total_interface = res['data']['marketCapTotal']
-        # 从数据库拉数据计算的总市值
+        hour_dict = {0: 24, 1: 24 * 7 - 1, 2: 30 * 24, 3: 90 * 24}
+        res = Overview().market_cap_and_volume_app(params={"timeRange": self.time_dict[time_type]})
+        # 1. 计算总市值
+        market_cap_sql_now = float(
+            db_mysql.select_db(Sql.total_market.format(0))[0]['market_cap'])
+        market_cap_sql_before = float(
+            db_mysql.select_db(Sql.total_market.format(hour_dict[time_type]))[0]['market_cap'])
+        # 2. 总市值的变化率
+        market_cap_rate = (market_cap_sql_now - market_cap_sql_before) / market_cap_sql_before
+        # 3.计算总交易量
+        volume_now = float(
+            db_mysql.select_db(Sql.total_volume.format(0))[0]['volume'])
+        volume_before = float(
+            db_mysql.select_db(Sql.total_volume.format(hour_dict[time_type]))[0]['volume'])
+        # 4. 总交易量的变化率
+        volume_rate = (volume_now - volume_before) / volume_before
+        return market_cap_sql_now, market_cap_sql_before, market_cap_rate, volume_now, volume_before, volume_rate, res
 
     def calculate_sales_top_10(self, time_type):
         """
@@ -99,8 +112,3 @@ class OverViewCal:
         fall_list_sql = db_mysql.select_db(Sql.heat_map_fall.format(time_type, int(fall_num)))
         last_price = db_mysql.select_db(Sql.last_price)[0]['last_price']
         return rise_list_interface, fall_list_interface, rise_list_sql, fall_list_sql, last_price
-
-
-
-
-

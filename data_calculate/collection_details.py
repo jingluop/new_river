@@ -137,7 +137,25 @@ class CollectionDetailCal:
         :param time_type：0-ONE_DAY,1-ONE_WEEK,2-ONE_MONTH,3-THREE_MONTHS
         :return:
         """
-        pass
+        hour_dict = {0: 24, 1: 24 * 7 - 1, 2: 30 * 24, 3: 90 * 24}
+        res = collection_detail.collection_marketcap_and_volume_app(
+            params={"collectionUuid": collection_uuid, "timeType": self.time_dict[time_type]})
+        # 1. 计算总市值
+        market_cap_sql_now = float(
+            db_mysql.select_db(Sql.one_collection_market_cap.format(0, collection_uuid))[0]['market_cap'])
+        market_cap_sql_before = float(
+            db_mysql.select_db(Sql.one_collection_market_cap.format(hour_dict[time_type], collection_uuid))[0][
+                'market_cap'])
+        # 2. 总市值的变化率
+        market_cap_rate = (market_cap_sql_now - market_cap_sql_before) / market_cap_sql_before
+        # 3.计算总交易量
+        volume_now = float(
+            db_mysql.select_db(Sql.one_collection_volume.format(0, collection_uuid))[0]['volume'])
+        volume_before = float(
+            db_mysql.select_db(Sql.one_collection_volume.format(hour_dict[time_type], collection_uuid))[0]['volume'])
+        # 4. 总交易量的变化率
+        volume_rate = (volume_now - volume_before) / volume_before
+        return market_cap_sql_now, market_cap_sql_before, market_cap_rate, volume_now, volume_before, volume_rate, res
 
     def calculate_analytics(self, collection_uuid):
         """

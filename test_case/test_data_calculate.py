@@ -180,3 +180,24 @@ class TestCalculate:
             assert sale_total == res['data']['noHoldersQuantity']
             assert nerve_trade_rate == res['data']['holdersPercentage']
             assert sale_total_rate == res['data']['noHoldersPercentage']
+
+    @pytest.mark.parametrize('time_type', [0, 1, 2, 3])
+    @pytest.mark.parametrize('collection_uuid', collection_uuid)
+    def test_collection_details_market_cap_and_volume(self, time_type, collection_uuid):
+        last_price = float(db_mysql.select_db(Sql.last_price)[0]['last_price'])
+        result = CollectionDetailCal().calculate_market_cap_and_volume_one_collection(collection_uuid, time_type)
+        logger.info("集合详情总市值和交易量图表测试数据接口返回：{}".format(result))
+        assert (result[0] - result[1]) * last_price == result[-1]['data']['marketCapTotal']
+        assert result[2] == result[-1]['data']['marketCapChange']
+        assert (result[0][3] - result[4]) * last_price == result[-1]['data']['volumeTotal']
+        assert result[5] == result[-1]['data']['volumeChange']
+
+    @pytest.mark.parametrize('time_type', [0, 1, 2, 3])
+    def test_overview_market_cap_and_volume(self, time_type):
+        last_price = float(db_mysql.select_db(Sql.last_price)[0]['last_price'])
+        result = OverViewCal().calculate_calculate_market_cap_total(time_type)
+        logger.info("overview页面得总市值和交易量图表测试数据接口返回：{}".format(result))
+        assert (result[0] - result[1]) * last_price == result[-1]['data']['marketCapTotal']
+        assert result[2] == result[-1]['data']['marketCapChange']
+        assert (result[0][3] - result[4]) * last_price == result[-1]['data']['volumeTotal']
+        assert result[5] == result[-1]['data']['volumeChange']
