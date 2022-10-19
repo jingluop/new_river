@@ -15,6 +15,7 @@ class MysqlDb:
         from common.data_load import ReadFileData
         base_path = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
         data_file_path = os.path.join(base_path, "config", "config.ini")
+        db_conf = db_conf + '-' + ReadFileData().load_ini(data_file_path)['env']['env']
         data = ReadFileData().load_ini(data_file_path)[db_conf]
         db_conf = {
             "host": data["MYSQL_HOST"],

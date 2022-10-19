@@ -19,10 +19,6 @@ from data_calculate.sql import Sql
 
 sys.path.extend(["D:/code/newriver_api"])
 
-BASE_PATH = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
-data_file_path = os.path.join(BASE_PATH, "config", "config.ini")
-api_root_url = ReadFileData().load_ini(data_file_path)["host"]["api_root_url"]
-
 
 class TestConfig:
 

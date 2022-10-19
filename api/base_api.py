@@ -4,16 +4,22 @@
 @Author  ：taofangpeng
 @Date    ：2022/9/13 11:27 
 """
+import os
+
 import requests
 import json as complexjson
+
+from common.data_load import ReadFileData
 from common.logger import logger
 import urllib3
 
 
 class BaseApi:
 
-    def __init__(self, api_root_url):
-        self.api_root_url = api_root_url
+    def __init__(self):
+        base_path = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
+        self.data_file_path = os.path.join(base_path, "config", "config.ini")
+        self.host = 'host-' + ReadFileData().load_ini(self.data_file_path)['env']['env']
         self.session = requests.session()
 
     def get(self, url, **kwargs):

@@ -7,6 +7,7 @@
 import os
 import pytest
 from common.logger import logger
+import sys
 
 
 def run():

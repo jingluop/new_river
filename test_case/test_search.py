@@ -16,7 +16,8 @@ class TestSearch:
     @pytest.mark.parametrize('test_data', get_yaml_data('test_search.yaml', 'like_collect_name'))
     def test_like_collection_name(self, test_data):
         logger.info("全局搜索的测试数据为：{}".format(test_data))
-        res = search.like_collection_name(params={"collectName": test_data['collectName']} if 'collectName' in test_data else '')
+        res = search.like_collection_name(
+            params={"collectName": test_data['collectName']} if 'collectName' in test_data else '')
         if 'collectName' in test_data:
             # 接口返回的集合名称列表
             collect_name_interface = [i['collectionName'] for i in res['data']]

@@ -12,10 +12,8 @@ from api.base_api import BaseApi
 class CollectionDetail(BaseApi):
 
     def __init__(self):
-        base_path = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
-        data_file_path = os.path.join(base_path, "config", "config.ini")
-        api_root_url = ReadFileData().load_ini(data_file_path)["host"]["api_root_url"]
-        super(CollectionDetail, self).__init__(api_root_url)
+        super().__init__()
+        self.api_root_url = ReadFileData().load_ini(self.data_file_path)[self.host]["api_root_url"]
 
     def nft_pending_list(self, **kwargs):
         """集合详情-正在交易中的nf列表"""

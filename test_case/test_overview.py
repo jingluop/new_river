@@ -10,10 +10,6 @@ from api.overview import overview
 from common.data_load import ReadFileData, get_yaml_data
 from common.logger import logger
 
-BASE_PATH = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
-data_file_path = os.path.join(BASE_PATH, "config", "config.ini")
-api_root_url = ReadFileData().load_ini(data_file_path)["host"]["api_root_url"]
-
 
 class TestOverview:
 

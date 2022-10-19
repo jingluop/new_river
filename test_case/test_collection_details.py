@@ -17,10 +17,6 @@ from common.db import db_mysql
 from common.logger import logger
 from data_calculate.sql import Sql
 
-BASE_PATH = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
-data_file_path = os.path.join(BASE_PATH, "config", "config.ini")
-api_root_url = ReadFileData().load_ini(data_file_path)["host"]["api_root_url"]
-
 
 class TestCollection:
     collection_uuid = [collection['collection_uuid'] for collection in db_mysql.select_db(Sql.collection_uuid)]
