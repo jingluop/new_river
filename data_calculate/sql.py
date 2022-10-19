@@ -4,6 +4,7 @@
 @Author  ：taofangpeng
 @Date    ：2022/10/10 10:01 
 """
+from common.db import db_proxy, db_mysql
 
 
 class Sql:
@@ -200,3 +201,25 @@ class Sql:
     ranks = """
     select CONFIG_VALUE from chain_config_sys ccs where CONFIG_ID = 'ranks'
     """
+
+    # 查询某个集合下所有的钱包地址
+    wallet_address = """
+    select DISTINCT wallet_address wallet_address FROM `hk-chaindata-new`.chain_nft_holder_wallet WHERE collection_uuid={}
+    """
+
+    # 筛选蓝筹钱包地址
+    blue_chip_wallet_address = """
+    select DISTINCT wallet_address wallet_address FROM `hk-manhattan`.chain_blue_chip_holder_wallet WHERE wallet_address IN {}
+    """
+
+    # 查询单个集合的挂单数量
+    count_listing_price = """
+    select COUNT(DISTINCT token_uuid) count FROM `hk-chaindata-new`.chain_collection_nft_listing_price WHERE collection_uuid={}
+    """
+
+    # 查询单个集合发行的nft的总数量
+    total_nft = """
+    SELECT total_nft from `hk-manhattan`.chain_collection WHERE collection_uuid={}
+    """
+
+

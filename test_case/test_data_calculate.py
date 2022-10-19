@@ -139,6 +139,44 @@ class TestCalculate:
         assert result[0] == result[2][0]
         assert result[1] == result[3][0]
 
-    def test_analytics(self):
-        result = CollectionDetailCal().calculate_analytics(101008)
-        print(result)
+    @pytest.mark.parametrize('collection_uuid', collection_uuid)
+    def test_analytics(self, collection_uuid):
+        res = CollectionDetailCal().calculate_analytics(collection_uuid)
+        res_interface = res[8]
+        logger.info("集合详情analytics测试数据：{}".format(res))
+        if 'blueChipVo' in res_interface['data']:
+            total_holders = res[4]
+            total_blue_chip_address = res[5]
+            total_blue_chip_address_rate = total_blue_chip_address / total_holders
+            not_blue_chip_address_rate = (total_holders - total_blue_chip_address) / total_holders
+            assert total_blue_chip_address == res['data']['holdersQuantity']
+            assert total_holders - total_blue_chip_address == res['data']['noHoldersQuantity']
+            assert total_blue_chip_address_rate == res['data']['holdersPercentage']
+            assert not_blue_chip_address_rate == res['data']['noHoldersPercentage']
+        if 'belowFloorPriceVo' in res_interface['data']:
+            below_floor_price = res[0]
+            above_floor_price = res[1]
+            below_floor_price_rate = below_floor_price / (below_floor_price + above_floor_price)
+            above_floor_price_rate = above_floor_price / (below_floor_price + above_floor_price)
+            assert below_floor_price == res['data']['holdersQuantity']
+            assert above_floor_price == res['data']['noHoldersQuantity']
+            assert below_floor_price_rate == res['data']['holdersPercentage']
+            assert above_floor_price_rate == res['data']['noHoldersPercentage']
+        if 'listingVo' in res_interface['data']:
+            total_listing_price = res[6]
+            total_nft = res[7]
+            total_listing_price_rate = total_listing_price / total_nft
+            no_listing_price_rate = (total_nft - total_listing_price) / total_nft
+            assert total_listing_price == res['data']['holdersQuantity']
+            assert total_nft - total_listing_price == res['data']['noHoldersQuantity']
+            assert total_listing_price_rate == res['data']['holdersPercentage']
+            assert no_listing_price_rate == res['data']['noHoldersPercentage']
+        if 'tradeVO' in res_interface['data']:
+            nerve_trade = res[2]
+            sale_total = res[3]
+            nerve_trade_rate = nerve_trade / (nerve_trade + sale_total)
+            sale_total_rate = sale_total / (nerve_trade_rate + sale_total)
+            assert nerve_trade == res['data']['holdersQuantity']
+            assert sale_total == res['data']['noHoldersQuantity']
+            assert nerve_trade_rate == res['data']['holdersPercentage']
+            assert sale_total_rate == res['data']['noHoldersPercentage']

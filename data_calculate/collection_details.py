@@ -159,7 +159,14 @@ class CollectionDetailCal:
             db_proxy.select_db(Sql.never_traded_distribution.format(collection_uuid, 'SALE'))[0]['count'])
         nerve_trade = mint_total - sale_total
         # 3. 蓝筹股持有人
-
-
+        total_holders_address = tuple(
+            [i['wallet_address'] for i in db_proxy.select_db(Sql.wallet_address.format(collection_uuid))])
+        total_holders = len(total_holders_address)
+        blue_chip_address = [i['wallet_address'] for i in
+                             db_mysql.select_db(Sql.blue_chip_wallet_address.format(total_holders_address))]
+        total_blue_chip_address = len(blue_chip_address)
         # 4. NFT in pending orders
-        return below_floor_price, above_floor_price, nerve_trade, sale_total, res
+        total_listing_price = int(db_proxy.select_db(Sql.count_listing_price.format(collection_uuid))[0]['count'])
+        total_nft = int(db_mysql.select_db(Sql.total_nft.format(collection_uuid))[0]['total_nft'])
+
+        return below_floor_price, above_floor_price, nerve_trade, sale_total, total_holders, total_blue_chip_address, total_listing_price, total_nft, res
