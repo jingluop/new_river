@@ -39,6 +39,11 @@ class TopSalesCal:
             floor_price_interface = float(collection['floorPrice'])
             floor_price_sql = float(
                 db_mysql.select_db(Sql.history_floor_price.format(collection_uuid, time_now))[0]['floor_price'])
+            # 四舍五入保留3位小数位数
+            floor_price_interface = round(floor_price_interface, 3)
+            floor_price_sql = round(floor_price_sql, 3)
+            result.append([collection['collectName'], collection['collectName']])
+            result.append([collection_uuid, collection_uuid])
             result.append([floor_price_interface, floor_price_sql])
 
             # 交易量
@@ -48,8 +53,11 @@ class TopSalesCal:
             volume_before = float(
                 db_mysql.select_db(Sql.one_collection_volume.format(time_before, collection_uuid))[0]['volume'])
             volume_sql = volume_now - volume_before
-            # 截取小数位数
-            volume_sql = int(volume_sql * 100000) / 100000
+            # # 截取小数位数
+            # volume_sql = int(volume_sql * 100000) / 100000
+            # 四舍五入保留5位小数位数
+            volume_sql = round(volume_sql, 5)
+            volume_interface = round(volume_interface, 5)
             result.append([volume_interface, volume_sql])
 
             # 地板价的变化率
@@ -59,13 +67,14 @@ class TopSalesCal:
             floor_price_before = float(db_mysql.select_db(Sql.history_floor_price.format(collection_uuid, time_before))[0][
                 'floor_price'])
             if floor_price_before == floor_price_now == 0:
-                floor_price_change_rate_sql = 0
+                floor_price_change_rate_sql = 0.0
             elif floor_price_now != 0 and floor_price_before == 0:
-                floor_price_change_rate_sql = 1
+                floor_price_change_rate_sql = 1.0
             else:
                 floor_price_change_rate_sql = float((floor_price_now - floor_price_before) / floor_price_before)
             # 四舍五入保留5位小数位数
             floor_price_change_rate_sql = round(floor_price_change_rate_sql, 5)
+            floor_price_change_rate_interface = round(floor_price_change_rate_interface, 5)
             result.append([floor_price_change_rate_interface, floor_price_change_rate_sql])
 
             # sales

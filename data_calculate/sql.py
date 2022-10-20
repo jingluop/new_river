@@ -116,7 +116,7 @@ class Sql:
     # 查询热力图上涨数据
     heat_map_rise = """
         SELECT collect_name, volume_change, volume FROM `hk-manhattan`.chain_collection_aggregation_data 
-        WHERE date_type={} AND volume_change>0 ORDER BY volume desc limit {}
+        WHERE date_type={} AND volume_change>0 ORDER BY cast(volume as float4) desc limit {}
     """
 
     # 查询热力图上涨的总条数
@@ -128,7 +128,7 @@ class Sql:
     # 查询热力图下跌数据
     heat_map_fall = """
         SELECT collect_name, volume_change, volume FROM `hk-manhattan`.chain_collection_aggregation_data 
-        WHERE date_type={} AND volume_change<0 ORDER BY volume desc limit {}
+        WHERE date_type={} AND volume_change<0 ORDER BY cast(volume as float4) desc limit {}
     """
 
     # 查询热力图下跌总条数
@@ -157,7 +157,7 @@ class Sql:
             time_stamp desc,
             id desc)rk
         from
-            `hk-chaindata-new`.chain_collection_nft_activity
+            `hk-chaindata`.chain_collection_nft_activity
         where
             collection_uuid = {}
             and event = 'SALE'
@@ -169,17 +169,17 @@ class Sql:
 
     # 查询低于地板价购买
     below_floor_price = """
-    select count(*) count from `hk-chaindata-new`.chain_collection_nft_activity where collection_uuid = {} and event = 'SALE' and transaction_price<{}*1000000000000000000
+    select count(*) count from `hk-chaindata`.chain_collection_nft_activity where collection_uuid = {} and event = 'SALE' and transaction_price<{}*1000000000000000000
     """
 
     # 查询高于地板价购买
     above_floor_price = """
-    select count(*) count from `hk-chaindata-new`.chain_collection_nft_activity where collection_uuid = {} and event = 'SALE' and transaction_price>={}*1000000000000000000
+    select count(*) count from `hk-chaindata`.chain_collection_nft_activity where collection_uuid = {} and event = 'SALE' and transaction_price>={}*1000000000000000000
     """
 
     # 查询从未交易的集合
     never_traded_distribution = """
-    select count(DISTINCT token_id) count from `hk-chaindata-new`.chain_collection_nft_activity where collection_uuid = {} and event = '{}'
+    select count(DISTINCT token_id) count from `hk-chaindata`.chain_collection_nft_activity where collection_uuid = {} and event = '{}'
     """
 
     # 查询版本号
@@ -204,7 +204,7 @@ class Sql:
 
     # 查询某个集合下所有的钱包地址
     wallet_address = """
-    select DISTINCT wallet_address wallet_address FROM `hk-chaindata-new`.chain_nft_holder_wallet WHERE collection_uuid={}
+    select DISTINCT wallet_address wallet_address FROM `hk-chaindata`.chain_nft_holder_wallet WHERE collection_uuid={}
     """
 
     # 筛选蓝筹钱包地址
@@ -214,7 +214,7 @@ class Sql:
 
     # 查询单个集合的挂单数量
     count_listing_price = """
-    select COUNT(DISTINCT token_uuid) count FROM `hk-chaindata-new`.chain_collection_nft_listing_price WHERE collection_uuid={}
+    select COUNT(DISTINCT token_uuid) count FROM `hk-chaindata`.chain_collection_nft_listing_price WHERE collection_uuid={}
     """
 
     # 查询单个集合发行的nft的总数量
