@@ -4,14 +4,12 @@
 @Author  ：taofangpeng
 @Date    ：2022/9/13 11:28
 """
-import os
 import datetime
 import random
 
 import pytest
-import requests
 
-from common.data_load import ReadFileData, get_yaml_data
+from common.data_load import get_yaml_data
 from api.collection_details import collection_detail
 from common.db import db_mysql
 from common.logger import logger
