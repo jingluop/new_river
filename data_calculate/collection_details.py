@@ -4,8 +4,6 @@
 @Author  ：taofangpeng
 @Date    ：2022/9/30 10:58 
 """
-import random
-import pytest
 from common.db import db_mysql, db_proxy
 from api.collection_details import collection_detail
 from data_calculate.sql import Sql

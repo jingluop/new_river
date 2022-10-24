@@ -6,7 +6,6 @@
 """
 # -*- coding: UTF-8 -*-
 
-import os
 from common.data_load import ReadFileData
 from api.base_api import BaseApi
 

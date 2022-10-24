@@ -4,10 +4,9 @@
 @Author  ：taofangpeng
 @Date    ：2022/10/17 17:51 
 """
-import os
 import pytest
 from api.top_collections import top_collections
-from common.data_load import ReadFileData, get_yaml_data
+from common.data_load import get_yaml_data
 from common.logger import logger
 
 

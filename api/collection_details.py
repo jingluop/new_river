@@ -4,7 +4,6 @@
 @Author  ：taofangpeng
 @Date    ：2022/9/13 15:58
 """
-import os
 from common.data_load import ReadFileData
 from api.base_api import BaseApi
 

@@ -4,9 +4,6 @@
 @Author  ：taofangpeng
 @Date    ：2022/9/30 10:57 
 """
-import random
-import pytest
-
 from api.top_sales import top_sales
 from common.db import db_mysql
 from common.logger import logger
