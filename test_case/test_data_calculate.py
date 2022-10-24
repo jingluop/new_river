@@ -64,13 +64,13 @@ class TestCalculate:
             for result in results[i]:
                 assert result[0] == result[1]
 
-    @pytest.mark.parametrize("time_type", [0, 1, 2, 3])
     @pytest.mark.parametrize("collection_uuid", collection_uuid)
-    def test_collection_detail(self, time_type, collection_uuid):
+    def test_collection_detail(self, collection_uuid):
         results = CollectionDetailCal().calculate_collection_details(collection_uuid)
+        logger.info(
+            "集合详情页面基础信息测试数据为(接口返回，数据库查询)[地板价-总交易量-总市值-持有人-地板价24h的变化率-24h volume变化率-24h总市值的变化率-24h持有人的变化率]：{}".format(
+                results))
         for result in results:
-            logger.info("集合详情接口测试数据接口返回：{}".format(result[0]))
-            logger.info("集合详情接口测试数据sql查询：{}".format(result[1]))
             assert result[0] == result[1]
 
     # @pytest.mark.parametrize('time_type', [0, 1, 2, 3])
@@ -157,88 +157,24 @@ class TestCalculate:
 
     @pytest.mark.parametrize('collection_uuid', collection_uuid)
     def test_analytics(self, collection_uuid):
-        res = CollectionDetailCal().calculate_analytics(collection_uuid)
-        res_interface = res[8]
-        logger.info("集合详情analytics测试数据：{}".format(res))
-        if 'blueChipVo' in res_interface['data']:
-            total_holders = res[4]
-            total_blue_chip_address = res[5]
-            if total_holders == 0:
-                total_blue_chip_address_rate = 0
-                not_blue_chip_address_rate = 0
-            else:
-                total_blue_chip_address_rate = total_blue_chip_address / total_holders
-                not_blue_chip_address_rate = (total_holders - total_blue_chip_address) / total_holders
-            # 截取保留4位小数
-            total_blue_chip_address_rate = int(total_blue_chip_address_rate * 10000) / 10000
-            not_blue_chip_address_rate = round(not_blue_chip_address_rate, 4)
-            assert total_blue_chip_address == res_interface['data']['blueChipVo']['holdersQuantity']
-            assert total_holders - total_blue_chip_address == res_interface['data']['blueChipVo']['noHoldersQuantity']
-            assert total_blue_chip_address_rate == res_interface['data']['blueChipVo']['holdersPercentage']
-            assert not_blue_chip_address_rate == res_interface['data']['blueChipVo']['noHoldersPercentage']
-        if 'belowFloorPriceVo' in res_interface['data']:
-            below_floor_price = res[0]
-            above_floor_price = res[1]
-            if below_floor_price + above_floor_price == 0:
-                below_floor_price_rate = above_floor_price_rate = 0
-            else:
-                below_floor_price_rate = below_floor_price / (below_floor_price + above_floor_price)
-                above_floor_price_rate = above_floor_price / (below_floor_price + above_floor_price)
-            # 截取保留4位小数
-            below_floor_price_rate = int(below_floor_price_rate * 10000) / 10000
-            above_floor_price_rate = round(above_floor_price_rate, 4)
-            assert below_floor_price == res_interface['data']['belowFloorPriceVo']['holdersQuantity']
-            assert above_floor_price == res_interface['data']['belowFloorPriceVo']['noHoldersQuantity']
-            assert below_floor_price_rate == res_interface['data']['belowFloorPriceVo']['holdersPercentage']
-            assert above_floor_price_rate == res_interface['data']['belowFloorPriceVo']['noHoldersPercentage']
-        if 'listingVo' in res_interface['data']:
-            total_listing_price = res[6]
-            total_nft = res[7]
-            if total_nft == 0:
-                total_listing_price_rate = no_listing_price_rate = 0
-            else:
-                total_listing_price_rate = total_listing_price / total_nft
-                no_listing_price_rate = (total_nft - total_listing_price) / total_nft
-            # 截取保留4位小数
-            total_listing_price_rate = int(total_listing_price_rate * 10000) / 10000
-            no_listing_price_rate = round(no_listing_price_rate, 4)
-            assert total_listing_price == res_interface['data']['listingVo']['holdersQuantity']
-            assert total_nft - total_listing_price == res_interface['data']['listingVo']['noHoldersQuantity']
-            assert total_listing_price_rate == res_interface['data']['listingVo']['holdersPercentage']
-            assert no_listing_price_rate == res_interface['data']['listingVo']['noHoldersPercentage']
-        if 'tradeVO' in res_interface['data']:
-            nerve_trade = res[2]
-            sale_total = res[3]
-            if nerve_trade + sale_total == 0:
-                nerve_trade_rate = sale_total_rate = 0
-            else:
-                nerve_trade_rate = nerve_trade / (nerve_trade + sale_total)
-                sale_total_rate = sale_total / (nerve_trade_rate + sale_total)
-            # 截取保留4位小数
-            nerve_trade_rate = int(nerve_trade_rate * 10000) / 10000
-            sale_total_rate = round(sale_total_rate, 4)
-            assert nerve_trade == res_interface['data']['tradeVO']['holdersQuantity']
-            assert sale_total == res_interface['data']['tradeVO']['noHoldersQuantity']
-            assert nerve_trade_rate == res_interface['data']['tradeVO']['holdersPercentage']
-            assert sale_total_rate == res_interface['data']['tradeVO']['noHoldersPercentage']
+        results = CollectionDetailCal().calculate_analytics(collection_uuid)
+        logger.info("集合详情analytics测试数据：{}".format(results))
+        for result in results:
+            assert result[0] == result[1]
 
-    @pytest.mark.parametrize('time_type', [0, 1, 2, 3])
+    # @pytest.mark.parametrize('time_type', [0, 1, 2, 3])
+    @pytest.mark.parametrize('time_type', [0])
     @pytest.mark.parametrize('collection_uuid', collection_uuid)
     def test_collection_details_market_cap_and_volume(self, time_type, collection_uuid):
-        last_price = float(db_mysql.select_db(Sql.last_price)[0]['last_price'])
-        result = CollectionDetailCal().calculate_market_cap_and_volume_one_collection(collection_uuid, time_type)
-        logger.info("集合详情总市值和交易量图表测试数据接口返回：{}".format(result))
-        assert (result[0] - result[1]) * last_price == result[-1]['data']['marketCapTotal']
-        assert result[2] == result[-1]['data']['marketCapChange']
-        assert (result[0][3] - result[4]) * last_price == result[-1]['data']['volumeTotal']
-        assert result[5] == result[-1]['data']['volumeChange']
+        results = CollectionDetailCal().calculate_market_cap_and_volume_one_collection(collection_uuid, time_type)
+        logger.info("集合详情总市值和交易量图表测试数据接口返回：{}".format(results))
+        for result in results:
+            assert result[0] == result[1]
 
-    @pytest.mark.parametrize('time_type', [0, 1, 2, 3])
+    # @pytest.mark.parametrize('time_type', [0, 1, 2, 3])
+    @pytest.mark.parametrize('time_type', [0])
     def test_overview_market_cap_and_volume(self, time_type):
-        last_price = float(db_mysql.select_db(Sql.last_price)[0]['last_price'])
-        result = OverViewCal().calculate_calculate_market_cap_total(time_type)
-        logger.info("overview页面得总市值和交易量图表测试数据接口返回：{}".format(result))
-        assert (result[0] - result[1]) * last_price == result[-1]['data']['marketCapTotal']
-        assert result[2] == result[-1]['data']['marketCapChange']
-        assert (result[0][3] - result[4]) * last_price == result[-1]['data']['volumeTotal']
-        assert result[5] == result[-1]['data']['volumeChange']
+        results = OverViewCal().calculate_calculate_market_cap_total(time_type)
+        logger.info("overview页面得总市值和交易量图表测试数据接口返回：{}".format(results))
+        for result in results:
+            assert result[0] == result[1]

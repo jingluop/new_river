@@ -17,8 +17,10 @@ class OverViewCal:
         计算24小时的总市值
         :param time_type：0-ONE_DAY,1-ONE_WEEK,2-ONE_MONTH,3-THREE_MONTHS
         """
+        last_price = float(db_mysql.select_db(Sql.last_price)[0]['last_price'])
         hour_dict = {0: 24, 1: 24 * 7 - 1, 2: 30 * 24, 3: 90 * 24}
         res = Overview().market_cap_and_volume_app(params={"timeRange": self.time_dict[time_type]})
+        result = []
         # 1. 计算总市值
         market_cap_sql_now = float(
             db_mysql.select_db(Sql.total_market.format(0))[0]['market_cap'])
@@ -43,7 +45,11 @@ class OverViewCal:
             volume_rate = 1
         else:
             volume_rate = (volume_now - volume_before) / volume_before
-        return market_cap_sql_now, market_cap_sql_before, market_cap_rate, volume_now, volume_before, volume_rate, res
+        result.append([(market_cap_sql_now - market_cap_sql_before) * last_price, res['data']['marketCapTotal']])
+        result.append([market_cap_rate, res['data']['marketCapChange']])
+        result.append([(volume_now - volume_before) * last_price, res['data']['volumeTotal']])
+        result.append([volume_rate, res['data']['volumeChange']])
+        return result
 
     def calculate_sales_top_10(self, time_type):
         """

@@ -23,6 +23,11 @@ class CollectionDetailCal:
         floor_price_interface = float(res['data']['floorPrice'])
         # 数据库查询的值
         floor_price_sql = float(db_mysql.select_db(Sql.floor_price.format(collection_uuid))[0]['floor_price'])
+        # 四舍五入保留4位小数位数
+        floor_price_interface = round(floor_price_interface, 4)
+        floor_price_sql = round(floor_price_sql, 4)
+        result.append([res['data']['collectName'], res['data']['collectName']])
+        result.append([collection_uuid, collection_uuid])
         result.append([floor_price_interface, floor_price_sql])
 
         # 2.计算24h总交易量
@@ -32,12 +37,18 @@ class CollectionDetailCal:
         volume_24 = float(
             db_mysql.select_db(Sql.one_collection_volume.format(23, collection_uuid))[0]['volume'])
         volume_sql = volume_now - volume_24
+        # 四舍五入保留4位小数位数
+        volume_interface = round(volume_interface, 4)
+        volume_sql = round(volume_sql, 4)
         result.append([volume_interface, volume_sql])
 
         # 3. 计算总市值
         market_cap_interface = float(res['data']['marketCap'])
         market_cap_sql = float(
             db_mysql.select_db(Sql.one_collection_market_cap.format(0, collection_uuid))[0]['market_cap'])
+        # 四舍五入保留4位小数位数
+        market_cap_interface = round(market_cap_interface, 4)
+        market_cap_sql = round(market_cap_sql, 4)
         result.append([market_cap_interface, market_cap_sql])
 
         # 4. 计算holders
@@ -56,6 +67,9 @@ class CollectionDetailCal:
             floor_price_change_rate_sql = 1
         else:
             floor_price_change_rate_sql = float((floor_price_now - floor_price_24) / floor_price_24)
+        # 四舍五入保留4位小数位数
+        floor_price_change_rate_interface = round(floor_price_change_rate_interface, 4)
+        floor_price_change_rate_sql = round(floor_price_change_rate_sql, 4)
         result.append([floor_price_change_rate_interface, floor_price_change_rate_sql])
 
         # 6. 计算24h volume变化率
@@ -66,6 +80,9 @@ class CollectionDetailCal:
             volume_change_rate_sql = 1
         else:
             volume_change_rate_sql = (volume_now - volume_24) / volume_24
+        # 四舍五入保留4位小数位数
+        volume_change_rate_interface = round(volume_change_rate_interface, 4)
+        volume_change_rate_sql = round(volume_change_rate_sql, 4)
         result.append([volume_change_rate_interface, volume_change_rate_sql])
 
         # 7. 计算24h总市值的变化率
@@ -79,6 +96,9 @@ class CollectionDetailCal:
             market_cap_change_rate_sql = 1
         else:
             market_cap_change_rate_sql = (market_cap_now - market_cap_24) / market_cap_24
+        # 四舍五入保留4位小数位数
+        market_cap_change_rate_interface = round(market_cap_change_rate_interface, 4)
+        market_cap_change_rate_sql = round(market_cap_change_rate_sql, 4)
         result.append([market_cap_change_rate_interface, market_cap_change_rate_sql])
 
         # 8. 计算24h持有人的变化率
@@ -92,9 +112,10 @@ class CollectionDetailCal:
             holders_change_rate_sql = 1
         else:
             holders_change_rate_sql = (holders_now - holders_24) / holders_24
+        # 四舍五入保留4位小数位数
+        holders_sql_change_rate_interface = round(holders_sql_change_rate_interface, 4)
+        holders_change_rate_sql = round(holders_change_rate_sql, 4)
         result.append([holders_sql_change_rate_interface, holders_change_rate_sql])
-
-        # 9. last7days折线图数据
 
         return result
 
@@ -157,9 +178,11 @@ class CollectionDetailCal:
         :param time_type：0-ONE_DAY,1-ONE_WEEK,2-ONE_MONTH,3-THREE_MONTHS
         :return:
         """
+        last_price = float(db_mysql.select_db(Sql.last_price)[0]['last_price'])
         hour_dict = {0: 24, 1: 24 * 7 - 1, 2: 30 * 24, 3: 90 * 24}
         res = collection_detail.collection_marketcap_and_volume_app(
             params={"collectionUuid": collection_uuid, "timeType": self.time_dict[time_type]})
+        result = []
         # 1. 计算总市值
         market_cap_sql_now = float(
             db_mysql.select_db(Sql.one_collection_market_cap.format(0, collection_uuid))[0]['market_cap'])
@@ -185,7 +208,11 @@ class CollectionDetailCal:
             volume_rate = 1
         else:
             volume_rate = (volume_now - volume_before) / volume_before
-        return market_cap_sql_now, market_cap_sql_before, market_cap_rate, volume_now, volume_before, volume_rate, res
+        result.append([(market_cap_sql_now - market_cap_sql_before) * last_price, res['data']['marketCapTotal']])
+        result.append([market_cap_rate, res['data']['marketCapChange']])
+        result.append([(volume_now - volume_before) * last_price, res['data']['volumeTotal']])
+        result.append([volume_rate, res['data']['volumeChange']])
+        return result
 
     def calculate_analytics(self, collection_uuid):
         """
@@ -216,5 +243,64 @@ class CollectionDetailCal:
         # 4. NFT in pending orders
         total_listing_price = int(db_proxy.select_db(Sql.count_listing_price.format(collection_uuid))[0]['count'])
         total_nft = int(db_mysql.select_db(Sql.total_nft.format(collection_uuid))[0]['total_nft'])
+        result = []
+        result.append([collection_uuid, collection_uuid])
+        if 'blueChipVo' in res['data']:
+            if total_holders == 0:
+                total_blue_chip_address_rate = 0
+                not_blue_chip_address_rate = 0
+            else:
+                total_blue_chip_address_rate = total_blue_chip_address / total_holders
+                not_blue_chip_address_rate = (total_holders - total_blue_chip_address) / total_holders
+            # 截取保留4位小数
+            total_blue_chip_address_rate = int(total_blue_chip_address_rate * 10000) / 10000
+            not_blue_chip_address_rate = round(not_blue_chip_address_rate, 4)
+            result.append(['blueChipVo', 'blueChipVo'])
+            result.append([total_blue_chip_address, res['data']['blueChipVo']['holdersQuantity']])
+            result.append([total_holders - total_blue_chip_address, res['data']['blueChipVo']['noHoldersQuantity']])
+            result.append([total_blue_chip_address_rate, res['data']['blueChipVo']['holdersPercentage']])
+            result.append([not_blue_chip_address_rate, res['data']['blueChipVo']['noHoldersPercentage']])
+        if 'belowFloorPriceVo' in res['data']:
+            if below_floor_price + above_floor_price == 0:
+                below_floor_price_rate = above_floor_price_rate = 0
+            else:
+                below_floor_price_rate = below_floor_price / (below_floor_price + above_floor_price)
+                above_floor_price_rate = above_floor_price / (below_floor_price + above_floor_price)
+            # 截取保留4位小数
+            below_floor_price_rate = int(below_floor_price_rate * 10000) / 10000
+            above_floor_price_rate = round(above_floor_price_rate, 4)
+            result.append(['belowFloorPriceVo', 'belowFloorPriceVo'])
+            result.append([below_floor_price, res['data']['belowFloorPriceVo']['holdersQuantity']])
+            result.append([above_floor_price, res['data']['belowFloorPriceVo']['noHoldersQuantity']])
+            result.append([below_floor_price_rate, res['data']['belowFloorPriceVo']['holdersPercentage']])
+            result.append([above_floor_price_rate, res['data']['belowFloorPriceVo']['noHoldersPercentage']])
+        if 'listingVo' in res['data']:
+            if total_nft == 0:
+                total_listing_price_rate = no_listing_price_rate = 0
+            else:
+                total_listing_price_rate = total_listing_price / total_nft
+                no_listing_price_rate = (total_nft - total_listing_price) / total_nft
+            # 截取保留4位小数
+            total_listing_price_rate = int(total_listing_price_rate * 10000) / 10000
+            no_listing_price_rate = round(no_listing_price_rate, 4)
+            result.append(['listingVo', 'listingVo'])
+            result.append([total_listing_price, res['data']['listingVo']['holdersQuantity']])
+            result.append([total_nft - total_listing_price, res['data']['listingVo']['noHoldersQuantity']])
+            result.append([total_listing_price_rate, res['data']['listingVo']['holdersPercentage']])
+            result.append([no_listing_price_rate, res['data']['listingVo']['noHoldersPercentage']])
+        if 'tradeVO' in res['data']:
+            if nerve_trade + sale_total == 0:
+                nerve_trade_rate = sale_total_rate = 0
+            else:
+                nerve_trade_rate = nerve_trade / (nerve_trade + sale_total)
+                sale_total_rate = sale_total / (nerve_trade + sale_total)
+            # 截取保留4位小数
+            nerve_trade_rate = int(nerve_trade_rate * 10000) / 10000
+            sale_total_rate = round(sale_total_rate, 4)
+            result.append(['tradeVO', 'tradeVO'])
+            result.append([nerve_trade, res['data']['tradeVO']['noHoldersQuantity']])
+            result.append([sale_total, res['data']['tradeVO']['holdersQuantity']])
+            result.append([nerve_trade_rate, res['data']['tradeVO']['noHoldersPercentage']])
+            result.append([sale_total_rate, res['data']['tradeVO']['holdersPercentage']])
 
-        return below_floor_price, above_floor_price, nerve_trade, sale_total, total_holders, total_blue_chip_address, total_listing_price, total_nft, res
+        return result
