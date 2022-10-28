@@ -14,7 +14,7 @@ class BuriedPointStatisticsCal:
 
     def new_user_statistics(self):
         """新用户统计"""
-        res = BuriedPointStatistics().new_user_statistics(params={"type": 1, "dimensionType": "platform"})
+        res = BuriedPointStatistics().new_user(params={"type": 1, "dimensionType": "platform"})
         new_users_sql = db_mysql.select_db(BuriedPointSql.new_users.format(1, 8, ''))
         total_new_users_interface = res['data']['totalCount']
         total_new_users_sql = new_users_sql[0]['count']
