@@ -249,14 +249,15 @@ class BuriedPointSql:
     # 查询新用户，需要传入起始时间，结束时间，附加筛选条件
     new_users = """
     select
-        count(distinct device_id ) count
+        {} substring(create_time , 1, 10)dateTime, count(distinct device_id ) count
     from
         `hk-manhattan`.system_operate_record
     where
-        replace(substring(create_time , 1, 10), '-', '') <= replace(substring(DATE_SUB(CURDATE(), interval {} day) , 1, 10), '-', '')
-        and replace(substring(create_time , 1, 10), '-', '') >= replace(substring(DATE_SUB(CURDATE(), interval {} day) , 1, 10), '-', '')
+        replace(substring(create_time , 1, 10), '-', '') <= {}
+        and replace(substring(create_time , 1, 10), '-', '') >= {}
         and first_visit_time is not null 
-        {};
+        group by {} substring(create_time , 1, 10) 
+        order by {} substring(create_time , 1, 10);
     """
 
     # 计算留存率
