@@ -13,11 +13,11 @@ from common.data_load import get_yaml_data
 from api.collection_details import collection_detail
 from common.db import db_mysql
 from common.logger import logger
-from data_calculate.sql import Sql
+from data_calculate.sql import BaseSql
 
 
 class TestCollection:
-    collection_uuid = [collection['collection_uuid'] for collection in db_mysql.select_db(Sql.collection_uuid)]
+    collection_uuid = [collection['collection_uuid'] for collection in db_mysql.select_db(BaseSql.collection_uuid)]
     # 随机取50个集合
     start_index = random.randint(0, len(collection_uuid) - 20)
     collection_uuid = collection_uuid[start_index: start_index + 50]

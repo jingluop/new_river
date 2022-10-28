@@ -15,7 +15,7 @@ import sys
 
 from common.db import db_mysql
 from common.logger import logger
-from data_calculate.sql import Sql
+from data_calculate.sql import BaseSql
 
 sys.path.extend(["D:/code/newriver_api"])
 
@@ -91,10 +91,10 @@ class TestConfig:
     def test_check_version_update(self, test_data):
         logger.info("当前测试数据：{}".format(test_data))
         # 先查询当前版本号
-        ios_need_update_version = db_mysql.select_db(Sql.version.format('iosLastNewVersion'))[0]['CONFIG_VALUE']
-        ios_force_update_version = db_mysql.select_db(Sql.version.format('iosForcedUpdateVersion'))[0]['CONFIG_VALUE']
-        and_need_update_version = db_mysql.select_db(Sql.version.format('andLastNewVersion'))[0]['CONFIG_VALUE']
-        and_force_update_version = db_mysql.select_db(Sql.version.format('andForcedUpdateVersion'))[0]['CONFIG_VALUE']
+        ios_need_update_version = db_mysql.select_db(BaseSql.version.format('iosLastNewVersion'))[0]['CONFIG_VALUE']
+        ios_force_update_version = db_mysql.select_db(BaseSql.version.format('iosForcedUpdateVersion'))[0]['CONFIG_VALUE']
+        and_need_update_version = db_mysql.select_db(BaseSql.version.format('andLastNewVersion'))[0]['CONFIG_VALUE']
+        and_force_update_version = db_mysql.select_db(BaseSql.version.format('andForcedUpdateVersion'))[0]['CONFIG_VALUE']
         logger.info("ios_need_update_version：{}".format(ios_need_update_version),
                     "ios_force_update_version：{}".format(ios_force_update_version),
                     "and_need_update_version：{}".format(and_need_update_version),

@@ -7,7 +7,7 @@
 from api.top_sales import top_sales
 from common.db import db_mysql
 from common.logger import logger
-from data_calculate.sql import Sql
+from data_calculate.sql import BaseSql
 
 
 class TopSalesCal:
@@ -35,7 +35,7 @@ class TopSalesCal:
             logger.info(f"选取到的集合名称：{collection['collectName']}，uuid：{collection_uuid}")
             floor_price_interface = float(collection['floorPrice'])
             floor_price_sql = float(
-                db_mysql.select_db(Sql.history_floor_price.format(collection_uuid, time_now))[0]['floor_price'])
+                db_mysql.select_db(BaseSql.history_floor_price.format(collection_uuid, time_now))[0]['floor_price'])
             # 四舍五入保留3位小数位数
             floor_price_interface = round(floor_price_interface, 3)
             floor_price_sql = round(floor_price_sql, 3)
@@ -46,9 +46,9 @@ class TopSalesCal:
             # 交易量
             volume_interface = float(collection['volume'])
             volume_now = float(
-                db_mysql.select_db(Sql.one_collection_volume.format(time_now, collection_uuid))[0]['volume'])
+                db_mysql.select_db(BaseSql.one_collection_volume.format(time_now, collection_uuid))[0]['volume'])
             volume_before = float(
-                db_mysql.select_db(Sql.one_collection_volume.format(time_before, collection_uuid))[0]['volume'])
+                db_mysql.select_db(BaseSql.one_collection_volume.format(time_before, collection_uuid))[0]['volume'])
             volume_sql = volume_now - volume_before
             # # 截取小数位数
             # volume_sql = int(volume_sql * 100000) / 100000
@@ -59,9 +59,9 @@ class TopSalesCal:
 
             # 地板价的变化率
             floor_price_change_rate_interface = float(collection['floorChange'])
-            floor_price_now = float(db_mysql.select_db(Sql.history_floor_price.format(collection_uuid, time_now))[0][
+            floor_price_now = float(db_mysql.select_db(BaseSql.history_floor_price.format(collection_uuid, time_now))[0][
                 'floor_price'])
-            floor_price_before = float(db_mysql.select_db(Sql.history_floor_price.format(collection_uuid, time_before))[0][
+            floor_price_before = float(db_mysql.select_db(BaseSql.history_floor_price.format(collection_uuid, time_before))[0][
                 'floor_price'])
             if floor_price_before == floor_price_now == 0:
                 floor_price_change_rate_sql = 0.0
@@ -76,7 +76,7 @@ class TopSalesCal:
 
             # sales
             sales_interface = int(collection['sales'])
-            sales_sql = int(db_mysql.select_db(Sql.one_collection_sales.format(collection_uuid, time_type))[0]['sales'])
+            sales_sql = int(db_mysql.select_db(BaseSql.one_collection_sales.format(collection_uuid, time_type))[0]['sales'])
             result.append([sales_interface, sales_sql])
             result_total.append(result)
         return result_total

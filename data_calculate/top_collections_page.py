@@ -7,7 +7,7 @@
 from common.db import db_mysql
 from api.top_collections import top_collections
 from common.logger import logger
-from data_calculate.sql import Sql
+from data_calculate.sql import BaseSql
 
 
 class TopCollectionsCal:
@@ -36,7 +36,7 @@ class TopCollectionsCal:
             logger.info(f"选取到的集合名称：{collection['collectName']}，uuid：{collection_uuid}")
             floor_price_interface = float(collection['floorPrice'])
             floor_price_sql = float(
-                db_mysql.select_db(Sql.history_floor_price.format(collection_uuid, time_now))[0]['floor_price'])
+                db_mysql.select_db(BaseSql.history_floor_price.format(collection_uuid, time_now))[0]['floor_price'])
             # 四舍五入保留4位小数位数
             floor_price_interface = round(floor_price_interface, 4)
             floor_price_sql = round(floor_price_sql, 4)
@@ -47,14 +47,14 @@ class TopCollectionsCal:
             # 2持有人
             owners_interface = int(collection['numOwners'])
             owners_sql = int(
-                db_mysql.select_db(Sql.one_collection_holders.format(time_now, collection_uuid))[0]['holders'])
+                db_mysql.select_db(BaseSql.one_collection_holders.format(time_now, collection_uuid))[0]['holders'])
             result.append([owners_interface, owners_sql])
 
             # 3持有人变化率
             owners_change_rate_interface = float(collection['ownerThen'])
             owners_now = owners_sql
             owners_before = float(
-                db_mysql.select_db(Sql.one_collection_holders.format(time_before, collection_uuid))[0]['holders'])
+                db_mysql.select_db(BaseSql.one_collection_holders.format(time_before, collection_uuid))[0]['holders'])
             if owners_now == owners_before == 0:
                 owners_change_rate_sql = 0.0
             elif owners_now != 0 and owners_before == 0:
@@ -69,9 +69,9 @@ class TopCollectionsCal:
             # 4交易量
             volume_interface = float(collection['oneDayVolume'])
             volume_now = float(
-                db_mysql.select_db(Sql.one_collection_volume.format(time_now, collection_uuid))[0]['volume'])
+                db_mysql.select_db(BaseSql.one_collection_volume.format(time_now, collection_uuid))[0]['volume'])
             volume_before = float(
-                db_mysql.select_db(Sql.one_collection_volume.format(time_before, collection_uuid))[0]['volume'])
+                db_mysql.select_db(BaseSql.one_collection_volume.format(time_before, collection_uuid))[0]['volume'])
             volume_sql = volume_now - volume_before
             # 四舍五入保留5位小数位数
             volume_interface = round(volume_interface, 5)
@@ -81,9 +81,9 @@ class TopCollectionsCal:
             # 5交易量的变化率
             volume_change_interface = float(collection['dayChange'])
             volume_before_start = float(
-                db_mysql.select_db(Sql.one_collection_volume.format(time_before + 1, collection_uuid))[0]['volume'])
+                db_mysql.select_db(BaseSql.one_collection_volume.format(time_before + 1, collection_uuid))[0]['volume'])
             volume_before_end = float(
-                db_mysql.select_db(Sql.one_collection_volume.format(time_rate_before, collection_uuid))[0]['volume'])
+                db_mysql.select_db(BaseSql.one_collection_volume.format(time_rate_before, collection_uuid))[0]['volume'])
             increment_now = volume_now - volume_before
             increment_before = volume_before_start - volume_before_end
             if increment_now == increment_before == 0:
@@ -100,7 +100,7 @@ class TopCollectionsCal:
             # 6市值
             market_cap_interface = float(collection['marketCap'])
             market_cap_sql = float(
-                db_mysql.select_db(Sql.one_collection_market_cap.format(time_now, collection_uuid))[0]['market_cap'])
+                db_mysql.select_db(BaseSql.one_collection_market_cap.format(time_now, collection_uuid))[0]['market_cap'])
             # 四舍五入保留2位小数位数
             market_cap_interface = round(market_cap_interface, 2)
             market_cap_sql = round(market_cap_sql, 2)
