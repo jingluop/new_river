@@ -300,12 +300,30 @@ class BuriedPointSql:
 
     # uv
     uv = """
-    select  count(distinct  device_id)uv, substring(create_time , 1, 10)create_time from system_operate_record group by substring(create_time , 1, 10)
+    select
+        substring(create_time , 1, 10)dateTime,
+        count(distinct device_id)count
+    from
+        `hk-manhattan`.system_operate_record
+    where
+        replace(substring(create_time , 1, 10), '-', '') <= {}
+        and replace(substring(create_time , 1, 10), '-', '') >= {}
+    group by
+        substring(create_time , 1, 10)
     """
 
     # pv
     pv = """
-    select  count(device_id)pv, substring(create_time , 1, 10)create_time from system_operate_record group by substring(create_time , 1, 10)
+       select
+            substring(create_time , 1, 10)dateTime,
+            count(device_id)count
+        from
+            `hk-manhattan`.system_operate_record
+        where
+            replace(substring(create_time , 1, 10), '-', '') <= {}
+            and replace(substring(create_time , 1, 10), '-', '') >= {}
+        group by
+            substring(create_time , 1, 10)
     """
 
     # 计算尝试登录用户
