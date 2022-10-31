@@ -23,7 +23,7 @@ class TopSalesCal:
         else:
             days = 90
         time_now = 0  # 取当前时间的数据就传0
-        time_before = days * 24 - 1  # 根据时间类型取之前的时间
+        time_before = days * 24  # 根据时间类型取之前的时间
         res = top_sales.select_collection_info(
             params={"timeRange": self.time_dict[time_type], "pageSize": page_size, "pageNum": page_num})
         result_total = []

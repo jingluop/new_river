@@ -3638,3 +3638,641 @@
 [2022-10-31 16:50:09,538][test_data_calculate.py 35][INFO]: top sales页面测试数据为(接口返回，数据库查询)[地板价-交易量-地板价变化率-sales]：[['BEANZ Official', 'BEANZ Official'], [101021, 101021], [0.85, 0.85], [120.4235, -0.975], [0.08974, 0.08974], [133, 133]]
 [2022-10-31 16:50:09,538][test_data_calculate.py 35][INFO]: top sales页面测试数据为(接口返回，数据库查询)[地板价-交易量-地板价变化率-sales]：[['FLUF World: Buzzies', 'FLUF World: Buzzies'], [101640, 101640], [0.14, 0.14], [28.6729, -8.5118], [0.73053, 0.26013], [97, 97]]
 [2022-10-31 16:50:09,539][test_data_calculate.py 35][INFO]: top sales页面测试数据为(接口返回，数据库查询)[地板价-交易量-地板价变化率-sales]：[['Decagon by Golid and Deca', 'Decagon by Golid and Deca'], [100903, 100903], [0.003, 0.003], [0.8109, -0.0785], [-0.05026, -0.17989], [95, 95]]
+[2022-10-31 17:55:45,738][data_load.py 44][INFO]: 加载 D:\code\new_river\config\config.ini 文件......
+[2022-10-31 17:55:45,739][data_load.py 48][INFO]: 读到数据 ==>>  {'env': {'env': 'prd'}, 'host-test': {'api_root_url': 'https://newrivertest.agentgo.me/dc/pc', 'api_background_url': 'https://newrivertest.agentgo.me/dc'}, 'host-pre': {'api_root_url': 'https://newriverpre.agentgo.me/dc/pc', 'api_background_url': 'https://newriverpre.agentgo.me/dc'}, 'host-prd': {'api_root_url': 'https://www.newrivernft.io/dc/pc', 'api_background_url': 'https://www.newrivernft.io/dc'}, 'mysql-test': {'MYSQL_HOST': '18.162.133.143', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}, 'shardingsphere-proxy-test': {'MYSQL_HOST': '18.163.3.196', 'MYSQL_PORT': '3307', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}, 'mysql-pre': {'MYSQL_HOST': '18.167.19.194', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'newriver_re', 'MYSQL_PASSWD': 'CC#1aAJAcs541aciV'}, 'shardingsphere-proxy-pre': {'MYSQL_HOST': '18.162.155.216', 'MYSQL_PORT': '3308', 'MYSQL_USER': 'read', 'MYSQL_PASSWD': 'nze!CV75V$Jn'}, 'mysql-prd': {'MYSQL_HOST': '18.167.19.194', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'newriver_re', 'MYSQL_PASSWD': 'CC#1aAJAcs541aciV'}, 'shardingsphere-proxy-prd': {'MYSQL_HOST': '18.162.155.216', 'MYSQL_PORT': '3308', 'MYSQL_USER': 'read', 'MYSQL_PASSWD': 'nze!CV75V$Jn'}} 
+[2022-10-31 17:55:45,753][data_load.py 44][INFO]: 加载 D:\code\new_river\config\config.ini 文件......
+[2022-10-31 17:55:45,755][data_load.py 48][INFO]: 读到数据 ==>>  {'env': {'env': 'prd'}, 'host-test': {'api_root_url': 'https://newrivertest.agentgo.me/dc/pc', 'api_background_url': 'https://newrivertest.agentgo.me/dc'}, 'host-pre': {'api_root_url': 'https://newriverpre.agentgo.me/dc/pc', 'api_background_url': 'https://newriverpre.agentgo.me/dc'}, 'host-prd': {'api_root_url': 'https://www.newrivernft.io/dc/pc', 'api_background_url': 'https://www.newrivernft.io/dc'}, 'mysql-test': {'MYSQL_HOST': '18.162.133.143', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}, 'shardingsphere-proxy-test': {'MYSQL_HOST': '18.163.3.196', 'MYSQL_PORT': '3307', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}, 'mysql-pre': {'MYSQL_HOST': '18.167.19.194', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'newriver_re', 'MYSQL_PASSWD': 'CC#1aAJAcs541aciV'}, 'shardingsphere-proxy-pre': {'MYSQL_HOST': '18.162.155.216', 'MYSQL_PORT': '3308', 'MYSQL_USER': 'read', 'MYSQL_PASSWD': 'nze!CV75V$Jn'}, 'mysql-prd': {'MYSQL_HOST': '18.167.19.194', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'newriver_re', 'MYSQL_PASSWD': 'CC#1aAJAcs541aciV'}, 'shardingsphere-proxy-prd': {'MYSQL_HOST': '18.162.155.216', 'MYSQL_PORT': '3308', 'MYSQL_USER': 'read', 'MYSQL_PASSWD': 'nze!CV75V$Jn'}} 
+[2022-10-31 17:55:46,133][data_load.py 44][INFO]: 加载 D:\code\new_river\config\config.ini 文件......
+[2022-10-31 17:55:46,137][data_load.py 48][INFO]: 读到数据 ==>>  {'env': {'env': 'prd'}, 'host-test': {'api_root_url': 'https://newrivertest.agentgo.me/dc/pc', 'api_background_url': 'https://newrivertest.agentgo.me/dc'}, 'host-pre': {'api_root_url': 'https://newriverpre.agentgo.me/dc/pc', 'api_background_url': 'https://newriverpre.agentgo.me/dc'}, 'host-prd': {'api_root_url': 'https://www.newrivernft.io/dc/pc', 'api_background_url': 'https://www.newrivernft.io/dc'}, 'mysql-test': {'MYSQL_HOST': '18.162.133.143', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}, 'shardingsphere-proxy-test': {'MYSQL_HOST': '18.163.3.196', 'MYSQL_PORT': '3307', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}, 'mysql-pre': {'MYSQL_HOST': '18.167.19.194', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'newriver_re', 'MYSQL_PASSWD': 'CC#1aAJAcs541aciV'}, 'shardingsphere-proxy-pre': {'MYSQL_HOST': '18.162.155.216', 'MYSQL_PORT': '3308', 'MYSQL_USER': 'read', 'MYSQL_PASSWD': 'nze!CV75V$Jn'}, 'mysql-prd': {'MYSQL_HOST': '18.167.19.194', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'newriver_re', 'MYSQL_PASSWD': 'CC#1aAJAcs541aciV'}, 'shardingsphere-proxy-prd': {'MYSQL_HOST': '18.162.155.216', 'MYSQL_PORT': '3308', 'MYSQL_USER': 'read', 'MYSQL_PASSWD': 'nze!CV75V$Jn'}} 
+[2022-10-31 17:55:46,137][data_load.py 44][INFO]: 加载 D:\code\new_river\config\config.ini 文件......
+[2022-10-31 17:55:46,140][data_load.py 48][INFO]: 读到数据 ==>>  {'env': {'env': 'prd'}, 'host-test': {'api_root_url': 'https://newrivertest.agentgo.me/dc/pc', 'api_background_url': 'https://newrivertest.agentgo.me/dc'}, 'host-pre': {'api_root_url': 'https://newriverpre.agentgo.me/dc/pc', 'api_background_url': 'https://newriverpre.agentgo.me/dc'}, 'host-prd': {'api_root_url': 'https://www.newrivernft.io/dc/pc', 'api_background_url': 'https://www.newrivernft.io/dc'}, 'mysql-test': {'MYSQL_HOST': '18.162.133.143', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}, 'shardingsphere-proxy-test': {'MYSQL_HOST': '18.163.3.196', 'MYSQL_PORT': '3307', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}, 'mysql-pre': {'MYSQL_HOST': '18.167.19.194', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'newriver_re', 'MYSQL_PASSWD': 'CC#1aAJAcs541aciV'}, 'shardingsphere-proxy-pre': {'MYSQL_HOST': '18.162.155.216', 'MYSQL_PORT': '3308', 'MYSQL_USER': 'read', 'MYSQL_PASSWD': 'nze!CV75V$Jn'}, 'mysql-prd': {'MYSQL_HOST': '18.167.19.194', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'newriver_re', 'MYSQL_PASSWD': 'CC#1aAJAcs541aciV'}, 'shardingsphere-proxy-prd': {'MYSQL_HOST': '18.162.155.216', 'MYSQL_PORT': '3308', 'MYSQL_USER': 'read', 'MYSQL_PASSWD': 'nze!CV75V$Jn'}} 
+[2022-10-31 18:08:48,939][data_load.py 44][INFO]: 加载 D:\code\new_river\config\config.ini 文件......
+[2022-10-31 18:08:48,941][data_load.py 48][INFO]: 读到数据 ==>>  {'env': {'env': 'prd'}, 'host-test': {'api_root_url': 'https://newrivertest.agentgo.me/dc/pc', 'api_background_url': 'https://newrivertest.agentgo.me/dc'}, 'host-pre': {'api_root_url': 'https://newriverpre.agentgo.me/dc/pc', 'api_background_url': 'https://newriverpre.agentgo.me/dc'}, 'host-prd': {'api_root_url': 'https://www.newrivernft.io/dc/pc', 'api_background_url': 'https://www.newrivernft.io/dc'}, 'mysql-test': {'MYSQL_HOST': '18.162.133.143', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}, 'shardingsphere-proxy-test': {'MYSQL_HOST': '18.163.3.196', 'MYSQL_PORT': '3307', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}, 'mysql-pre': {'MYSQL_HOST': '18.167.19.194', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'newriver_re', 'MYSQL_PASSWD': 'CC#1aAJAcs541aciV'}, 'shardingsphere-proxy-pre': {'MYSQL_HOST': '18.162.155.216', 'MYSQL_PORT': '3308', 'MYSQL_USER': 'read', 'MYSQL_PASSWD': 'nze!CV75V$Jn'}, 'mysql-prd': {'MYSQL_HOST': '18.167.19.194', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'newriver_re', 'MYSQL_PASSWD': 'CC#1aAJAcs541aciV'}, 'shardingsphere-proxy-prd': {'MYSQL_HOST': '18.162.155.216', 'MYSQL_PORT': '3308', 'MYSQL_USER': 'read', 'MYSQL_PASSWD': 'nze!CV75V$Jn'}} 
+[2022-10-31 18:08:48,951][data_load.py 44][INFO]: 加载 D:\code\new_river\config\config.ini 文件......
+[2022-10-31 18:08:48,952][data_load.py 48][INFO]: 读到数据 ==>>  {'env': {'env': 'prd'}, 'host-test': {'api_root_url': 'https://newrivertest.agentgo.me/dc/pc', 'api_background_url': 'https://newrivertest.agentgo.me/dc'}, 'host-pre': {'api_root_url': 'https://newriverpre.agentgo.me/dc/pc', 'api_background_url': 'https://newriverpre.agentgo.me/dc'}, 'host-prd': {'api_root_url': 'https://www.newrivernft.io/dc/pc', 'api_background_url': 'https://www.newrivernft.io/dc'}, 'mysql-test': {'MYSQL_HOST': '18.162.133.143', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}, 'shardingsphere-proxy-test': {'MYSQL_HOST': '18.163.3.196', 'MYSQL_PORT': '3307', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}, 'mysql-pre': {'MYSQL_HOST': '18.167.19.194', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'newriver_re', 'MYSQL_PASSWD': 'CC#1aAJAcs541aciV'}, 'shardingsphere-proxy-pre': {'MYSQL_HOST': '18.162.155.216', 'MYSQL_PORT': '3308', 'MYSQL_USER': 'read', 'MYSQL_PASSWD': 'nze!CV75V$Jn'}, 'mysql-prd': {'MYSQL_HOST': '18.167.19.194', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'newriver_re', 'MYSQL_PASSWD': 'CC#1aAJAcs541aciV'}, 'shardingsphere-proxy-prd': {'MYSQL_HOST': '18.162.155.216', 'MYSQL_PORT': '3308', 'MYSQL_USER': 'read', 'MYSQL_PASSWD': 'nze!CV75V$Jn'}} 
+[2022-10-31 18:08:49,334][data_load.py 44][INFO]: 加载 D:\code\new_river\config\config.ini 文件......
+[2022-10-31 18:08:49,338][data_load.py 48][INFO]: 读到数据 ==>>  {'env': {'env': 'prd'}, 'host-test': {'api_root_url': 'https://newrivertest.agentgo.me/dc/pc', 'api_background_url': 'https://newrivertest.agentgo.me/dc'}, 'host-pre': {'api_root_url': 'https://newriverpre.agentgo.me/dc/pc', 'api_background_url': 'https://newriverpre.agentgo.me/dc'}, 'host-prd': {'api_root_url': 'https://www.newrivernft.io/dc/pc', 'api_background_url': 'https://www.newrivernft.io/dc'}, 'mysql-test': {'MYSQL_HOST': '18.162.133.143', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}, 'shardingsphere-proxy-test': {'MYSQL_HOST': '18.163.3.196', 'MYSQL_PORT': '3307', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}, 'mysql-pre': {'MYSQL_HOST': '18.167.19.194', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'newriver_re', 'MYSQL_PASSWD': 'CC#1aAJAcs541aciV'}, 'shardingsphere-proxy-pre': {'MYSQL_HOST': '18.162.155.216', 'MYSQL_PORT': '3308', 'MYSQL_USER': 'read', 'MYSQL_PASSWD': 'nze!CV75V$Jn'}, 'mysql-prd': {'MYSQL_HOST': '18.167.19.194', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'newriver_re', 'MYSQL_PASSWD': 'CC#1aAJAcs541aciV'}, 'shardingsphere-proxy-prd': {'MYSQL_HOST': '18.162.155.216', 'MYSQL_PORT': '3308', 'MYSQL_USER': 'read', 'MYSQL_PASSWD': 'nze!CV75V$Jn'}} 
+[2022-10-31 18:08:49,338][data_load.py 44][INFO]: 加载 D:\code\new_river\config\config.ini 文件......
+[2022-10-31 18:08:49,342][data_load.py 48][INFO]: 读到数据 ==>>  {'env': {'env': 'prd'}, 'host-test': {'api_root_url': 'https://newrivertest.agentgo.me/dc/pc', 'api_background_url': 'https://newrivertest.agentgo.me/dc'}, 'host-pre': {'api_root_url': 'https://newriverpre.agentgo.me/dc/pc', 'api_background_url': 'https://newriverpre.agentgo.me/dc'}, 'host-prd': {'api_root_url': 'https://www.newrivernft.io/dc/pc', 'api_background_url': 'https://www.newrivernft.io/dc'}, 'mysql-test': {'MYSQL_HOST': '18.162.133.143', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}, 'shardingsphere-proxy-test': {'MYSQL_HOST': '18.163.3.196', 'MYSQL_PORT': '3307', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}, 'mysql-pre': {'MYSQL_HOST': '18.167.19.194', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'newriver_re', 'MYSQL_PASSWD': 'CC#1aAJAcs541aciV'}, 'shardingsphere-proxy-pre': {'MYSQL_HOST': '18.162.155.216', 'MYSQL_PORT': '3308', 'MYSQL_USER': 'read', 'MYSQL_PASSWD': 'nze!CV75V$Jn'}, 'mysql-prd': {'MYSQL_HOST': '18.167.19.194', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'newriver_re', 'MYSQL_PASSWD': 'CC#1aAJAcs541aciV'}, 'shardingsphere-proxy-prd': {'MYSQL_HOST': '18.162.155.216', 'MYSQL_PORT': '3308', 'MYSQL_USER': 'read', 'MYSQL_PASSWD': 'nze!CV75V$Jn'}} 
+[2022-10-31 18:08:49,820][data_load.py 44][INFO]: 加载 D:\code\new_river\config\config.ini 文件......
+[2022-10-31 18:08:49,821][data_load.py 48][INFO]: 读到数据 ==>>  {'env': {'env': 'prd'}, 'host-test': {'api_root_url': 'https://newrivertest.agentgo.me/dc/pc', 'api_background_url': 'https://newrivertest.agentgo.me/dc'}, 'host-pre': {'api_root_url': 'https://newriverpre.agentgo.me/dc/pc', 'api_background_url': 'https://newriverpre.agentgo.me/dc'}, 'host-prd': {'api_root_url': 'https://www.newrivernft.io/dc/pc', 'api_background_url': 'https://www.newrivernft.io/dc'}, 'mysql-test': {'MYSQL_HOST': '18.162.133.143', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}, 'shardingsphere-proxy-test': {'MYSQL_HOST': '18.163.3.196', 'MYSQL_PORT': '3307', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}, 'mysql-pre': {'MYSQL_HOST': '18.167.19.194', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'newriver_re', 'MYSQL_PASSWD': 'CC#1aAJAcs541aciV'}, 'shardingsphere-proxy-pre': {'MYSQL_HOST': '18.162.155.216', 'MYSQL_PORT': '3308', 'MYSQL_USER': 'read', 'MYSQL_PASSWD': 'nze!CV75V$Jn'}, 'mysql-prd': {'MYSQL_HOST': '18.167.19.194', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'newriver_re', 'MYSQL_PASSWD': 'CC#1aAJAcs541aciV'}, 'shardingsphere-proxy-prd': {'MYSQL_HOST': '18.162.155.216', 'MYSQL_PORT': '3308', 'MYSQL_USER': 'read', 'MYSQL_PASSWD': 'nze!CV75V$Jn'}} 
+[2022-10-31 18:08:49,821][data_load.py 44][INFO]: 加载 D:\code\new_river\config\config.ini 文件......
+[2022-10-31 18:08:49,823][data_load.py 48][INFO]: 读到数据 ==>>  {'env': {'env': 'prd'}, 'host-test': {'api_root_url': 'https://newrivertest.agentgo.me/dc/pc', 'api_background_url': 'https://newrivertest.agentgo.me/dc'}, 'host-pre': {'api_root_url': 'https://newriverpre.agentgo.me/dc/pc', 'api_background_url': 'https://newriverpre.agentgo.me/dc'}, 'host-prd': {'api_root_url': 'https://www.newrivernft.io/dc/pc', 'api_background_url': 'https://www.newrivernft.io/dc'}, 'mysql-test': {'MYSQL_HOST': '18.162.133.143', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}, 'shardingsphere-proxy-test': {'MYSQL_HOST': '18.163.3.196', 'MYSQL_PORT': '3307', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}, 'mysql-pre': {'MYSQL_HOST': '18.167.19.194', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'newriver_re', 'MYSQL_PASSWD': 'CC#1aAJAcs541aciV'}, 'shardingsphere-proxy-pre': {'MYSQL_HOST': '18.162.155.216', 'MYSQL_PORT': '3308', 'MYSQL_USER': 'read', 'MYSQL_PASSWD': 'nze!CV75V$Jn'}, 'mysql-prd': {'MYSQL_HOST': '18.167.19.194', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'newriver_re', 'MYSQL_PASSWD': 'CC#1aAJAcs541aciV'}, 'shardingsphere-proxy-prd': {'MYSQL_HOST': '18.162.155.216', 'MYSQL_PORT': '3308', 'MYSQL_USER': 'read', 'MYSQL_PASSWD': 'nze!CV75V$Jn'}} 
+[2022-10-31 18:08:49,827][data_load.py 44][INFO]: 加载 D:\code\new_river\config\config.ini 文件......
+[2022-10-31 18:08:49,828][data_load.py 48][INFO]: 读到数据 ==>>  {'env': {'env': 'prd'}, 'host-test': {'api_root_url': 'https://newrivertest.agentgo.me/dc/pc', 'api_background_url': 'https://newrivertest.agentgo.me/dc'}, 'host-pre': {'api_root_url': 'https://newriverpre.agentgo.me/dc/pc', 'api_background_url': 'https://newriverpre.agentgo.me/dc'}, 'host-prd': {'api_root_url': 'https://www.newrivernft.io/dc/pc', 'api_background_url': 'https://www.newrivernft.io/dc'}, 'mysql-test': {'MYSQL_HOST': '18.162.133.143', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}, 'shardingsphere-proxy-test': {'MYSQL_HOST': '18.163.3.196', 'MYSQL_PORT': '3307', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}, 'mysql-pre': {'MYSQL_HOST': '18.167.19.194', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'newriver_re', 'MYSQL_PASSWD': 'CC#1aAJAcs541aciV'}, 'shardingsphere-proxy-pre': {'MYSQL_HOST': '18.162.155.216', 'MYSQL_PORT': '3308', 'MYSQL_USER': 'read', 'MYSQL_PASSWD': 'nze!CV75V$Jn'}, 'mysql-prd': {'MYSQL_HOST': '18.167.19.194', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'newriver_re', 'MYSQL_PASSWD': 'CC#1aAJAcs541aciV'}, 'shardingsphere-proxy-prd': {'MYSQL_HOST': '18.162.155.216', 'MYSQL_PORT': '3308', 'MYSQL_USER': 'read', 'MYSQL_PASSWD': 'nze!CV75V$Jn'}} 
+[2022-10-31 18:08:49,828][data_load.py 44][INFO]: 加载 D:\code\new_river\config\config.ini 文件......
+[2022-10-31 18:08:49,829][data_load.py 48][INFO]: 读到数据 ==>>  {'env': {'env': 'prd'}, 'host-test': {'api_root_url': 'https://newrivertest.agentgo.me/dc/pc', 'api_background_url': 'https://newrivertest.agentgo.me/dc'}, 'host-pre': {'api_root_url': 'https://newriverpre.agentgo.me/dc/pc', 'api_background_url': 'https://newriverpre.agentgo.me/dc'}, 'host-prd': {'api_root_url': 'https://www.newrivernft.io/dc/pc', 'api_background_url': 'https://www.newrivernft.io/dc'}, 'mysql-test': {'MYSQL_HOST': '18.162.133.143', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}, 'shardingsphere-proxy-test': {'MYSQL_HOST': '18.163.3.196', 'MYSQL_PORT': '3307', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}, 'mysql-pre': {'MYSQL_HOST': '18.167.19.194', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'newriver_re', 'MYSQL_PASSWD': 'CC#1aAJAcs541aciV'}, 'shardingsphere-proxy-pre': {'MYSQL_HOST': '18.162.155.216', 'MYSQL_PORT': '3308', 'MYSQL_USER': 'read', 'MYSQL_PASSWD': 'nze!CV75V$Jn'}, 'mysql-prd': {'MYSQL_HOST': '18.167.19.194', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'newriver_re', 'MYSQL_PASSWD': 'CC#1aAJAcs541aciV'}, 'shardingsphere-proxy-prd': {'MYSQL_HOST': '18.162.155.216', 'MYSQL_PORT': '3308', 'MYSQL_USER': 'read', 'MYSQL_PASSWD': 'nze!CV75V$Jn'}} 
+[2022-10-31 18:08:49,831][data_load.py 44][INFO]: 加载 D:\code\new_river\config\config.ini 文件......
+[2022-10-31 18:08:49,832][data_load.py 48][INFO]: 读到数据 ==>>  {'env': {'env': 'prd'}, 'host-test': {'api_root_url': 'https://newrivertest.agentgo.me/dc/pc', 'api_background_url': 'https://newrivertest.agentgo.me/dc'}, 'host-pre': {'api_root_url': 'https://newriverpre.agentgo.me/dc/pc', 'api_background_url': 'https://newriverpre.agentgo.me/dc'}, 'host-prd': {'api_root_url': 'https://www.newrivernft.io/dc/pc', 'api_background_url': 'https://www.newrivernft.io/dc'}, 'mysql-test': {'MYSQL_HOST': '18.162.133.143', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}, 'shardingsphere-proxy-test': {'MYSQL_HOST': '18.163.3.196', 'MYSQL_PORT': '3307', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}, 'mysql-pre': {'MYSQL_HOST': '18.167.19.194', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'newriver_re', 'MYSQL_PASSWD': 'CC#1aAJAcs541aciV'}, 'shardingsphere-proxy-pre': {'MYSQL_HOST': '18.162.155.216', 'MYSQL_PORT': '3308', 'MYSQL_USER': 'read', 'MYSQL_PASSWD': 'nze!CV75V$Jn'}, 'mysql-prd': {'MYSQL_HOST': '18.167.19.194', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'newriver_re', 'MYSQL_PASSWD': 'CC#1aAJAcs541aciV'}, 'shardingsphere-proxy-prd': {'MYSQL_HOST': '18.162.155.216', 'MYSQL_PORT': '3308', 'MYSQL_USER': 'read', 'MYSQL_PASSWD': 'nze!CV75V$Jn'}} 
+[2022-10-31 18:08:49,833][data_load.py 44][INFO]: 加载 D:\code\new_river\config\config.ini 文件......
+[2022-10-31 18:08:49,834][data_load.py 48][INFO]: 读到数据 ==>>  {'env': {'env': 'prd'}, 'host-test': {'api_root_url': 'https://newrivertest.agentgo.me/dc/pc', 'api_background_url': 'https://newrivertest.agentgo.me/dc'}, 'host-pre': {'api_root_url': 'https://newriverpre.agentgo.me/dc/pc', 'api_background_url': 'https://newriverpre.agentgo.me/dc'}, 'host-prd': {'api_root_url': 'https://www.newrivernft.io/dc/pc', 'api_background_url': 'https://www.newrivernft.io/dc'}, 'mysql-test': {'MYSQL_HOST': '18.162.133.143', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}, 'shardingsphere-proxy-test': {'MYSQL_HOST': '18.163.3.196', 'MYSQL_PORT': '3307', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}, 'mysql-pre': {'MYSQL_HOST': '18.167.19.194', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'newriver_re', 'MYSQL_PASSWD': 'CC#1aAJAcs541aciV'}, 'shardingsphere-proxy-pre': {'MYSQL_HOST': '18.162.155.216', 'MYSQL_PORT': '3308', 'MYSQL_USER': 'read', 'MYSQL_PASSWD': 'nze!CV75V$Jn'}, 'mysql-prd': {'MYSQL_HOST': '18.167.19.194', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'newriver_re', 'MYSQL_PASSWD': 'CC#1aAJAcs541aciV'}, 'shardingsphere-proxy-prd': {'MYSQL_HOST': '18.162.155.216', 'MYSQL_PORT': '3308', 'MYSQL_USER': 'read', 'MYSQL_PASSWD': 'nze!CV75V$Jn'}} 
+[2022-10-31 18:08:49,838][data_load.py 44][INFO]: 加载 D:\code\new_river\config\config.ini 文件......
+[2022-10-31 18:08:49,840][data_load.py 48][INFO]: 读到数据 ==>>  {'env': {'env': 'prd'}, 'host-test': {'api_root_url': 'https://newrivertest.agentgo.me/dc/pc', 'api_background_url': 'https://newrivertest.agentgo.me/dc'}, 'host-pre': {'api_root_url': 'https://newriverpre.agentgo.me/dc/pc', 'api_background_url': 'https://newriverpre.agentgo.me/dc'}, 'host-prd': {'api_root_url': 'https://www.newrivernft.io/dc/pc', 'api_background_url': 'https://www.newrivernft.io/dc'}, 'mysql-test': {'MYSQL_HOST': '18.162.133.143', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}, 'shardingsphere-proxy-test': {'MYSQL_HOST': '18.163.3.196', 'MYSQL_PORT': '3307', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}, 'mysql-pre': {'MYSQL_HOST': '18.167.19.194', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'newriver_re', 'MYSQL_PASSWD': 'CC#1aAJAcs541aciV'}, 'shardingsphere-proxy-pre': {'MYSQL_HOST': '18.162.155.216', 'MYSQL_PORT': '3308', 'MYSQL_USER': 'read', 'MYSQL_PASSWD': 'nze!CV75V$Jn'}, 'mysql-prd': {'MYSQL_HOST': '18.167.19.194', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'newriver_re', 'MYSQL_PASSWD': 'CC#1aAJAcs541aciV'}, 'shardingsphere-proxy-prd': {'MYSQL_HOST': '18.162.155.216', 'MYSQL_PORT': '3308', 'MYSQL_USER': 'read', 'MYSQL_PASSWD': 'nze!CV75V$Jn'}} 
+[2022-10-31 18:08:49,840][data_load.py 44][INFO]: 加载 D:\code\new_river\config\config.ini 文件......
+[2022-10-31 18:08:49,841][data_load.py 48][INFO]: 读到数据 ==>>  {'env': {'env': 'prd'}, 'host-test': {'api_root_url': 'https://newrivertest.agentgo.me/dc/pc', 'api_background_url': 'https://newrivertest.agentgo.me/dc'}, 'host-pre': {'api_root_url': 'https://newriverpre.agentgo.me/dc/pc', 'api_background_url': 'https://newriverpre.agentgo.me/dc'}, 'host-prd': {'api_root_url': 'https://www.newrivernft.io/dc/pc', 'api_background_url': 'https://www.newrivernft.io/dc'}, 'mysql-test': {'MYSQL_HOST': '18.162.133.143', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}, 'shardingsphere-proxy-test': {'MYSQL_HOST': '18.163.3.196', 'MYSQL_PORT': '3307', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}, 'mysql-pre': {'MYSQL_HOST': '18.167.19.194', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'newriver_re', 'MYSQL_PASSWD': 'CC#1aAJAcs541aciV'}, 'shardingsphere-proxy-pre': {'MYSQL_HOST': '18.162.155.216', 'MYSQL_PORT': '3308', 'MYSQL_USER': 'read', 'MYSQL_PASSWD': 'nze!CV75V$Jn'}, 'mysql-prd': {'MYSQL_HOST': '18.167.19.194', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'newriver_re', 'MYSQL_PASSWD': 'CC#1aAJAcs541aciV'}, 'shardingsphere-proxy-prd': {'MYSQL_HOST': '18.162.155.216', 'MYSQL_PORT': '3308', 'MYSQL_USER': 'read', 'MYSQL_PASSWD': 'nze!CV75V$Jn'}} 
+[2022-10-31 18:08:49,842][db.py 40][INFO]: 查询的sql为：SELECT distinct collection_uuid collection_uuid FROM `hk-manhattan`.chain_collection_aggregation_data
+[2022-10-31 18:08:50,701][test_data_calculate.py 27][INFO]: 选取到的集合的uuid为：[101281], start_index为：1275
+[2022-10-31 18:08:50,717][base_api.py 79][INFO]: 接口请求地址 ==>> https://www.newrivernft.io/dc/pc/listTopSales/app
+[2022-10-31 18:08:50,717][base_api.py 81][INFO]: 接口请求方式 ==>> GET
+[2022-10-31 18:08:50,717][base_api.py 86][INFO]: 接口请求 params 参数 ==>> {
+    "timeRange": "ONE_DAY",
+    "pageSize": 5,
+    "pageNum": 2
+}
+[2022-10-31 18:08:50,718][base_api.py 92][INFO]: 接口上传附件 files 参数 ==>> {'timeRange': 'ONE_DAY', 'pageSize': 5, 'pageNum': 2}
+[2022-10-31 18:08:50,718][base_api.py 94][INFO]: 接口 cookies 参数 ==>> {
+    "timeRange": "ONE_DAY",
+    "pageSize": 5,
+    "pageNum": 2
+}
+[2022-10-31 18:08:52,708][base_api.py 27][INFO]: 接口返回数据 ==>> {'code': 200, 'message': '操作成功', 'data': {'total': 2997, 'list': [{'collectionUuid': 101000, 'collectionName': 'boredapeyachtclub', 'collectName': 'Bored Ape Yacht Club', 'image': 'https://static.nftgo.io/asset/1651210195557.png', 'imageZoom': None, 'floorPrice': 69.94, 'floorChange': -0.01215, 'sales': 186, 'volume': 3138.0251, 'volumeChange': 1.2802, 'oneDayChangeDetail': [340.2029, 1440.612, 1594.3383, 887.7416, 829.0727, 1106.2536, 1601.9056, 2259.848], 'chain': 'ETH', 'blueChip': 1}, {'collectionUuid': 102932, 'collectionName': 'shadow-quest', 'collectName': 'Shadow Quest', 'image': 'https://lh3.googleusercontent.com/kvY3UaSqpSmowbs5O_TBiooJ8af6k3KYJN-yMsgJxD-g5VGb8_e23yWIDdddY0e4fpbHrwWnaeuXYh_JFQYO5ks7rnHp4PCZgABy=s120', 'imageZoom': None, 'floorPrice': 0.0125, 'floorChange': 0.58228, 'sales': 142, 'volume': 2.0138, 'volumeChange': 16.6789, 'oneDayChangeDetail': [0.0, 0.0, 0.013, 0.014, 0.0, 0.0463, 1.6917, 0.3971], 'chain': 'ETH', 'blueChip': 0}, {'collectionUuid': 101021, 'collectionName': 'beanzofficial', 'collectName': 'BEANZ Official', 'image': 'https://static.nftgo.io/asset/1650705191193.png', 'imageZoom': None, 'floorPrice': 0.85, 'floorChange': 0.08974, 'sales': 133, 'volume': 121.4855, 'volumeChange': 1.0508, 'oneDayChangeDetail': [59.5923, 109.8303, 33.6615, 33.1876, 53.3386, 49.5427, 120.6712, 27.4576], 'chain': 'ETH', 'blueChip': 0}, {'collectionUuid': 102933, 'collectionName': 'zorbs-v2', 'collectName': 'ZORBS by ZORA', 'image': 'https://lh3.googleusercontent.com/O2J_GV66yHfYeHIl-ASFknUqJ1qPB-W1D6xB2Xk-Po9GVE5Te9hkBSPsjCVTTHzq1QYgLppo4LcDtHiV3pxeSfB1b9_fP5pGbiRuUg=s120', 'imageZoom': None, 'floorPrice': 0.014, 'floorChange': -0.1716, 'sales': 103, 'volume': 1.5815, 'volumeChange': 1.1642, 'oneDayChangeDetail': [0.2746, 1.4934, 0.9675, 0.3078, 0.3472, 0.6543, 1.7685, 0.3396], 'chain': 'ETH', 'blueChip': 0}, {'collectionUuid': 101577, 'collectionName': 'asm-aifa-all-stars', 'collectName': 'ASM AIFA All-Stars', 'image': 'https://lh3.googleusercontent.com/aiB49weCSsN3o3IqqbTk_uE6aXzGHQmdEcEtNZclkuAMnt5aO8IDgtU4Y_Sl66ID4Q22jPqSKm67jy2ROSSUisCCo55CkiHB16hsFQ=s120', 'imageZoom': None, 'floorPrice': 0.07, 'floorChange': -0.08451, 'sales': 94, 'volume': 10.146, 'volumeChange': -0.0453, 'oneDayChangeDetail': [0.3169, 0.6181, 1.8692, 4.274, 91.4199, 4.1492, 13.3865, 5.6597], 'chain': 'ETH', 'blueChip': 0}], 'pageNum': 2, 'pageSize': 5, 'size': 5, 'startRow': 6, 'endRow': 10, 'pages': 600, 'prePage': 1, 'nextPage': 3, 'isFirstPage': False, 'isLastPage': False, 'hasPreviousPage': True, 'hasNextPage': True, 'navigatePages': 8, 'navigatepageNums': [1, 2, 3, 4, 5, 6, 7, 8], 'navigateFirstPage': 1, 'navigateLastPage': 8}}
+[2022-10-31 18:08:52,709][top_sales_page.py 35][INFO]: 选取到的集合名称：Bored Ape Yacht Club，uuid：101000
+[2022-10-31 18:08:52,709][db.py 40][INFO]: 查询的sql为：
+        select
+            floor_price
+        from
+            `hk-manhattan`.chain_collection_quotation
+        where
+            collection_uuid = 101000
+            and create_time = str_to_date( date_format( DATE_sub(CURRENT_TIMESTAMP(), interval 0 hour), '%Y-%m-%d %H'),
+            '%Y-%m-%d %H%i%m') 
+    
+[2022-10-31 18:08:53,589][db.py 40][INFO]: 查询的sql为：
+        select
+            sum(volume) volume
+        from
+            `hk-manhattan`.chain_collection_quotation ccq
+        where
+            create_time = str_to_date( date_format( DATE_sub(CURRENT_TIMESTAMP(), interval 0 hour), '%Y-%m-%d %H'),
+            '%Y-%m-%d %H%i%m')
+            and collection_uuid = 101000
+    
+[2022-10-31 18:08:53,852][db.py 40][INFO]: 查询的sql为：
+        select
+            sum(volume) volume
+        from
+            `hk-manhattan`.chain_collection_quotation ccq
+        where
+            create_time = str_to_date( date_format( DATE_sub(CURRENT_TIMESTAMP(), interval 23 hour), '%Y-%m-%d %H'),
+            '%Y-%m-%d %H%i%m')
+            and collection_uuid = 101000
+    
+[2022-10-31 18:08:54,732][db.py 40][INFO]: 查询的sql为：
+        select
+            floor_price
+        from
+            `hk-manhattan`.chain_collection_quotation
+        where
+            collection_uuid = 101000
+            and create_time = str_to_date( date_format( DATE_sub(CURRENT_TIMESTAMP(), interval 0 hour), '%Y-%m-%d %H'),
+            '%Y-%m-%d %H%i%m') 
+    
+[2022-10-31 18:08:56,201][db.py 40][INFO]: 查询的sql为：
+        select
+            floor_price
+        from
+            `hk-manhattan`.chain_collection_quotation
+        where
+            collection_uuid = 101000
+            and create_time = str_to_date( date_format( DATE_sub(CURRENT_TIMESTAMP(), interval 23 hour), '%Y-%m-%d %H'),
+            '%Y-%m-%d %H%i%m') 
+    
+[2022-10-31 18:08:56,766][db.py 40][INFO]: 查询的sql为：
+        SELECT sales FROM `hk-manhattan`.chain_collection_aggregation_data WHERE collection_uuid = 101000 and date_type = 0
+    
+[2022-10-31 18:08:57,027][top_sales_page.py 35][INFO]: 选取到的集合名称：Shadow Quest，uuid：102932
+[2022-10-31 18:08:57,028][db.py 40][INFO]: 查询的sql为：
+        select
+            floor_price
+        from
+            `hk-manhattan`.chain_collection_quotation
+        where
+            collection_uuid = 102932
+            and create_time = str_to_date( date_format( DATE_sub(CURRENT_TIMESTAMP(), interval 0 hour), '%Y-%m-%d %H'),
+            '%Y-%m-%d %H%i%m') 
+    
+[2022-10-31 18:08:57,905][db.py 40][INFO]: 查询的sql为：
+        select
+            sum(volume) volume
+        from
+            `hk-manhattan`.chain_collection_quotation ccq
+        where
+            create_time = str_to_date( date_format( DATE_sub(CURRENT_TIMESTAMP(), interval 0 hour), '%Y-%m-%d %H'),
+            '%Y-%m-%d %H%i%m')
+            and collection_uuid = 102932
+    
+[2022-10-31 18:08:58,480][db.py 40][INFO]: 查询的sql为：
+        select
+            sum(volume) volume
+        from
+            `hk-manhattan`.chain_collection_quotation ccq
+        where
+            create_time = str_to_date( date_format( DATE_sub(CURRENT_TIMESTAMP(), interval 23 hour), '%Y-%m-%d %H'),
+            '%Y-%m-%d %H%i%m')
+            and collection_uuid = 102932
+    
+[2022-10-31 18:08:58,738][db.py 40][INFO]: 查询的sql为：
+        select
+            floor_price
+        from
+            `hk-manhattan`.chain_collection_quotation
+        where
+            collection_uuid = 102932
+            and create_time = str_to_date( date_format( DATE_sub(CURRENT_TIMESTAMP(), interval 0 hour), '%Y-%m-%d %H'),
+            '%Y-%m-%d %H%i%m') 
+    
+[2022-10-31 18:08:58,992][db.py 40][INFO]: 查询的sql为：
+        select
+            floor_price
+        from
+            `hk-manhattan`.chain_collection_quotation
+        where
+            collection_uuid = 102932
+            and create_time = str_to_date( date_format( DATE_sub(CURRENT_TIMESTAMP(), interval 23 hour), '%Y-%m-%d %H'),
+            '%Y-%m-%d %H%i%m') 
+    
+[2022-10-31 18:08:59,249][db.py 40][INFO]: 查询的sql为：
+        SELECT sales FROM `hk-manhattan`.chain_collection_aggregation_data WHERE collection_uuid = 102932 and date_type = 0
+    
+[2022-10-31 18:08:59,503][top_sales_page.py 35][INFO]: 选取到的集合名称：BEANZ Official，uuid：101021
+[2022-10-31 18:08:59,504][db.py 40][INFO]: 查询的sql为：
+        select
+            floor_price
+        from
+            `hk-manhattan`.chain_collection_quotation
+        where
+            collection_uuid = 101021
+            and create_time = str_to_date( date_format( DATE_sub(CURRENT_TIMESTAMP(), interval 0 hour), '%Y-%m-%d %H'),
+            '%Y-%m-%d %H%i%m') 
+    
+[2022-10-31 18:09:00,068][db.py 40][INFO]: 查询的sql为：
+        select
+            sum(volume) volume
+        from
+            `hk-manhattan`.chain_collection_quotation ccq
+        where
+            create_time = str_to_date( date_format( DATE_sub(CURRENT_TIMESTAMP(), interval 0 hour), '%Y-%m-%d %H'),
+            '%Y-%m-%d %H%i%m')
+            and collection_uuid = 101021
+    
+[2022-10-31 18:09:00,623][db.py 40][INFO]: 查询的sql为：
+        select
+            sum(volume) volume
+        from
+            `hk-manhattan`.chain_collection_quotation ccq
+        where
+            create_time = str_to_date( date_format( DATE_sub(CURRENT_TIMESTAMP(), interval 23 hour), '%Y-%m-%d %H'),
+            '%Y-%m-%d %H%i%m')
+            and collection_uuid = 101021
+    
+[2022-10-31 18:09:01,189][db.py 40][INFO]: 查询的sql为：
+        select
+            floor_price
+        from
+            `hk-manhattan`.chain_collection_quotation
+        where
+            collection_uuid = 101021
+            and create_time = str_to_date( date_format( DATE_sub(CURRENT_TIMESTAMP(), interval 0 hour), '%Y-%m-%d %H'),
+            '%Y-%m-%d %H%i%m') 
+    
+[2022-10-31 18:09:01,441][db.py 40][INFO]: 查询的sql为：
+        select
+            floor_price
+        from
+            `hk-manhattan`.chain_collection_quotation
+        where
+            collection_uuid = 101021
+            and create_time = str_to_date( date_format( DATE_sub(CURRENT_TIMESTAMP(), interval 23 hour), '%Y-%m-%d %H'),
+            '%Y-%m-%d %H%i%m') 
+    
+[2022-10-31 18:09:02,329][db.py 40][INFO]: 查询的sql为：
+        SELECT sales FROM `hk-manhattan`.chain_collection_aggregation_data WHERE collection_uuid = 101021 and date_type = 0
+    
+[2022-10-31 18:09:14,611][top_sales_page.py 35][INFO]: 选取到的集合名称：ZORBS by ZORA，uuid：102933
+[2022-10-31 18:09:14,612][db.py 40][INFO]: 查询的sql为：
+        select
+            floor_price
+        from
+            `hk-manhattan`.chain_collection_quotation
+        where
+            collection_uuid = 102933
+            and create_time = str_to_date( date_format( DATE_sub(CURRENT_TIMESTAMP(), interval 0 hour), '%Y-%m-%d %H'),
+            '%Y-%m-%d %H%i%m') 
+    
+[2022-10-31 18:09:14,867][db.py 40][INFO]: 查询的sql为：
+        select
+            sum(volume) volume
+        from
+            `hk-manhattan`.chain_collection_quotation ccq
+        where
+            create_time = str_to_date( date_format( DATE_sub(CURRENT_TIMESTAMP(), interval 0 hour), '%Y-%m-%d %H'),
+            '%Y-%m-%d %H%i%m')
+            and collection_uuid = 102933
+    
+[2022-10-31 18:09:16,338][db.py 40][INFO]: 查询的sql为：
+        select
+            sum(volume) volume
+        from
+            `hk-manhattan`.chain_collection_quotation ccq
+        where
+            create_time = str_to_date( date_format( DATE_sub(CURRENT_TIMESTAMP(), interval 23 hour), '%Y-%m-%d %H'),
+            '%Y-%m-%d %H%i%m')
+            and collection_uuid = 102933
+    
+[2022-10-31 18:09:16,895][db.py 40][INFO]: 查询的sql为：
+        select
+            floor_price
+        from
+            `hk-manhattan`.chain_collection_quotation
+        where
+            collection_uuid = 102933
+            and create_time = str_to_date( date_format( DATE_sub(CURRENT_TIMESTAMP(), interval 0 hour), '%Y-%m-%d %H'),
+            '%Y-%m-%d %H%i%m') 
+    
+[2022-10-31 18:09:17,144][db.py 40][INFO]: 查询的sql为：
+        select
+            floor_price
+        from
+            `hk-manhattan`.chain_collection_quotation
+        where
+            collection_uuid = 102933
+            and create_time = str_to_date( date_format( DATE_sub(CURRENT_TIMESTAMP(), interval 23 hour), '%Y-%m-%d %H'),
+            '%Y-%m-%d %H%i%m') 
+    
+[2022-10-31 18:09:17,397][db.py 40][INFO]: 查询的sql为：
+        SELECT sales FROM `hk-manhattan`.chain_collection_aggregation_data WHERE collection_uuid = 102933 and date_type = 0
+    
+[2022-10-31 18:09:17,953][top_sales_page.py 35][INFO]: 选取到的集合名称：ASM AIFA All-Stars，uuid：101577
+[2022-10-31 18:09:17,954][db.py 40][INFO]: 查询的sql为：
+        select
+            floor_price
+        from
+            `hk-manhattan`.chain_collection_quotation
+        where
+            collection_uuid = 101577
+            and create_time = str_to_date( date_format( DATE_sub(CURRENT_TIMESTAMP(), interval 0 hour), '%Y-%m-%d %H'),
+            '%Y-%m-%d %H%i%m') 
+    
+[2022-10-31 18:09:18,507][db.py 40][INFO]: 查询的sql为：
+        select
+            sum(volume) volume
+        from
+            `hk-manhattan`.chain_collection_quotation ccq
+        where
+            create_time = str_to_date( date_format( DATE_sub(CURRENT_TIMESTAMP(), interval 0 hour), '%Y-%m-%d %H'),
+            '%Y-%m-%d %H%i%m')
+            and collection_uuid = 101577
+    
+[2022-10-31 18:09:19,378][db.py 40][INFO]: 查询的sql为：
+        select
+            sum(volume) volume
+        from
+            `hk-manhattan`.chain_collection_quotation ccq
+        where
+            create_time = str_to_date( date_format( DATE_sub(CURRENT_TIMESTAMP(), interval 23 hour), '%Y-%m-%d %H'),
+            '%Y-%m-%d %H%i%m')
+            and collection_uuid = 101577
+    
+[2022-10-31 18:09:19,938][db.py 40][INFO]: 查询的sql为：
+        select
+            floor_price
+        from
+            `hk-manhattan`.chain_collection_quotation
+        where
+            collection_uuid = 101577
+            and create_time = str_to_date( date_format( DATE_sub(CURRENT_TIMESTAMP(), interval 0 hour), '%Y-%m-%d %H'),
+            '%Y-%m-%d %H%i%m') 
+    
+[2022-10-31 18:09:23,820][db.py 40][INFO]: 查询的sql为：
+        select
+            floor_price
+        from
+            `hk-manhattan`.chain_collection_quotation
+        where
+            collection_uuid = 101577
+            and create_time = str_to_date( date_format( DATE_sub(CURRENT_TIMESTAMP(), interval 23 hour), '%Y-%m-%d %H'),
+            '%Y-%m-%d %H%i%m') 
+    
+[2022-10-31 18:09:24,072][db.py 40][INFO]: 查询的sql为：
+        SELECT sales FROM `hk-manhattan`.chain_collection_aggregation_data WHERE collection_uuid = 101577 and date_type = 0
+    
+[2022-10-31 18:09:24,324][test_data_calculate.py 35][INFO]: top sales页面测试数据为(接口返回，数据库查询)[地板价-交易量-地板价变化率-sales]：[['Bored Ape Yacht Club', 'Bored Ape Yacht Club'], [101000, 101000], [69.94, 69.94], [3138.0251, 0.0], [-0.01215, -0.01215], [186, 186]]
+[2022-10-31 18:09:24,324][test_data_calculate.py 35][INFO]: top sales页面测试数据为(接口返回，数据库查询)[地板价-交易量-地板价变化率-sales]：[['Shadow Quest', 'Shadow Quest'], [102932, 102932], [0.013, 0.013], [2.0138, 0.0], [0.58228, 0.58228], [142, 142]]
+[2022-10-31 18:09:24,324][test_data_calculate.py 35][INFO]: top sales页面测试数据为(接口返回，数据库查询)[地板价-交易量-地板价变化率-sales]：[['BEANZ Official', 'BEANZ Official'], [101021, 101021], [0.85, 0.85], [121.4855, 0.0], [0.08974, 0.08974], [133, 133]]
+[2022-10-31 18:09:24,324][test_data_calculate.py 35][INFO]: top sales页面测试数据为(接口返回，数据库查询)[地板价-交易量-地板价变化率-sales]：[['ZORBS by ZORA', 'ZORBS by ZORA'], [102933, 102933], [0.014, 0.014], [1.5815, -0.12303], [-0.1716, -0.19075], [103, 103]]
+[2022-10-31 18:09:24,324][test_data_calculate.py 35][INFO]: top sales页面测试数据为(接口返回，数据库查询)[地板价-交易量-地板价变化率-sales]：[['ASM AIFA All-Stars', 'ASM AIFA All-Stars'], [101577, 101577], [0.07, 0.07], [10.146, -0.2332], [-0.08451, -0.01408], [94, 94]]
+[2022-10-31 18:22:21,236][data_load.py 44][INFO]: 加载 D:\code\new_river\config\config.ini 文件......
+[2022-10-31 18:22:21,237][data_load.py 48][INFO]: 读到数据 ==>>  {'env': {'env': 'prd'}, 'host-test': {'api_root_url': 'https://newrivertest.agentgo.me/dc/pc', 'api_background_url': 'https://newrivertest.agentgo.me/dc'}, 'host-pre': {'api_root_url': 'https://newriverpre.agentgo.me/dc/pc', 'api_background_url': 'https://newriverpre.agentgo.me/dc'}, 'host-prd': {'api_root_url': 'https://www.newrivernft.io/dc/pc', 'api_background_url': 'https://www.newrivernft.io/dc'}, 'mysql-test': {'MYSQL_HOST': '18.162.133.143', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}, 'shardingsphere-proxy-test': {'MYSQL_HOST': '18.163.3.196', 'MYSQL_PORT': '3307', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}, 'mysql-pre': {'MYSQL_HOST': '18.167.19.194', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'newriver_re', 'MYSQL_PASSWD': 'CC#1aAJAcs541aciV'}, 'shardingsphere-proxy-pre': {'MYSQL_HOST': '18.162.155.216', 'MYSQL_PORT': '3308', 'MYSQL_USER': 'read', 'MYSQL_PASSWD': 'nze!CV75V$Jn'}, 'mysql-prd': {'MYSQL_HOST': '18.167.19.194', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'newriver_re', 'MYSQL_PASSWD': 'CC#1aAJAcs541aciV'}, 'shardingsphere-proxy-prd': {'MYSQL_HOST': '18.162.155.216', 'MYSQL_PORT': '3308', 'MYSQL_USER': 'read', 'MYSQL_PASSWD': 'nze!CV75V$Jn'}} 
+[2022-10-31 18:22:21,240][data_load.py 44][INFO]: 加载 D:\code\new_river\config\config.ini 文件......
+[2022-10-31 18:22:21,240][data_load.py 48][INFO]: 读到数据 ==>>  {'env': {'env': 'prd'}, 'host-test': {'api_root_url': 'https://newrivertest.agentgo.me/dc/pc', 'api_background_url': 'https://newrivertest.agentgo.me/dc'}, 'host-pre': {'api_root_url': 'https://newriverpre.agentgo.me/dc/pc', 'api_background_url': 'https://newriverpre.agentgo.me/dc'}, 'host-prd': {'api_root_url': 'https://www.newrivernft.io/dc/pc', 'api_background_url': 'https://www.newrivernft.io/dc'}, 'mysql-test': {'MYSQL_HOST': '18.162.133.143', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}, 'shardingsphere-proxy-test': {'MYSQL_HOST': '18.163.3.196', 'MYSQL_PORT': '3307', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}, 'mysql-pre': {'MYSQL_HOST': '18.167.19.194', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'newriver_re', 'MYSQL_PASSWD': 'CC#1aAJAcs541aciV'}, 'shardingsphere-proxy-pre': {'MYSQL_HOST': '18.162.155.216', 'MYSQL_PORT': '3308', 'MYSQL_USER': 'read', 'MYSQL_PASSWD': 'nze!CV75V$Jn'}, 'mysql-prd': {'MYSQL_HOST': '18.167.19.194', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'newriver_re', 'MYSQL_PASSWD': 'CC#1aAJAcs541aciV'}, 'shardingsphere-proxy-prd': {'MYSQL_HOST': '18.162.155.216', 'MYSQL_PORT': '3308', 'MYSQL_USER': 'read', 'MYSQL_PASSWD': 'nze!CV75V$Jn'}} 
+[2022-10-31 18:22:21,619][data_load.py 44][INFO]: 加载 D:\code\new_river\config\config.ini 文件......
+[2022-10-31 18:22:21,622][data_load.py 48][INFO]: 读到数据 ==>>  {'env': {'env': 'prd'}, 'host-test': {'api_root_url': 'https://newrivertest.agentgo.me/dc/pc', 'api_background_url': 'https://newrivertest.agentgo.me/dc'}, 'host-pre': {'api_root_url': 'https://newriverpre.agentgo.me/dc/pc', 'api_background_url': 'https://newriverpre.agentgo.me/dc'}, 'host-prd': {'api_root_url': 'https://www.newrivernft.io/dc/pc', 'api_background_url': 'https://www.newrivernft.io/dc'}, 'mysql-test': {'MYSQL_HOST': '18.162.133.143', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}, 'shardingsphere-proxy-test': {'MYSQL_HOST': '18.163.3.196', 'MYSQL_PORT': '3307', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}, 'mysql-pre': {'MYSQL_HOST': '18.167.19.194', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'newriver_re', 'MYSQL_PASSWD': 'CC#1aAJAcs541aciV'}, 'shardingsphere-proxy-pre': {'MYSQL_HOST': '18.162.155.216', 'MYSQL_PORT': '3308', 'MYSQL_USER': 'read', 'MYSQL_PASSWD': 'nze!CV75V$Jn'}, 'mysql-prd': {'MYSQL_HOST': '18.167.19.194', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'newriver_re', 'MYSQL_PASSWD': 'CC#1aAJAcs541aciV'}, 'shardingsphere-proxy-prd': {'MYSQL_HOST': '18.162.155.216', 'MYSQL_PORT': '3308', 'MYSQL_USER': 'read', 'MYSQL_PASSWD': 'nze!CV75V$Jn'}} 
+[2022-10-31 18:22:21,623][data_load.py 44][INFO]: 加载 D:\code\new_river\config\config.ini 文件......
+[2022-10-31 18:22:21,626][data_load.py 48][INFO]: 读到数据 ==>>  {'env': {'env': 'prd'}, 'host-test': {'api_root_url': 'https://newrivertest.agentgo.me/dc/pc', 'api_background_url': 'https://newrivertest.agentgo.me/dc'}, 'host-pre': {'api_root_url': 'https://newriverpre.agentgo.me/dc/pc', 'api_background_url': 'https://newriverpre.agentgo.me/dc'}, 'host-prd': {'api_root_url': 'https://www.newrivernft.io/dc/pc', 'api_background_url': 'https://www.newrivernft.io/dc'}, 'mysql-test': {'MYSQL_HOST': '18.162.133.143', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}, 'shardingsphere-proxy-test': {'MYSQL_HOST': '18.163.3.196', 'MYSQL_PORT': '3307', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}, 'mysql-pre': {'MYSQL_HOST': '18.167.19.194', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'newriver_re', 'MYSQL_PASSWD': 'CC#1aAJAcs541aciV'}, 'shardingsphere-proxy-pre': {'MYSQL_HOST': '18.162.155.216', 'MYSQL_PORT': '3308', 'MYSQL_USER': 'read', 'MYSQL_PASSWD': 'nze!CV75V$Jn'}, 'mysql-prd': {'MYSQL_HOST': '18.167.19.194', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'newriver_re', 'MYSQL_PASSWD': 'CC#1aAJAcs541aciV'}, 'shardingsphere-proxy-prd': {'MYSQL_HOST': '18.162.155.216', 'MYSQL_PORT': '3308', 'MYSQL_USER': 'read', 'MYSQL_PASSWD': 'nze!CV75V$Jn'}} 
+[2022-10-31 18:22:22,098][data_load.py 44][INFO]: 加载 D:\code\new_river\config\config.ini 文件......
+[2022-10-31 18:22:22,099][data_load.py 48][INFO]: 读到数据 ==>>  {'env': {'env': 'prd'}, 'host-test': {'api_root_url': 'https://newrivertest.agentgo.me/dc/pc', 'api_background_url': 'https://newrivertest.agentgo.me/dc'}, 'host-pre': {'api_root_url': 'https://newriverpre.agentgo.me/dc/pc', 'api_background_url': 'https://newriverpre.agentgo.me/dc'}, 'host-prd': {'api_root_url': 'https://www.newrivernft.io/dc/pc', 'api_background_url': 'https://www.newrivernft.io/dc'}, 'mysql-test': {'MYSQL_HOST': '18.162.133.143', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}, 'shardingsphere-proxy-test': {'MYSQL_HOST': '18.163.3.196', 'MYSQL_PORT': '3307', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}, 'mysql-pre': {'MYSQL_HOST': '18.167.19.194', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'newriver_re', 'MYSQL_PASSWD': 'CC#1aAJAcs541aciV'}, 'shardingsphere-proxy-pre': {'MYSQL_HOST': '18.162.155.216', 'MYSQL_PORT': '3308', 'MYSQL_USER': 'read', 'MYSQL_PASSWD': 'nze!CV75V$Jn'}, 'mysql-prd': {'MYSQL_HOST': '18.167.19.194', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'newriver_re', 'MYSQL_PASSWD': 'CC#1aAJAcs541aciV'}, 'shardingsphere-proxy-prd': {'MYSQL_HOST': '18.162.155.216', 'MYSQL_PORT': '3308', 'MYSQL_USER': 'read', 'MYSQL_PASSWD': 'nze!CV75V$Jn'}} 
+[2022-10-31 18:22:22,100][data_load.py 44][INFO]: 加载 D:\code\new_river\config\config.ini 文件......
+[2022-10-31 18:22:22,101][data_load.py 48][INFO]: 读到数据 ==>>  {'env': {'env': 'prd'}, 'host-test': {'api_root_url': 'https://newrivertest.agentgo.me/dc/pc', 'api_background_url': 'https://newrivertest.agentgo.me/dc'}, 'host-pre': {'api_root_url': 'https://newriverpre.agentgo.me/dc/pc', 'api_background_url': 'https://newriverpre.agentgo.me/dc'}, 'host-prd': {'api_root_url': 'https://www.newrivernft.io/dc/pc', 'api_background_url': 'https://www.newrivernft.io/dc'}, 'mysql-test': {'MYSQL_HOST': '18.162.133.143', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}, 'shardingsphere-proxy-test': {'MYSQL_HOST': '18.163.3.196', 'MYSQL_PORT': '3307', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}, 'mysql-pre': {'MYSQL_HOST': '18.167.19.194', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'newriver_re', 'MYSQL_PASSWD': 'CC#1aAJAcs541aciV'}, 'shardingsphere-proxy-pre': {'MYSQL_HOST': '18.162.155.216', 'MYSQL_PORT': '3308', 'MYSQL_USER': 'read', 'MYSQL_PASSWD': 'nze!CV75V$Jn'}, 'mysql-prd': {'MYSQL_HOST': '18.167.19.194', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'newriver_re', 'MYSQL_PASSWD': 'CC#1aAJAcs541aciV'}, 'shardingsphere-proxy-prd': {'MYSQL_HOST': '18.162.155.216', 'MYSQL_PORT': '3308', 'MYSQL_USER': 'read', 'MYSQL_PASSWD': 'nze!CV75V$Jn'}} 
+[2022-10-31 18:22:22,104][data_load.py 44][INFO]: 加载 D:\code\new_river\config\config.ini 文件......
+[2022-10-31 18:22:22,105][data_load.py 48][INFO]: 读到数据 ==>>  {'env': {'env': 'prd'}, 'host-test': {'api_root_url': 'https://newrivertest.agentgo.me/dc/pc', 'api_background_url': 'https://newrivertest.agentgo.me/dc'}, 'host-pre': {'api_root_url': 'https://newriverpre.agentgo.me/dc/pc', 'api_background_url': 'https://newriverpre.agentgo.me/dc'}, 'host-prd': {'api_root_url': 'https://www.newrivernft.io/dc/pc', 'api_background_url': 'https://www.newrivernft.io/dc'}, 'mysql-test': {'MYSQL_HOST': '18.162.133.143', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}, 'shardingsphere-proxy-test': {'MYSQL_HOST': '18.163.3.196', 'MYSQL_PORT': '3307', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}, 'mysql-pre': {'MYSQL_HOST': '18.167.19.194', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'newriver_re', 'MYSQL_PASSWD': 'CC#1aAJAcs541aciV'}, 'shardingsphere-proxy-pre': {'MYSQL_HOST': '18.162.155.216', 'MYSQL_PORT': '3308', 'MYSQL_USER': 'read', 'MYSQL_PASSWD': 'nze!CV75V$Jn'}, 'mysql-prd': {'MYSQL_HOST': '18.167.19.194', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'newriver_re', 'MYSQL_PASSWD': 'CC#1aAJAcs541aciV'}, 'shardingsphere-proxy-prd': {'MYSQL_HOST': '18.162.155.216', 'MYSQL_PORT': '3308', 'MYSQL_USER': 'read', 'MYSQL_PASSWD': 'nze!CV75V$Jn'}} 
+[2022-10-31 18:22:22,105][data_load.py 44][INFO]: 加载 D:\code\new_river\config\config.ini 文件......
+[2022-10-31 18:22:22,106][data_load.py 48][INFO]: 读到数据 ==>>  {'env': {'env': 'prd'}, 'host-test': {'api_root_url': 'https://newrivertest.agentgo.me/dc/pc', 'api_background_url': 'https://newrivertest.agentgo.me/dc'}, 'host-pre': {'api_root_url': 'https://newriverpre.agentgo.me/dc/pc', 'api_background_url': 'https://newriverpre.agentgo.me/dc'}, 'host-prd': {'api_root_url': 'https://www.newrivernft.io/dc/pc', 'api_background_url': 'https://www.newrivernft.io/dc'}, 'mysql-test': {'MYSQL_HOST': '18.162.133.143', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}, 'shardingsphere-proxy-test': {'MYSQL_HOST': '18.163.3.196', 'MYSQL_PORT': '3307', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}, 'mysql-pre': {'MYSQL_HOST': '18.167.19.194', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'newriver_re', 'MYSQL_PASSWD': 'CC#1aAJAcs541aciV'}, 'shardingsphere-proxy-pre': {'MYSQL_HOST': '18.162.155.216', 'MYSQL_PORT': '3308', 'MYSQL_USER': 'read', 'MYSQL_PASSWD': 'nze!CV75V$Jn'}, 'mysql-prd': {'MYSQL_HOST': '18.167.19.194', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'newriver_re', 'MYSQL_PASSWD': 'CC#1aAJAcs541aciV'}, 'shardingsphere-proxy-prd': {'MYSQL_HOST': '18.162.155.216', 'MYSQL_PORT': '3308', 'MYSQL_USER': 'read', 'MYSQL_PASSWD': 'nze!CV75V$Jn'}} 
+[2022-10-31 18:22:22,109][data_load.py 44][INFO]: 加载 D:\code\new_river\config\config.ini 文件......
+[2022-10-31 18:22:22,110][data_load.py 48][INFO]: 读到数据 ==>>  {'env': {'env': 'prd'}, 'host-test': {'api_root_url': 'https://newrivertest.agentgo.me/dc/pc', 'api_background_url': 'https://newrivertest.agentgo.me/dc'}, 'host-pre': {'api_root_url': 'https://newriverpre.agentgo.me/dc/pc', 'api_background_url': 'https://newriverpre.agentgo.me/dc'}, 'host-prd': {'api_root_url': 'https://www.newrivernft.io/dc/pc', 'api_background_url': 'https://www.newrivernft.io/dc'}, 'mysql-test': {'MYSQL_HOST': '18.162.133.143', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}, 'shardingsphere-proxy-test': {'MYSQL_HOST': '18.163.3.196', 'MYSQL_PORT': '3307', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}, 'mysql-pre': {'MYSQL_HOST': '18.167.19.194', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'newriver_re', 'MYSQL_PASSWD': 'CC#1aAJAcs541aciV'}, 'shardingsphere-proxy-pre': {'MYSQL_HOST': '18.162.155.216', 'MYSQL_PORT': '3308', 'MYSQL_USER': 'read', 'MYSQL_PASSWD': 'nze!CV75V$Jn'}, 'mysql-prd': {'MYSQL_HOST': '18.167.19.194', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'newriver_re', 'MYSQL_PASSWD': 'CC#1aAJAcs541aciV'}, 'shardingsphere-proxy-prd': {'MYSQL_HOST': '18.162.155.216', 'MYSQL_PORT': '3308', 'MYSQL_USER': 'read', 'MYSQL_PASSWD': 'nze!CV75V$Jn'}} 
+[2022-10-31 18:22:22,110][data_load.py 44][INFO]: 加载 D:\code\new_river\config\config.ini 文件......
+[2022-10-31 18:22:22,111][data_load.py 48][INFO]: 读到数据 ==>>  {'env': {'env': 'prd'}, 'host-test': {'api_root_url': 'https://newrivertest.agentgo.me/dc/pc', 'api_background_url': 'https://newrivertest.agentgo.me/dc'}, 'host-pre': {'api_root_url': 'https://newriverpre.agentgo.me/dc/pc', 'api_background_url': 'https://newriverpre.agentgo.me/dc'}, 'host-prd': {'api_root_url': 'https://www.newrivernft.io/dc/pc', 'api_background_url': 'https://www.newrivernft.io/dc'}, 'mysql-test': {'MYSQL_HOST': '18.162.133.143', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}, 'shardingsphere-proxy-test': {'MYSQL_HOST': '18.163.3.196', 'MYSQL_PORT': '3307', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}, 'mysql-pre': {'MYSQL_HOST': '18.167.19.194', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'newriver_re', 'MYSQL_PASSWD': 'CC#1aAJAcs541aciV'}, 'shardingsphere-proxy-pre': {'MYSQL_HOST': '18.162.155.216', 'MYSQL_PORT': '3308', 'MYSQL_USER': 'read', 'MYSQL_PASSWD': 'nze!CV75V$Jn'}, 'mysql-prd': {'MYSQL_HOST': '18.167.19.194', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'newriver_re', 'MYSQL_PASSWD': 'CC#1aAJAcs541aciV'}, 'shardingsphere-proxy-prd': {'MYSQL_HOST': '18.162.155.216', 'MYSQL_PORT': '3308', 'MYSQL_USER': 'read', 'MYSQL_PASSWD': 'nze!CV75V$Jn'}} 
+[2022-10-31 18:22:22,117][data_load.py 44][INFO]: 加载 D:\code\new_river\config\config.ini 文件......
+[2022-10-31 18:22:22,118][data_load.py 48][INFO]: 读到数据 ==>>  {'env': {'env': 'prd'}, 'host-test': {'api_root_url': 'https://newrivertest.agentgo.me/dc/pc', 'api_background_url': 'https://newrivertest.agentgo.me/dc'}, 'host-pre': {'api_root_url': 'https://newriverpre.agentgo.me/dc/pc', 'api_background_url': 'https://newriverpre.agentgo.me/dc'}, 'host-prd': {'api_root_url': 'https://www.newrivernft.io/dc/pc', 'api_background_url': 'https://www.newrivernft.io/dc'}, 'mysql-test': {'MYSQL_HOST': '18.162.133.143', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}, 'shardingsphere-proxy-test': {'MYSQL_HOST': '18.163.3.196', 'MYSQL_PORT': '3307', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}, 'mysql-pre': {'MYSQL_HOST': '18.167.19.194', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'newriver_re', 'MYSQL_PASSWD': 'CC#1aAJAcs541aciV'}, 'shardingsphere-proxy-pre': {'MYSQL_HOST': '18.162.155.216', 'MYSQL_PORT': '3308', 'MYSQL_USER': 'read', 'MYSQL_PASSWD': 'nze!CV75V$Jn'}, 'mysql-prd': {'MYSQL_HOST': '18.167.19.194', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'newriver_re', 'MYSQL_PASSWD': 'CC#1aAJAcs541aciV'}, 'shardingsphere-proxy-prd': {'MYSQL_HOST': '18.162.155.216', 'MYSQL_PORT': '3308', 'MYSQL_USER': 'read', 'MYSQL_PASSWD': 'nze!CV75V$Jn'}} 
+[2022-10-31 18:22:22,118][data_load.py 44][INFO]: 加载 D:\code\new_river\config\config.ini 文件......
+[2022-10-31 18:22:22,119][data_load.py 48][INFO]: 读到数据 ==>>  {'env': {'env': 'prd'}, 'host-test': {'api_root_url': 'https://newrivertest.agentgo.me/dc/pc', 'api_background_url': 'https://newrivertest.agentgo.me/dc'}, 'host-pre': {'api_root_url': 'https://newriverpre.agentgo.me/dc/pc', 'api_background_url': 'https://newriverpre.agentgo.me/dc'}, 'host-prd': {'api_root_url': 'https://www.newrivernft.io/dc/pc', 'api_background_url': 'https://www.newrivernft.io/dc'}, 'mysql-test': {'MYSQL_HOST': '18.162.133.143', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}, 'shardingsphere-proxy-test': {'MYSQL_HOST': '18.163.3.196', 'MYSQL_PORT': '3307', 'MYSQL_USER': 'root', 'MYSQL_PASSWD': 'root@123'}, 'mysql-pre': {'MYSQL_HOST': '18.167.19.194', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'newriver_re', 'MYSQL_PASSWD': 'CC#1aAJAcs541aciV'}, 'shardingsphere-proxy-pre': {'MYSQL_HOST': '18.162.155.216', 'MYSQL_PORT': '3308', 'MYSQL_USER': 'read', 'MYSQL_PASSWD': 'nze!CV75V$Jn'}, 'mysql-prd': {'MYSQL_HOST': '18.167.19.194', 'MYSQL_PORT': '13306', 'MYSQL_USER': 'newriver_re', 'MYSQL_PASSWD': 'CC#1aAJAcs541aciV'}, 'shardingsphere-proxy-prd': {'MYSQL_HOST': '18.162.155.216', 'MYSQL_PORT': '3308', 'MYSQL_USER': 'read', 'MYSQL_PASSWD': 'nze!CV75V$Jn'}} 
+[2022-10-31 18:22:22,119][db.py 40][INFO]: 查询的sql为：SELECT distinct collection_uuid collection_uuid FROM `hk-manhattan`.chain_collection_aggregation_data
+[2022-10-31 18:22:22,654][test_data_calculate.py 27][INFO]: 选取到的集合的uuid为：[102683], start_index为：2673
+[2022-10-31 18:22:22,672][base_api.py 79][INFO]: 接口请求地址 ==>> https://www.newrivernft.io/dc/pc/listTopSales/app
+[2022-10-31 18:22:22,673][base_api.py 81][INFO]: 接口请求方式 ==>> GET
+[2022-10-31 18:22:22,673][base_api.py 86][INFO]: 接口请求 params 参数 ==>> {
+    "timeRange": "ONE_DAY",
+    "pageSize": 5,
+    "pageNum": 1
+}
+[2022-10-31 18:22:22,673][base_api.py 92][INFO]: 接口上传附件 files 参数 ==>> {'timeRange': 'ONE_DAY', 'pageSize': 5, 'pageNum': 1}
+[2022-10-31 18:22:22,673][base_api.py 94][INFO]: 接口 cookies 参数 ==>> {
+    "timeRange": "ONE_DAY",
+    "pageSize": 5,
+    "pageNum": 1
+}
+[2022-10-31 18:22:25,547][base_api.py 27][INFO]: 接口返回数据 ==>> {'code': 200, 'message': '操作成功', 'data': {'total': 2997, 'list': [{'collectionUuid': 101001, 'collectionName': 'otherdeed', 'collectName': 'Otherdeed', 'image': 'https://lh3.googleusercontent.com/yIm-M5-BpSDdTEIJRt5D6xphizhIdozXjqSITgK4phWq7MmAU3qE7Nw7POGCiPGyhtJ3ZFP8iJ29TFl-RLcGBWX5qI4-ZcnCPcsY4zI=s120', 'imageZoom': None, 'floorPrice': 1.29, 'floorChange': -0.0458, 'sales': 616, 'volume': 1253.7513, 'volumeChange': 0.6609, 'oneDayChangeDetail': [443.8326, 970.7596, 718.6422, 1004.4371, 928.4734, 884.0835, 912.6697, 555.5594], 'chain': 'ETH', 'blueChip': 2}, {'collectionUuid': 100490, 'collectionName': 'uniswap-v3-positions', 'collectName': 'Uniswap V3 Positions', 'image': 'https://static.nftgo.io/asset/1626416479703.png', 'imageZoom': None, 'floorPrice': 0.0, 'floorChange': 0, 'sales': 258, 'volume': 5.4027, 'volumeChange': -0.6507, 'oneDayChangeDetail': [3.2001, 5.7863, 13.7082, 64.8021, 34.3721, 134.7151, 4.7474, 1.8677], 'chain': 'ETH', 'blueChip': 0}, {'collectionUuid': 103009, 'collectionName': 'cryptodickbutts-s3', 'collectName': 'CryptoDickbutts', 'image': 'https://newriver-hk.s3.ap-east-1.amazonaws.com/2022/08/29/66bf30914beb01dcce701187a153c245.gif', 'imageZoom': None, 'floorPrice': 2.9, 'floorChange': 0.45729, 'sales': 244, 'volume': 660.2338, 'volumeChange': 93.2085, 'oneDayChangeDetail': [19.3779, 21.0382, 19.983, 20.9069, 23.2882, 4.4072, 616.8927, 48.6322], 'chain': 'ETH', 'blueChip': 0}, {'collectionUuid': 101002, 'collectionName': 'art-blocks', 'collectName': 'Art Blocks', 'image': 'https://lh3.googleusercontent.com/GwnosrkaneKGEkWySxvTSzZ5bEUjWkRuQzLSNfrpgy2-gxYjoR3m5PohLT9Fzy0p1tohajZ1g-LFfF_ZLnS1GqlPNHPUaKUbDhbf=s130', 'imageZoom': None, 'floorPrice': 0.75, 'floorChange': 0, 'sales': 242, 'volume': 364.0299, 'volumeChange': 0.7374, 'oneDayChangeDetail': [315.6354, 1017.7447, 573.2551, 337.4509, 696.3373, 362.5605, 151.7225, 241.6533], 'chain': 'ETH', 'blueChip': 0}, {'collectionUuid': 102996, 'collectionName': 'rareapepeyachtclub', 'collectName': 'Rare Apepe YC', 'image': 'https://newriver-hk.s3.ap-east-1.amazonaws.com/08/08/6b2386e0d983a135da67bf4e97ab7db0.jpeg', 'imageZoom': None, 'floorPrice': 0.277, 'floorChange': -0.19687, 'sales': 196, 'volume': 66.9602, 'volumeChange': 1.9227, 'oneDayChangeDetail': [27.2784, 16.4776, 15.6415, 46.4684, 22.3235, 19.3197, 49.9455, 28.3357], 'chain': 'ETH', 'blueChip': 0}], 'pageNum': 1, 'pageSize': 5, 'size': 5, 'startRow': 1, 'endRow': 5, 'pages': 600, 'prePage': 0, 'nextPage': 2, 'isFirstPage': True, 'isLastPage': False, 'hasPreviousPage': False, 'hasNextPage': True, 'navigatePages': 8, 'navigatepageNums': [1, 2, 3, 4, 5, 6, 7, 8], 'navigateFirstPage': 1, 'navigateLastPage': 8}}
+[2022-10-31 18:22:25,548][top_sales_page.py 35][INFO]: 选取到的集合名称：Otherdeed，uuid：101001
+[2022-10-31 18:22:25,549][db.py 40][INFO]: 查询的sql为：
+        select
+            floor_price
+        from
+            `hk-manhattan`.chain_collection_quotation
+        where
+            collection_uuid = 101001
+            and create_time = str_to_date( date_format( DATE_sub(CURRENT_TIMESTAMP(), interval 0 hour), '%Y-%m-%d %H'),
+            '%Y-%m-%d %H%i%m') 
+    
+[2022-10-31 18:22:25,805][db.py 40][INFO]: 查询的sql为：
+        select
+            sum(volume) volume
+        from
+            `hk-manhattan`.chain_collection_quotation ccq
+        where
+            create_time = str_to_date( date_format( DATE_sub(CURRENT_TIMESTAMP(), interval 0 hour), '%Y-%m-%d %H'),
+            '%Y-%m-%d %H%i%m')
+            and collection_uuid = 101001
+    
+[2022-10-31 18:22:26,363][db.py 40][INFO]: 查询的sql为：
+        select
+            sum(volume) volume
+        from
+            `hk-manhattan`.chain_collection_quotation ccq
+        where
+            create_time = str_to_date( date_format( DATE_sub(CURRENT_TIMESTAMP(), interval 24 hour), '%Y-%m-%d %H'),
+            '%Y-%m-%d %H%i%m')
+            and collection_uuid = 101001
+    
+[2022-10-31 18:22:26,621][db.py 40][INFO]: 查询的sql为：
+        select
+            floor_price
+        from
+            `hk-manhattan`.chain_collection_quotation
+        where
+            collection_uuid = 101001
+            and create_time = str_to_date( date_format( DATE_sub(CURRENT_TIMESTAMP(), interval 0 hour), '%Y-%m-%d %H'),
+            '%Y-%m-%d %H%i%m') 
+    
+[2022-10-31 18:22:26,868][db.py 40][INFO]: 查询的sql为：
+        select
+            floor_price
+        from
+            `hk-manhattan`.chain_collection_quotation
+        where
+            collection_uuid = 101001
+            and create_time = str_to_date( date_format( DATE_sub(CURRENT_TIMESTAMP(), interval 24 hour), '%Y-%m-%d %H'),
+            '%Y-%m-%d %H%i%m') 
+    
+[2022-10-31 18:22:27,116][db.py 40][INFO]: 查询的sql为：
+        SELECT sales FROM `hk-manhattan`.chain_collection_aggregation_data WHERE collection_uuid = 101001 and date_type = 0
+    
+[2022-10-31 18:22:27,367][top_sales_page.py 35][INFO]: 选取到的集合名称：Uniswap V3 Positions，uuid：100490
+[2022-10-31 18:22:27,367][db.py 40][INFO]: 查询的sql为：
+        select
+            floor_price
+        from
+            `hk-manhattan`.chain_collection_quotation
+        where
+            collection_uuid = 100490
+            and create_time = str_to_date( date_format( DATE_sub(CURRENT_TIMESTAMP(), interval 0 hour), '%Y-%m-%d %H'),
+            '%Y-%m-%d %H%i%m') 
+    
+[2022-10-31 18:22:27,627][db.py 40][INFO]: 查询的sql为：
+        select
+            sum(volume) volume
+        from
+            `hk-manhattan`.chain_collection_quotation ccq
+        where
+            create_time = str_to_date( date_format( DATE_sub(CURRENT_TIMESTAMP(), interval 0 hour), '%Y-%m-%d %H'),
+            '%Y-%m-%d %H%i%m')
+            and collection_uuid = 100490
+    
+[2022-10-31 18:22:27,877][db.py 40][INFO]: 查询的sql为：
+        select
+            sum(volume) volume
+        from
+            `hk-manhattan`.chain_collection_quotation ccq
+        where
+            create_time = str_to_date( date_format( DATE_sub(CURRENT_TIMESTAMP(), interval 24 hour), '%Y-%m-%d %H'),
+            '%Y-%m-%d %H%i%m')
+            and collection_uuid = 100490
+    
+[2022-10-31 18:22:28,136][db.py 40][INFO]: 查询的sql为：
+        select
+            floor_price
+        from
+            `hk-manhattan`.chain_collection_quotation
+        where
+            collection_uuid = 100490
+            and create_time = str_to_date( date_format( DATE_sub(CURRENT_TIMESTAMP(), interval 0 hour), '%Y-%m-%d %H'),
+            '%Y-%m-%d %H%i%m') 
+    
+[2022-10-31 18:22:28,697][db.py 40][INFO]: 查询的sql为：
+        select
+            floor_price
+        from
+            `hk-manhattan`.chain_collection_quotation
+        where
+            collection_uuid = 100490
+            and create_time = str_to_date( date_format( DATE_sub(CURRENT_TIMESTAMP(), interval 24 hour), '%Y-%m-%d %H'),
+            '%Y-%m-%d %H%i%m') 
+    
+[2022-10-31 18:22:29,570][db.py 40][INFO]: 查询的sql为：
+        SELECT sales FROM `hk-manhattan`.chain_collection_aggregation_data WHERE collection_uuid = 100490 and date_type = 0
+    
+[2022-10-31 18:22:29,822][top_sales_page.py 35][INFO]: 选取到的集合名称：CryptoDickbutts，uuid：103009
+[2022-10-31 18:22:29,823][db.py 40][INFO]: 查询的sql为：
+        select
+            floor_price
+        from
+            `hk-manhattan`.chain_collection_quotation
+        where
+            collection_uuid = 103009
+            and create_time = str_to_date( date_format( DATE_sub(CURRENT_TIMESTAMP(), interval 0 hour), '%Y-%m-%d %H'),
+            '%Y-%m-%d %H%i%m') 
+    
+[2022-10-31 18:22:30,085][db.py 40][INFO]: 查询的sql为：
+        select
+            sum(volume) volume
+        from
+            `hk-manhattan`.chain_collection_quotation ccq
+        where
+            create_time = str_to_date( date_format( DATE_sub(CURRENT_TIMESTAMP(), interval 0 hour), '%Y-%m-%d %H'),
+            '%Y-%m-%d %H%i%m')
+            and collection_uuid = 103009
+    
+[2022-10-31 18:22:30,343][db.py 40][INFO]: 查询的sql为：
+        select
+            sum(volume) volume
+        from
+            `hk-manhattan`.chain_collection_quotation ccq
+        where
+            create_time = str_to_date( date_format( DATE_sub(CURRENT_TIMESTAMP(), interval 24 hour), '%Y-%m-%d %H'),
+            '%Y-%m-%d %H%i%m')
+            and collection_uuid = 103009
+    
+[2022-10-31 18:22:30,594][db.py 40][INFO]: 查询的sql为：
+        select
+            floor_price
+        from
+            `hk-manhattan`.chain_collection_quotation
+        where
+            collection_uuid = 103009
+            and create_time = str_to_date( date_format( DATE_sub(CURRENT_TIMESTAMP(), interval 0 hour), '%Y-%m-%d %H'),
+            '%Y-%m-%d %H%i%m') 
+    
+[2022-10-31 18:22:30,847][db.py 40][INFO]: 查询的sql为：
+        select
+            floor_price
+        from
+            `hk-manhattan`.chain_collection_quotation
+        where
+            collection_uuid = 103009
+            and create_time = str_to_date( date_format( DATE_sub(CURRENT_TIMESTAMP(), interval 24 hour), '%Y-%m-%d %H'),
+            '%Y-%m-%d %H%i%m') 
+    
+[2022-10-31 18:22:31,713][db.py 40][INFO]: 查询的sql为：
+        SELECT sales FROM `hk-manhattan`.chain_collection_aggregation_data WHERE collection_uuid = 103009 and date_type = 0
+    
+[2022-10-31 18:22:36,785][top_sales_page.py 35][INFO]: 选取到的集合名称：Art Blocks，uuid：101002
+[2022-10-31 18:22:36,786][db.py 40][INFO]: 查询的sql为：
+        select
+            floor_price
+        from
+            `hk-manhattan`.chain_collection_quotation
+        where
+            collection_uuid = 101002
+            and create_time = str_to_date( date_format( DATE_sub(CURRENT_TIMESTAMP(), interval 0 hour), '%Y-%m-%d %H'),
+            '%Y-%m-%d %H%i%m') 
+    
+[2022-10-31 18:22:37,031][db.py 40][INFO]: 查询的sql为：
+        select
+            sum(volume) volume
+        from
+            `hk-manhattan`.chain_collection_quotation ccq
+        where
+            create_time = str_to_date( date_format( DATE_sub(CURRENT_TIMESTAMP(), interval 0 hour), '%Y-%m-%d %H'),
+            '%Y-%m-%d %H%i%m')
+            and collection_uuid = 101002
+    
+[2022-10-31 18:22:37,275][db.py 40][INFO]: 查询的sql为：
+        select
+            sum(volume) volume
+        from
+            `hk-manhattan`.chain_collection_quotation ccq
+        where
+            create_time = str_to_date( date_format( DATE_sub(CURRENT_TIMESTAMP(), interval 24 hour), '%Y-%m-%d %H'),
+            '%Y-%m-%d %H%i%m')
+            and collection_uuid = 101002
+    
+[2022-10-31 18:22:37,526][db.py 40][INFO]: 查询的sql为：
+        select
+            floor_price
+        from
+            `hk-manhattan`.chain_collection_quotation
+        where
+            collection_uuid = 101002
+            and create_time = str_to_date( date_format( DATE_sub(CURRENT_TIMESTAMP(), interval 0 hour), '%Y-%m-%d %H'),
+            '%Y-%m-%d %H%i%m') 
+    
+[2022-10-31 18:22:37,780][db.py 40][INFO]: 查询的sql为：
+        select
+            floor_price
+        from
+            `hk-manhattan`.chain_collection_quotation
+        where
+            collection_uuid = 101002
+            and create_time = str_to_date( date_format( DATE_sub(CURRENT_TIMESTAMP(), interval 24 hour), '%Y-%m-%d %H'),
+            '%Y-%m-%d %H%i%m') 
+    
+[2022-10-31 18:22:38,958][db.py 40][INFO]: 查询的sql为：
+        SELECT sales FROM `hk-manhattan`.chain_collection_aggregation_data WHERE collection_uuid = 101002 and date_type = 0
+    
+[2022-10-31 18:22:39,206][top_sales_page.py 35][INFO]: 选取到的集合名称：Rare Apepe YC，uuid：102996
+[2022-10-31 18:22:39,207][db.py 40][INFO]: 查询的sql为：
+        select
+            floor_price
+        from
+            `hk-manhattan`.chain_collection_quotation
+        where
+            collection_uuid = 102996
+            and create_time = str_to_date( date_format( DATE_sub(CURRENT_TIMESTAMP(), interval 0 hour), '%Y-%m-%d %H'),
+            '%Y-%m-%d %H%i%m') 
+    
+[2022-10-31 18:22:39,458][db.py 40][INFO]: 查询的sql为：
+        select
+            sum(volume) volume
+        from
+            `hk-manhattan`.chain_collection_quotation ccq
+        where
+            create_time = str_to_date( date_format( DATE_sub(CURRENT_TIMESTAMP(), interval 0 hour), '%Y-%m-%d %H'),
+            '%Y-%m-%d %H%i%m')
+            and collection_uuid = 102996
+    
+[2022-10-31 18:22:39,718][db.py 40][INFO]: 查询的sql为：
+        select
+            sum(volume) volume
+        from
+            `hk-manhattan`.chain_collection_quotation ccq
+        where
+            create_time = str_to_date( date_format( DATE_sub(CURRENT_TIMESTAMP(), interval 24 hour), '%Y-%m-%d %H'),
+            '%Y-%m-%d %H%i%m')
+            and collection_uuid = 102996
+    
+[2022-10-31 18:22:39,974][db.py 40][INFO]: 查询的sql为：
+        select
+            floor_price
+        from
+            `hk-manhattan`.chain_collection_quotation
+        where
+            collection_uuid = 102996
+            and create_time = str_to_date( date_format( DATE_sub(CURRENT_TIMESTAMP(), interval 0 hour), '%Y-%m-%d %H'),
+            '%Y-%m-%d %H%i%m') 
+    
+[2022-10-31 18:22:40,232][db.py 40][INFO]: 查询的sql为：
+        select
+            floor_price
+        from
+            `hk-manhattan`.chain_collection_quotation
+        where
+            collection_uuid = 102996
+            and create_time = str_to_date( date_format( DATE_sub(CURRENT_TIMESTAMP(), interval 24 hour), '%Y-%m-%d %H'),
+            '%Y-%m-%d %H%i%m') 
+    
+[2022-10-31 18:22:40,485][db.py 40][INFO]: 查询的sql为：
+        SELECT sales FROM `hk-manhattan`.chain_collection_aggregation_data WHERE collection_uuid = 102996 and date_type = 0
+    
+[2022-10-31 18:22:41,042][test_data_calculate.py 35][INFO]: top sales页面测试数据为(接口返回，数据库查询)[地板价-交易量-地板价变化率-sales]：[['Otherdeed', 'Otherdeed'], [101001, 101001], [1.29, 1.29], [1253.7513, -26.67095], [-0.0458, -0.01527], [616, 616]]
+[2022-10-31 18:22:41,043][test_data_calculate.py 35][INFO]: top sales页面测试数据为(接口返回，数据库查询)[地板价-交易量-地板价变化率-sales]：[['Uniswap V3 Positions', 'Uniswap V3 Positions'], [100490, 100490], [0.0, 0.0], [5.4027, -0.23502], [0.0, 0.0], [258, 258]]
+[2022-10-31 18:22:41,044][test_data_calculate.py 35][INFO]: top sales页面测试数据为(接口返回，数据库查询)[地板价-交易量-地板价变化率-sales]：[['CryptoDickbutts', 'CryptoDickbutts'], [103009, 103009], [2.9, 2.9], [660.2338, 0.0], [0.45729, 0.45729], [244, 244]]
+[2022-10-31 18:22:41,044][test_data_calculate.py 35][INFO]: top sales页面测试数据为(接口返回，数据库查询)[地板价-交易量-地板价变化率-sales]：[['Art Blocks', 'Art Blocks'], [101002, 101002], [0.75, 0.75], [364.0299, -0.975], [0.0, 1.0], [242, 242]]
+[2022-10-31 18:22:41,044][test_data_calculate.py 35][INFO]: top sales页面测试数据为(接口返回，数据库查询)[地板价-交易量-地板价变化率-sales]：[['Rare Apepe YC', 'Rare Apepe YC'], [102996, 102996], [0.277, 0.277], [66.9602, -1.8347], [-0.19687, -0.19687], [196, 196]]
