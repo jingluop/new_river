@@ -39,9 +39,9 @@ class TestCollection:
         assert res['message'] == test_data['message']
         assert test_data['sql_data'][1]['chain'] == 'ETH'
 
-    @pytest.mark.parametrize('collection_uuid', collection_uuid)
-    def test_select_collection_details(self, collection_uuid):
-        st = datetime.datetime.now()
-        res = collection_detail.select_collection_details_app(json={"collectionUuid": collection_uuid})
-        end = datetime.datetime.now()
-        print(end - st)
+    # @pytest.mark.parametrize('collection_uuid', collection_uuid)
+    # def test_select_collection_details(self, collection_uuid):
+    #     st = datetime.datetime.now()
+    #     res = collection_detail.select_collection_details_app(json={"collectionUuid": collection_uuid})
+    #     end = datetime.datetime.now()
+    #     print(end - st)

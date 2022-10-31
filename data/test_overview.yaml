@@ -3,7 +3,7 @@ count_collection_num:
     # 校验接口返回
     code: 200
     # 需要执行sql，用来查询数据进行校验
-    execute_sql: ["SELECT count(distinct collection_uuid) count  FROM `hk-manhattan`.chain_collection_aggregation_data"]
+    execute_sql: ["SELECT count(distinct collection_uuid) count  FROM `hk-manhattan`.chain_collection_aggregation_data where date_type =0 and background_status =1"]
 
 market_cap_and_volume:
   # 总金额和交易量图表
