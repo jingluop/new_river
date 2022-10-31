@@ -275,7 +275,18 @@ class BuriedPointSql:
 
     # 计算新注册用户数
     new_register_user = """
-    select count(1)count, substring(create_time  , 1, 10) create_time from `hk-manhattan`.chain_user_info group by substring(create_time  , 1, 10) 
+    select
+        {} ,substring(create_time , 1, 10)dateTime,count(distinct id)count
+    from
+        (select id, create_time from `hk-manhattan`.chain_user_info) a
+    left join    
+        (select user_id , channel, platform from `hk-manhattan`.system_operate_record)b
+    on a.id = b.user_id
+    where 
+        replace(substring(create_time , 1, 10), '-', '') <= {}
+        and replace(substring(create_time , 1, 10), '-', '') >= {}
+    group by {} substring(create_time , 1, 10)
+    order by {} substring(create_time , 1, 10);
     """
 
     # 计算绑定钱包数
