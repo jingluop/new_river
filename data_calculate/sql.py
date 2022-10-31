@@ -311,12 +311,12 @@ class BuriedPointSql:
     # 计算尝试登录用户
     attempt_login_user = """
     select
-        {} substring(create_time , 1, 10)dateTime, count(distinct device_id ) count
+        {} substring(create_time , 1, 10)dateTime, count(device_id ) count
     from
         `hk-manhattan`.system_operate_record
     where
         replace(substring(create_time , 1, 10), '-', '') <= {}
-        and replace(substring(create_time , 1, 10), '-', '') >= {} first_try_login is not null
+        and replace(substring(create_time , 1, 10), '-', '') >= {} and first_try_login is not null
         group by {} substring(create_time , 1, 10) 
         order by {} substring(create_time , 1, 10);
     """
