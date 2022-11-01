@@ -16,15 +16,17 @@ class TopCollectionsCal:
         if time_type == 0:
             days = 1
         elif time_type == 1:
-            days = 3
+            days = 7
         elif time_type == 2:
             days = 30
         else:
             days = 90
         time_now = 0  # 取当前时间的数据就传0
-        time_before = days * 24 - 1  # 根据时间类型取之前的时间
+        time_before = days * 24  # 根据时间类型取之前的时间
+        # time_before = days * 24 - 1  # 根据时间类型取之前的时间
         # 这个时间用来计算交易量变化率
-        time_rate_before = days * 2 * 24 - 1
+        time_rate_before = days * 2 * 24
+        # time_rate_before = days * 2 * 24 - 1
         res = top_collections.select_collection_info(
             json={"timeType": time_type, "pageSize": page_size, "hot": "0", "pageNum": page_num})
         result_total = []
@@ -35,8 +37,9 @@ class TopCollectionsCal:
             # 1. 地板价
             logger.info(f"选取到的集合名称：{collection['collectName']}，uuid：{collection_uuid}")
             floor_price_interface = float(collection['floorPrice'])
-            floor_price_sql = float(
-                db_mysql.select_db(BaseSql.history_floor_price.format(collection_uuid, time_now))[0]['floor_price'])
+            floor_price_sql = db_mysql.select_db(BaseSql.history_floor_price.format(collection_uuid, time_now))
+            print(floor_price_sql)
+            floor_price_sql = float(floor_price_sql[0]['floor_price'])
             # 四舍五入保留4位小数位数
             floor_price_interface = round(floor_price_interface, 4)
             floor_price_sql = round(floor_price_sql, 4)
@@ -47,7 +50,7 @@ class TopCollectionsCal:
             # 2持有人
             owners_interface = int(collection['numOwners'])
             owners_sql = int(
-                db_mysql.select_db(BaseSql.one_collection_holders.format(time_now, collection_uuid))[0]['holders'])
+                db_mysql.select_db(BaseSql.one_collection_holders.format(time_now + 1, collection_uuid))[0]['holders'])
             result.append([owners_interface, owners_sql])
 
             # 3持有人变化率
@@ -68,24 +71,14 @@ class TopCollectionsCal:
 
             # 4交易量
             volume_interface = float(collection['oneDayVolume'])
-            volume_now = float(
-                db_mysql.select_db(BaseSql.one_collection_volume.format(time_now, collection_uuid))[0]['volume'])
-            volume_before = float(
-                db_mysql.select_db(BaseSql.one_collection_volume.format(time_before, collection_uuid))[0]['volume'])
-            volume_sql = volume_now - volume_before
-            # 四舍五入保留5位小数位数
-            volume_interface = round(volume_interface, 5)
-            volume_sql = round(volume_sql, 5)
+            volume_sql = float(db_mysql.select_db(BaseSql.one_collection_volume.format(time_now + 1, time_before, collection_uuid))[0]['volume'])
             result.append([volume_interface, volume_sql])
 
             # 5交易量的变化率
             volume_change_interface = float(collection['dayChange'])
-            volume_before_start = float(
-                db_mysql.select_db(BaseSql.one_collection_volume.format(time_before + 1, collection_uuid))[0]['volume'])
-            volume_before_end = float(
-                db_mysql.select_db(BaseSql.one_collection_volume.format(time_rate_before, collection_uuid))[0]['volume'])
-            increment_now = volume_now - volume_before
-            increment_before = volume_before_start - volume_before_end
+            increment_now = volume_sql
+            increment_before = float(
+                db_mysql.select_db(BaseSql.one_collection_volume.format(time_before + 1, time_rate_before, collection_uuid))[0]['volume'])
             if increment_now == increment_before == 0:
                 volume_change_rate_sql = 0.0
             elif increment_now != 0 and increment_before == 0:
@@ -100,7 +93,7 @@ class TopCollectionsCal:
             # 6市值
             market_cap_interface = float(collection['marketCap'])
             market_cap_sql = float(
-                db_mysql.select_db(BaseSql.one_collection_market_cap.format(time_now, collection_uuid))[0]['market_cap'])
+                db_mysql.select_db(BaseSql.one_collection_market_cap.format(time_now + 1, collection_uuid))[0]['market_cap'])
             # 四舍五入保留2位小数位数
             market_cap_interface = round(market_cap_interface, 2)
             market_cap_sql = round(market_cap_sql, 2)

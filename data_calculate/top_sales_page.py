@@ -17,13 +17,14 @@ class TopSalesCal:
         if time_type == 0:
             days = 1
         elif time_type == 1:
-            days = 3
+            days = 7
         elif time_type == 2:
             days = 30
         else:
             days = 90
         time_now = 0  # 取当前时间的数据就传0
         time_before = days * 24  # 根据时间类型取之前的时间
+        # time_before = days * 24 -1 # 根据时间类型取之前的时间
         res = top_sales.select_collection_info(
             params={"timeRange": self.time_dict[time_type], "pageSize": page_size, "pageNum": page_num})
         result_total = []
@@ -45,21 +46,15 @@ class TopSalesCal:
 
             # 交易量
             volume_interface = float(collection['volume'])
-            volume_now = float(
-                db_mysql.select_db(BaseSql.one_collection_volume.format(time_now, collection_uuid))[0]['volume'])
-            volume_before = float(
-                db_mysql.select_db(BaseSql.one_collection_volume.format(time_before, collection_uuid))[0]['volume'])
-            volume_sql = volume_now - volume_before
+            volume_sql = float(
+                db_mysql.select_db(BaseSql.one_collection_volume.format(time_now + 1, time_before, collection_uuid))[0]['volume'])
             # # 截取小数位数
             # volume_sql = int(volume_sql * 100000) / 100000
-            # 四舍五入保留5位小数位数
-            volume_sql = round(volume_sql, 5)
-            volume_interface = round(volume_interface, 5)
             result.append([volume_interface, volume_sql])
 
             # 地板价的变化率
             floor_price_change_rate_interface = float(collection['floorChange'])
-            floor_price_now = float(db_mysql.select_db(BaseSql.history_floor_price.format(collection_uuid, time_now))[0][
+            floor_price_now = float(db_mysql.select_db(BaseSql.history_floor_price.format(collection_uuid, time_now + 1))[0][
                 'floor_price'])
             floor_price_before = float(db_mysql.select_db(BaseSql.history_floor_price.format(collection_uuid, time_before))[0][
                 'floor_price'])

@@ -9,7 +9,7 @@ from common.db import db_proxy, db_mysql
 
 class BaseSql:
     # 集合详情查询地板价
-    floor_price = """SELECT floor_price FROM `hk-manhattan`.chain_collection WHERE collection_uuid = {}"""
+    floor_price = """SELECT round( ifnull(floor_price,0),4)floor_price FROM `hk-manhattan`.chain_collection WHERE collection_uuid = {}"""
 
     # 查询现有的所有集合的uuid
     collection_uuid = """SELECT distinct collection_uuid collection_uuid FROM `hk-manhattan`.chain_collection_aggregation_data"""
@@ -17,12 +17,12 @@ class BaseSql:
     # 计算单个集合的总交易量
     one_collection_volume = """
         select
-            sum(volume) volume
+            round( ifnull(sum(increment_volume),0),4) volume
         from
             `hk-manhattan`.chain_collection_quotation ccq
         where
-            create_time = str_to_date( date_format( DATE_sub(CURRENT_TIMESTAMP(), interval {} hour), '%Y-%m-%d %H'),
-            '%Y-%m-%d %H%i%m')
+            create_time <= str_to_date( date_format( DATE_sub(CURRENT_TIMESTAMP(), interval {} hour), '%Y-%m-%d %H'),'%Y-%m-%d %H%i%m')
+            and create_time >= str_to_date( date_format( DATE_sub(CURRENT_TIMESTAMP(), interval {} hour), '%Y-%m-%d %H'),'%Y-%m-%d %H%i%m')
             and collection_uuid = {}
     """
 
@@ -40,7 +40,7 @@ class BaseSql:
 
     # 计算单个集合的holders
     one_collection_holders = """
-        select
+    select
         holders
     from
         `hk-manhattan`.chain_collection_quotation ccq
@@ -240,8 +240,9 @@ class BaseSql:
     from
         `hk-manhattan`.chain_collection_quotation ccq
     where
-        create_time = str_to_date( date_format( DATE_sub(CURRENT_TIMESTAMP(), interval {} hour), '%Y-%m-%d %H'),
-        '%Y-%m-%d %H%i%m')
+        create_time <= str_to_date( date_format( DATE_sub(CURRENT_TIMESTAMP(), interval {} hour), '%Y-%m-%d %H'),'%Y-%m-%d %H%i%m') 
+        and 
+        create_time >= str_to_date( date_format( DATE_sub(CURRENT_TIMESTAMP(), interval {} hour), '%Y-%m-%d %H'),'%Y-%m-%d %H%i%m')
     """
 
 

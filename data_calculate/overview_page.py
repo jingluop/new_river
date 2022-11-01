@@ -17,38 +17,70 @@ class OverViewCal:
         计算24小时的总市值
         :param time_type：0-ONE_DAY,1-ONE_WEEK,2-ONE_MONTH,3-THREE_MONTHS
         """
+        if time_type == 0:
+            days = 1
+        elif time_type == 1:
+            days = 7
+        elif time_type == 2:
+            days = 30
+        else:
+            days = 90
+        time_now = 0  # 取当前时间的数据就传0
+        time_before = days * 24  # 根据时间类型取之前的时间
+        # 这个时间用来计算交易量变化率
+        time_rate_before = days * 2 * 24
+        # time_rate_before = days * 2 * 24 - 1
         last_price = float(db_mysql.select_db(BaseSql.last_price)[0]['last_price'])
-        hour_dict = {0: 24, 1: 24 * 7 - 1, 2: 30 * 24, 3: 90 * 24}
         res = Overview().market_cap_and_volume_app(params={"timeRange": self.time_dict[time_type]})
         result = []
         # 1. 计算总市值
         market_cap_sql_now = float(
-            db_mysql.select_db(BaseSql.total_market.format(0))[0]['market_cap'])
+            db_mysql.select_db(BaseSql.total_market.format(time_now + 1))[0]['market_cap'])
         market_cap_sql_before = float(
-            db_mysql.select_db(BaseSql.total_market.format(hour_dict[time_type]))[0]['market_cap'])
+            db_mysql.select_db(BaseSql.total_market.format(time_before))[0]['market_cap'])
+        market_cap_sql = market_cap_sql_now * last_price
+        market_cap_interface = float(res['data']['marketCapTotal'])
+        # 四舍五入保留2位小数位数
+        market_cap_interface = round(market_cap_interface, 2)
+        market_cap_sql = round(market_cap_sql, 2)
+        result.append([market_cap_interface, market_cap_sql])
         # 2. 总市值的变化率
         if market_cap_sql_now == market_cap_sql_before == 0:
-            market_cap_rate = 0
+            market_cap_rate_sql = 0.0
         elif market_cap_sql_now != 0 and market_cap_sql_before == 0:
-            market_cap_rate = 1
+            market_cap_rate_sql = 1.0
         else:
-            market_cap_rate = (market_cap_sql_now - market_cap_sql_before) / market_cap_sql_before
+            market_cap_rate_sql = (market_cap_sql_now - market_cap_sql_before) / market_cap_sql_before
+        market_cap_rate_interface = float(res['data']['marketCapChange'])
+        # 四舍五入保留3位小数位数
+        market_cap_rate_interface = round(market_cap_rate_interface, 4)
+        market_cap_rate_sql = round(market_cap_rate_sql, 4)
+        result.append([market_cap_rate_interface, market_cap_rate_sql])
         # 3.计算总交易量
-        volume_now = float(
-            db_mysql.select_db(BaseSql.total_volume.format(0))[0]['volume'])
-        volume_before = float(
-            db_mysql.select_db(BaseSql.total_volume.format(hour_dict[time_type]))[0]['volume'])
+        volume_sql_eth = float(
+            db_mysql.select_db(BaseSql.total_volume.format(time_now + 1, time_before))[0][
+                'volume'])
+        volume_sql = volume_sql_eth * last_price
+        volume_interface = float(res['data']['volumeTotal'])
+        # 四舍五入保留2位小数位数
+        volume_interface = round(volume_interface, 2)
+        volume_sql = round(volume_sql, 2)
+        result.append([volume_interface, volume_sql])
         # 4. 总交易量的变化率
-        if volume_now == volume_before == 0:
-            volume_rate = 0
-        elif volume_now != 0 and volume_before == 0:
-            volume_rate = 1
+        increment_now = volume_sql_eth
+        increment_before = float(
+            db_mysql.select_db(
+                BaseSql.total_volume.format(time_before + 1, time_rate_before))[0]['volume'])
+        if increment_now == increment_before == 0:
+            volume_change_rate_sql = 0.0
+        elif increment_now != 0 and increment_before == 0:
+            volume_change_rate_sql = 1.0
         else:
-            volume_rate = (volume_now - volume_before) / volume_before
-        result.append([(market_cap_sql_now - market_cap_sql_before) * last_price, res['data']['marketCapTotal']])
-        result.append([market_cap_rate, res['data']['marketCapChange']])
-        result.append([(volume_now - volume_before) * last_price, res['data']['volumeTotal']])
-        result.append([volume_rate, res['data']['volumeChange']])
+            volume_change_rate_sql = (increment_now - increment_before) / increment_before
+        # 四舍五入保留4位小数位数
+        volume_change_interface = round(res['data']['volumeChange'], 4)
+        volume_change_rate_sql = round(volume_change_rate_sql, 4)
+        result.append([volume_change_interface, volume_change_rate_sql])
         return result
 
     def calculate_sales_top_10(self, time_type):

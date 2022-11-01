@@ -23,13 +23,13 @@ class TestBaseDataCalculate:
     # 随机取50个集合
     start_index = random.randint(0, len(collection_uuid) - 20)
     # collection_uuid = collection_uuid[start_index: start_index + 50]
-    collection_uuid = collection_uuid[start_index: start_index + 1]
+    collection_uuid = collection_uuid[start_index: start_index + 10]
     logger.info("选取到的集合的uuid为：{}, start_index为：{}".format(collection_uuid, start_index))
 
     # @pytest.mark.parametrize("time_type", [0, 1, 2, 3])
     # @pytest.mark.parametrize("page_size,page_num", [(random.randint(10, 30), random.randint(1, 50))])
     @pytest.mark.parametrize("time_type", [0])
-    @pytest.mark.parametrize("page_size,page_num", [(5, random.randint(1, 3))])
+    @pytest.mark.parametrize("page_size,page_num", [(20, random.randint(1, 3))])
     def test_top_sales(self, time_type, page_size, page_num):
         results = TopSalesCal().calculate_top_collection(time_type, page_size, page_num)
         [logger.info("top sales页面测试数据为(接口返回，数据库查询)[地板价-交易量-地板价变化率-sales]：{}".format(result))
@@ -41,7 +41,7 @@ class TestBaseDataCalculate:
     # @pytest.mark.parametrize("time_type", [0, 1, 2, 3])
     # @pytest.mark.parametrize("page_size,page_num", [(random.randint(10, 30), random.randint(1, 50))])
     @pytest.mark.parametrize("time_type", [0])
-    @pytest.mark.parametrize("page_size,page_num", [(5, random.randint(1, 3))])
+    @pytest.mark.parametrize("page_size,page_num", [(20, random.randint(1, 3))])
     def test_top_collections(self, time_type, page_size, page_num):
         results = TopCollectionsCal().calculate_top_collection(time_type, page_size, page_num)
         [logger.info(
@@ -118,10 +118,14 @@ class TestBaseDataCalculate:
         rise_collection_name_sql = [i['collect_name'] for i in rise_list_sql]
         # 截取两位小数
         rise_volume_sql = [int(float(i['volume']) * last_price * 100) / 100 for i in rise_list_sql]
+        # # 四舍五入保留两位小数
+        # rise_volume_sql = [round(float(i['volume']) * last_price, 2) for i in rise_list_sql]
         rise_change_sql = [float(i['volume_change']) for i in rise_list_sql]
         fall_collection_name_sql = [i['collect_name'] for i in fall_list_sql]
         # 截取两位小数
         fall_volume_sql = [int(float(i['volume']) * last_price * 100) / 100 for i in fall_list_sql]
+        # # 四舍五入保留两位小数
+        # fall_volume_sql = [round(float(i['volume']) * last_price, 2) for i in rise_list_sql]
         fall_change_sql = [float(i['volume_change']) for i in fall_list_sql]
         logger.info("热力图上涨测试数据为(接口返回，数据库查询)【集合名称】：{}".format(
             [rise_collection_name_interface, rise_collection_name_sql]))
@@ -167,7 +171,7 @@ class TestBaseDataCalculate:
     @pytest.mark.parametrize('collection_uuid', collection_uuid)
     def test_collection_details_market_cap_and_volume(self, time_type, collection_uuid):
         results = CollectionDetailCal().calculate_market_cap_and_volume_one_collection(collection_uuid, time_type)
-        logger.info("集合详情总市值和交易量图表测试数据接口返回：{}".format(results))
+        logger.info("集合详情总市值和交易量图表测试数据为(接口返回，数据库查询)[总市值-总市值变化-总交易量-总交易量变化]：{}".format(results))
         for result in results:
             assert result[0] == result[1]
 
@@ -175,6 +179,6 @@ class TestBaseDataCalculate:
     @pytest.mark.parametrize('time_type', [0])
     def test_overview_market_cap_and_volume(self, time_type):
         results = OverViewCal().calculate_calculate_market_cap_total(time_type)
-        logger.info("overview页面得总市值和交易量图表测试数据接口返回：{}".format(results))
+        logger.info("overview页面得总市值和交易量图表测试数据为(接口返回，数据库查询)[总市值-总市值变化-总交易量-总交易量变化]：{}".format(results))
         for result in results:
             assert result[0] == result[1]
