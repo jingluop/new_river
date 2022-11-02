@@ -6,8 +6,11 @@
 """
 import datetime
 
+import pytest
+
 from api.buried_point_statistics import BuriedPointStatistics
 from common.db import db_mysql
+from common.logger import logger
 from data_calculate.sql import BuriedPointSql
 
 
@@ -15,24 +18,24 @@ class BuriedPointStatisticsCal:
     """埋点数据统计"""
 
     @staticmethod
-    def get_all_day_list(params_type):
+    def get_all_day_list(interface_params):
         all_day_list = []
-        if params_type == 1:
+        if interface_params['type'] == 1:
             start_time = (datetime.datetime.now() - datetime.timedelta(days=7))
             end_time = (datetime.datetime.now() - datetime.timedelta(days=1))
-        elif params_type == 2:
+        elif interface_params['type'] == 2:
             start_time = (datetime.datetime.now() - datetime.timedelta(days=30))
             end_time = (datetime.datetime.now() - datetime.timedelta(days=1))
-        elif params_type == 3:
+        elif interface_params['type'] == 3:
             start_time = datetime.datetime.now().replace(day=1)
             end_time = (datetime.datetime.now() - datetime.timedelta(days=1))
-        elif params_type == 4:
+        elif interface_params['type'] == 4:
             start_time = (datetime.date.today().replace(day=1) - datetime.timedelta(days=1)).replace(day=1)
             end_time = (datetime.date.today().replace(day=1) - datetime.timedelta(days=1))
         else:
             # type为5
-            start_time = datetime.datetime.strptime(params['startDate'], '%Y%m%d')
-            end_time = datetime.datetime.strptime(params['endDate'], '%Y%m%d')
+            start_time = datetime.datetime.strptime(interface_params['startDate'], '%Y%m%d')
+            end_time = datetime.datetime.strptime(interface_params['endDate'], '%Y%m%d')
         while start_time <= end_time:
             all_day_list.append(start_time.strftime("%Y%m%d"))
             start_time += datetime.timedelta(days=1)
@@ -48,11 +51,11 @@ class BuriedPointStatisticsCal:
         if filter_condition in ['platform', 'channel']:
             filter_condition_sql = f' {filter_condition},'
         else:
-            filter_condition_sql = filter_condition
+            filter_condition_sql = ''
         order_condition = filter_condition_sql
         optional_field = filter_condition_sql
         # 拿两个日期之间的所有日期
-        all_day_list = self.get_all_day_list(interface_params['type'])
+        all_day_list = self.get_all_day_list(interface_params)
         res = BuriedPointStatistics().new_user(params=interface_params)
         new_users_sql = db_mysql.select_db(
             BuriedPointSql.new_users.format(optional_field, all_day_list[-1], all_day_list[0], filter_condition_sql,
@@ -110,11 +113,11 @@ class BuriedPointStatisticsCal:
         if filter_condition in ['platform']:
             filter_condition_sql = f' {filter_condition},'
         else:
-            filter_condition_sql = filter_condition
+            filter_condition_sql = ''
         order_condition = filter_condition_sql
         optional_field = filter_condition_sql
         # 拿两个日期之间的所有日期
-        all_day_list = self.get_all_day_list(interface_params['type'])
+        all_day_list = self.get_all_day_list(interface_params)
         res = BuriedPointStatistics().first_try_login_user(params=interface_params)
         first_try_login_sql = db_mysql.select_db(
             BuriedPointSql.attempt_login_user.format(optional_field, all_day_list[-1], all_day_list[0],
@@ -171,7 +174,7 @@ class BuriedPointStatisticsCal:
     def pv_statistics(self, interface_params):
         """PV统计"""
         # 拿两个日期之间的所有日期
-        all_day_list = self.get_all_day_list(interface_params['type'])
+        all_day_list = self.get_all_day_list(interface_params)
         res = BuriedPointStatistics().pv(params=interface_params)
         pv_sql = db_mysql.select_db(
             BuriedPointSql.pv.format(all_day_list[-1], all_day_list[0]))
@@ -198,11 +201,11 @@ class BuriedPointStatisticsCal:
         if filter_condition in ['platform', 'channel']:
             filter_condition_sql = f' {filter_condition},'
         else:
-            filter_condition_sql = filter_condition
+            filter_condition_sql = ''
         order_condition = filter_condition_sql
         optional_field = filter_condition_sql
         # 拿两个日期之间的所有日期
-        all_day_list = self.get_all_day_list(interface_params['type'])
+        all_day_list = self.get_all_day_list(interface_params)
         res = BuriedPointStatistics().new_register_user(params=interface_params)
         new_register_user_sql = db_mysql.select_db(
             BuriedPointSql.new_register_user.format(optional_field, all_day_list[-1], all_day_list[0],
@@ -298,7 +301,7 @@ class BuriedPointStatisticsCal:
     def uv_statistics(self, interface_params):
         """UV统计"""
         # 拿两个日期之间的所有日期
-        all_day_list = self.get_all_day_list(interface_params['type'])
+        all_day_list = self.get_all_day_list(interface_params)
         res = BuriedPointStatistics().uv(params=interface_params)
         uv_sql = db_mysql.select_db(
             BuriedPointSql.uv.format(all_day_list[-1], all_day_list[0]))
@@ -321,7 +324,15 @@ class BuriedPointStatisticsCal:
         return sql_result, interface_result
 
 
-params = {"type": 1, "dimensionType": 'platform'}
-# params = {"type": 1}
-res = BuriedPointStatisticsCal().new_register_user_statistics(params, 'platform')
-print(res)
+class TestBuriedPoint:
+    @pytest.mark.parametrize('type', [1, 2, 3, 4])
+    @pytest.mark.parametrize('dimension_type', ['platform', 'channel', 'all'])
+    def test_new_user_statistics(self, type, dimension_type):
+        if type == 5:
+            params = {"type": type, "dimensionType": dimension_type, "startDate": '2022-10-01', "endDate": '2022-10-31'}
+        else:
+            params = {"type": type, "dimensionType": dimension_type}
+        res = BuriedPointStatisticsCal().new_register_user_statistics(params, dimension_type)
+        logger.info('新用户测试数据数据库查询为：{}'.format(res[0]))
+        logger.info('新用户测试数据接口返回为：{}'.format(res[1]))
+        assert res[0] == res[1]

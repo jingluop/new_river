@@ -1,0 +1,18 @@
+like_collect_name:
+  # 全局搜索
+  -
+    # 入参
+    collectName: bored
+    # 校验
+    code: 200
+    # 去数据库查询实际返回结果
+    execute_sql: [
+      'select distinct collect_name collect_name from `hk-manhattan`.chain_collection_aggregation_data 
+       where collect_name like "%bored%" order by market_cap desc limit 10'
+    ]
+  -
+    collectName: aaaaa
+    code: 200
+    collect_name_list: []
+  -
+    status: 400
