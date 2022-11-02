@@ -52,10 +52,19 @@ class ReadFileData:
 BASE_PATH = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 
 
-def get_yaml_data(yaml_file_name, interface_name, db_type='mysql'):
+def get_yaml_data(yaml_file_name, interface_name, path="test_data_yaml", db_type='mysql'):
+    """
+    读取yaml数据
+    @param yaml_file_name: 文件名
+    @param interface_name: 键名称
+    @param path: yaml文件夹名称
+    @param db_type: 根据配置传入对应的数据库
+    @return:
+    """
     try:
-        data_file_path = os.path.join(BASE_PATH, "data", yaml_file_name)
+        data_file_path = os.path.join(BASE_PATH, path, yaml_file_name)
         yaml_data = ReadFileData().load_yaml(data_file_path)
+        # 解析yaml文件内容是否需要查询数据库
         for data in yaml_data[interface_name]:
             if 'execute_sql' in data:
                 if db_type == 'mysql':

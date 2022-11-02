@@ -23,7 +23,7 @@ class TestBaseDataCalculate:
     # 随机取50个集合
     start_index = random.randint(0, len(collection_uuid) - 20)
     # collection_uuid = collection_uuid[start_index: start_index + 50]
-    collection_uuid = collection_uuid[start_index: start_index + 10]
+    collection_uuid = collection_uuid[start_index: start_index + 1]
     logger.info("选取到的集合的uuid为：{}, start_index为：{}".format(collection_uuid, start_index))
 
     # @pytest.mark.parametrize("time_type", [0, 1, 2, 3])
