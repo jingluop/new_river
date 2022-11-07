@@ -263,7 +263,7 @@ class BuriedPointSql:
 
     # 计算留存率
     retention_rate = """
-    select  {} create_time as dateTime, count(a.device_id)count, before_count as beforeCount  from 
+    select  {} DATE_FORMAT(create_time,'%Y-%m-%d') as dateTime, count(a.device_id)count, before_count as beforeCount  from 
     (select  distinct  device_id, replace(substring(create_time , 1, 10), '-', '')create_time from `hk-manhattan`.system_operate_record )a
     left join
     (select {} device_id ,replace(substring(first_visit_time , 1, 10), '-', '')first_visit_time, count( device_id) over(partition by replace(substring(first_visit_time , 1, 10), '-', '') ) as before_count  
@@ -290,27 +290,42 @@ class BuriedPointSql:
 
     # 计算绑定钱包数
     bind_wallet = """
-    select count(1)count, substring(create_time  , 1, 10) create_time from `hk-manhattan`.chain_user_info where wallet_address is not null group by substring(create_time  , 1, 10) 
+    select {} count(1)count, substring(create_time  , 1, 10) dateTime from `hk-manhattan`.chain_user_info 
+    where wallet_address is not null 
+    and 
+        replace(substring(create_time , 1, 10), '-', '') <= {}
+        and replace(substring(create_time , 1, 10), '-', '') >= {}
+    group by {} substring(create_time , 1, 10)
+    order by {} substring(create_time , 1, 10);
     """
 
     # 计算活跃用户
     active_user = """
-    select  count( distinct device_id)count, substring(create_time , 1, 10)create_time from system_operate_record group by substring(create_time , 1, 10);
+    select  {} count( distinct device_id)count, substring(create_time , 1, 10)dateTime from `hk-manhattan`.system_operate_record
+    where 
+        replace(substring(create_time , 1, 10), '-', '') <= {}
+        and replace(substring(create_time , 1, 10), '-', '') >= {}
+    group by {} substring(create_time , 1, 10)
+    order by {} substring(create_time , 1, 10);
     """
 
     # 计算活跃钱包用户
     active_wallet_user = """
-    select count( distinct user_id)count,create_time from 
-    (select id  from chain_user_info where wallet_address is not null )a
+    select {} count( distinct user_id)count,substring(create_time , 1, 10)dateTime from 
+    (select id  from `hk-manhattan`.chain_user_info where wallet_address is not null )a
     left join 
-    (select device_id, substring(create_time , 1, 10)create_time,user_id from system_operate_record)b
+    (select {} device_id, substring(create_time , 1, 10)create_time,user_id from `hk-manhattan`.system_operate_record)b
     on a.id = b.user_id
-    group by create_time
+    where 
+        replace(substring(create_time , 1, 10), '-', '') <= {}
+        and replace(substring(create_time , 1, 10), '-', '') >= {}
+    group by {} substring(create_time , 1, 10)
+    order by {} substring(create_time , 1, 10);
     """
 
     # uv
     uv = """
-    select
+    select {}
         substring(create_time , 1, 10)dateTime,
         count(distinct device_id)count
     from
@@ -318,8 +333,8 @@ class BuriedPointSql:
     where
         replace(substring(create_time , 1, 10), '-', '') <= {}
         and replace(substring(create_time , 1, 10), '-', '') >= {}
-    group by
-        substring(create_time , 1, 10)
+    group by {} substring(create_time , 1, 10)
+    order by {} substring(create_time , 1, 10);
     """
 
     # pv

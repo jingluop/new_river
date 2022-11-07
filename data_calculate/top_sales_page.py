@@ -44,7 +44,7 @@ class TopSalesCal:
             result.append([collection_uuid, collection_uuid])
             result.append([floor_price_interface, floor_price_sql])
 
-            # 交易量
+            # 2. 交易量
             volume_interface = float(collection['volume'])
             volume_sql = float(
                 db_mysql.select_db(BaseSql.one_collection_volume.format(time_now + 1, time_before, collection_uuid))[0]['volume'])
@@ -52,7 +52,7 @@ class TopSalesCal:
             # volume_sql = int(volume_sql * 100000) / 100000
             result.append([volume_interface, volume_sql])
 
-            # 地板价的变化率
+            # 3. 地板价的变化率
             floor_price_change_rate_interface = float(collection['floorChange'])
             floor_price_now = float(db_mysql.select_db(BaseSql.history_floor_price.format(collection_uuid, time_now + 1))[0][
                 'floor_price'])
