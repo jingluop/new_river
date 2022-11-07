@@ -36,7 +36,8 @@ class CollectionDetailCal:
         # 2.计算24h总交易量
         volume_interface = float(res['data']['oneDayVolume'])
         volume_sql = float(
-            db_mysql.select_db(BaseSql.one_collection_volume.format(time_now + 1, time_before + 1, collection_uuid))[0]['volume'])
+            db_mysql.select_db(BaseSql.one_collection_volume.format(time_now + 1, time_before + 1, collection_uuid))[0][
+                'volume'])
         # 四舍五入保留4位小数位数
         volume_interface = round(volume_interface, 4)
         volume_sql = round(volume_sql, 4)
@@ -45,8 +46,9 @@ class CollectionDetailCal:
         # 3. 计算总市值
         market_cap_interface = float(res['data']['marketCap'])
         market_cap_sql_eth = float(
-            db_mysql.select_db(BaseSql.one_collection_market_cap.format(time_now + 1, collection_uuid))[0]['market_cap'])
-        market_cap_sql = market_cap_sql_eth  * last_price
+            db_mysql.select_db(BaseSql.one_collection_market_cap.format(time_now + 1, collection_uuid))[0][
+                'market_cap'])
+        market_cap_sql = market_cap_sql_eth * last_price
         # # 四舍五入保留2位小数位数
         # market_cap_interface = round(market_cap_interface, 2)
         # market_cap_sql = round(market_cap_sql, 2)
@@ -62,8 +64,10 @@ class CollectionDetailCal:
 
         # 5. 计算地板价24h的变化率
         floor_price_change_rate_interface = float(res['data']['floorPriceChange'])
-        floor_price_now = db_mysql.select_db(BaseSql.history_floor_price.format(collection_uuid, time_now + 1))[0]['floor_price']
-        floor_price_24 = db_mysql.select_db(BaseSql.history_floor_price.format(collection_uuid, time_before + 1))[0]['floor_price']
+        floor_price_now = db_mysql.select_db(BaseSql.history_floor_price.format(collection_uuid, time_now + 1))[0][
+            'floor_price']
+        floor_price_24 = db_mysql.select_db(BaseSql.history_floor_price.format(collection_uuid, time_before + 1))[0][
+            'floor_price']
         if floor_price_now == floor_price_24 == 0:
             floor_price_change_rate_sql = 0.0
         elif floor_price_now != 0 and floor_price_24 == 0:
@@ -95,7 +99,8 @@ class CollectionDetailCal:
         market_cap_change_rate_interface = float(res['data']['marketCapChange'])
         market_cap_now = market_cap_sql_eth
         market_cap_24 = float(
-            db_mysql.select_db(BaseSql.one_collection_market_cap.format(time_before + 1, collection_uuid))[0]['market_cap'])
+            db_mysql.select_db(BaseSql.one_collection_market_cap.format(time_before + 1, collection_uuid))[0][
+                'market_cap'])
         if market_cap_now == market_cap_24 == 0:
             market_cap_change_rate_sql = 0.0
         elif market_cap_now != 0 and market_cap_24 == 0:
@@ -212,7 +217,8 @@ class CollectionDetailCal:
         result = []
         # 1. 计算总市值
         market_cap_sql_now = float(
-            db_mysql.select_db(BaseSql.one_collection_market_cap.format(time_now + 1, collection_uuid))[0]['market_cap'])
+            db_mysql.select_db(BaseSql.one_collection_market_cap.format(time_now + 1, collection_uuid))[0][
+                'market_cap'])
         market_cap_sql_before = float(
             db_mysql.select_db(BaseSql.one_collection_market_cap.format(time_before, collection_uuid))[0][
                 'market_cap'])
@@ -236,7 +242,9 @@ class CollectionDetailCal:
         market_cap_rate_sql = round(market_cap_rate_sql, 4)
         result.append([market_cap_rate_interface, market_cap_rate_sql])
         # 3.计算总交易量
-        volume_sql = float(db_mysql.select_db(BaseSql.one_collection_volume.format(time_now + 1, time_before, collection_uuid))[0]['volume']) * last_price
+        volume_sql = float(
+            db_mysql.select_db(BaseSql.one_collection_volume.format(time_now + 1, time_before, collection_uuid))[0][
+                'volume']) * last_price
         volume_interface = float(res['data']['volumeTotal'])
         # 四舍五入保留2位小数位数
         volume_interface = round(volume_interface, 2)
@@ -267,7 +275,8 @@ class CollectionDetailCal:
         """
         res = collection_detail.get_thermodynamic_diagram_app(params={"collectionUuid": collection_uuid})
         # 1. 低于地板价购买
-        floor_price = float(db_mysql.select_db(BaseSql.history_floor_price.format(collection_uuid, 0))[0]['floor_price'])
+        floor_price = float(
+            db_mysql.select_db(BaseSql.history_floor_price.format(collection_uuid, 0))[0]['floor_price'])
         below_floor_price = int(
             db_proxy.select_db(BaseSql.below_floor_price.format(collection_uuid, floor_price))[0]['count'])
         above_floor_price = int(
@@ -349,3 +358,5 @@ class CollectionDetailCal:
             result.append([sale_total_rate, res['data']['tradeVO']['holdersPercentage']])
 
         return result
+
+

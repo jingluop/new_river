@@ -263,26 +263,24 @@ class BuriedPointSql:
 
     # 计算留存率
     retention_rate = """
-    select  create_time,count(a.device_id)count, before_count  from 
-    (select  distinct  device_id, replace(substring(create_time , 1, 10), '-', '')create_time from system_operate_record )a
+    select  {} create_time as dateTime, count(a.device_id)count, before_count as beforeCount  from 
+    (select  distinct  device_id, replace(substring(create_time , 1, 10), '-', '')create_time from `hk-manhattan`.system_operate_record )a
     left join
-    (select device_id ,replace(substring(first_visit_time , 1, 10), '-', '')first_visit_time, count( device_id) over(partition by replace(substring(first_visit_time , 1, 10), '-', '') ) as before_count  
-    from system_operate_record sor where first_visit_time is not null)b
+    (select {} device_id ,replace(substring(first_visit_time , 1, 10), '-', '')first_visit_time, count( device_id) over(partition by replace(substring(first_visit_time , 1, 10), '-', '') ) as before_count  
+    from `hk-manhattan`.system_operate_record sor where first_visit_time is not null)b
     on a.device_id = b.device_id
     where create_time - first_visit_time = 1
-    group by create_time
-    order by create_time desc
+    and create_time <= {}
+    and create_time >= {}
+    group by {} create_time
+    order by {} create_time;
     """
 
     # 计算新注册用户数
     new_register_user = """
     select
-        {} ,substring(create_time , 1, 10)dateTime,count(distinct id)count
-    from
-        (select id, create_time from `hk-manhattan`.chain_user_info) a
-    left join    
-        (select user_id , channel, platform from `hk-manhattan`.system_operate_record)b
-    on a.id = b.user_id
+        {} substring(create_time , 1, 10)dateTime,count(distinct id)count
+    from `hk-manhattan`.chain_user_info
     where 
         replace(substring(create_time , 1, 10), '-', '') <= {}
         and replace(substring(create_time , 1, 10), '-', '') >= {}
