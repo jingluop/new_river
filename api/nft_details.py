@@ -14,6 +14,3 @@ class NftDetails(BaseApi):
     def __init__(self):
         super().__init__()
         self.api_root_url = ReadFileData().load_ini(self.data_file_path)[self.host]["api_root_url"]
-
-
-nft_details = NftDetails()

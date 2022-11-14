@@ -10,7 +10,7 @@ import random
 import pytest
 
 from common.data_load import get_yaml_data
-from api.collection_details import collection_detail
+from api.collection_details import CollectionDetail
 from common.db import db_mysql
 from common.logger import logger
 from data_calculate.sql import BaseSql
@@ -25,7 +25,7 @@ class TestCollection:
 
     @pytest.mark.parametrize('test_data', get_yaml_data('test_collection_details.yaml', 'ethereum'))
     def test_ethereum(self, test_data):
-        res = collection_detail.ethereum(params={"timeRange": test_data['timeRange'], "type": test_data['type']})
+        res = CollectionDetail().ethereum(params={"timeRange": test_data['timeRange'], "type": test_data['type']})
         assert res['message'] == test_data['message']
         assert res['code'] == test_data['code']
         assert res['data'][0]['countValue'] == test_data['countValue']
@@ -34,7 +34,7 @@ class TestCollection:
 
     @pytest.mark.parametrize("test_data", get_yaml_data('test_collection_details.yaml', 'buy_and_trade_app'))
     def test_buy_and_trade_app(self, test_data):
-        res = collection_detail.buy_and_trade_app(params={"collectionUuid": test_data['collectionUuid']})
+        res = CollectionDetail().buy_and_trade_app(params={"collectionUuid": test_data['collectionUuid']})
         print(test_data)
         assert res['message'] == test_data['message']
         assert test_data['sql_data'][1]['chain'] == 'ETH'

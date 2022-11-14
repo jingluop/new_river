@@ -21,6 +21,3 @@ class Config(BaseApi):
     def check_version_update(self, **kwargs):
         """检验版本号信息"""
         return self.get("/checkVersionUpdate", **kwargs)
-
-
-config = Config()

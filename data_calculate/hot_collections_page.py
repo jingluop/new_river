@@ -5,7 +5,7 @@
 @Date    ：2022/9/30 10:57 
 """
 from common.db import db_mysql
-from api.top_collections import top_collections
+from api.top_collections import TopCollections
 from common.logger import logger
 from data_calculate.sql import BaseSql
 
@@ -27,7 +27,7 @@ class HotCollectionsCal:
         # 这个时间用来计算交易量变化率
         time_rate_before = days * 2 *24
         # time_rate_before = days * 2 * 24 - 1
-        res = top_collections.select_collection_info(
+        res = TopCollections().select_collection_info(
             json={"timeType": time_type, "pageSize": page_size, "hot": "1", "pageNum": page_num})
         result_total = []
         for collection in res['data']['list']:

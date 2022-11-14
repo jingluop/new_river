@@ -36,6 +36,6 @@ class Overview(BaseApi):
         """以太坊看板"""
         return self.get("/ethereum/app", **kwargs)
 
-
-overview = Overview()
-
+    def gas(self, **kwargs):
+        """获取gas费"""
+        return self.get("/getGas", **kwargs)

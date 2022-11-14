@@ -18,6 +18,3 @@ class Search(BaseApi):
     def like_collection_name(self, **kwargs):
         """全局搜索-全局搜索"""
         return self.get("/likeCollectionName", **kwargs)
-
-
-search = Search()

@@ -9,7 +9,7 @@ import os
 import datetime
 
 import pytest
-from api.config import config
+from api.config import Config
 from common.data_load import ReadFileData, get_yaml_data
 import sys
 
@@ -25,7 +25,7 @@ class TestConfig:
     @pytest.mark.parametrize('test_data', get_yaml_data('test_config.yaml', 'get_date_button_show', db_type='mysql'))
     def test_get_date_button_show(self, test_data):
         logger.info("当前测试数据：{}".format(test_data))
-        res = config.get_date_button_show(params={"configKey": test_data['configKey']})
+        res = Config().get_date_button_show(params={"configKey": test_data['configKey']})
         now = datetime.datetime.now()
         assert res['code'] == test_data['code']
         if test_data['configKey'] == '':
@@ -122,7 +122,7 @@ class TestConfig:
             logger.info("version输入有有误")
             raise
         logger.info("当前接口入参需要输入的版本号为：{}".format(version))
-        res = config.check_version_update(
+        res = Config().check_version_update(
             params={"version": version, "terminalType": test_data['terminalType']})
         need_update_interface = res['data']['needUpdate']
         force_update_interface = res['data']['forceUpdate']

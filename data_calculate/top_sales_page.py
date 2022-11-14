@@ -4,7 +4,7 @@
 @Author  ：taofangpeng
 @Date    ：2022/9/30 10:57 
 """
-from api.top_sales import top_sales
+from api.top_sales import TopSales
 from common.db import db_mysql
 from common.logger import logger
 from data_calculate.sql import BaseSql
@@ -25,7 +25,7 @@ class TopSalesCal:
         time_now = 0  # 取当前时间的数据就传0
         time_before = days * 24  # 根据时间类型取之前的时间
         # time_before = days * 24 -1 # 根据时间类型取之前的时间
-        res = top_sales.select_collection_info(
+        res = TopSales().select_collection_info(
             params={"timeRange": self.time_dict[time_type], "pageSize": page_size, "pageNum": page_num})
         result_total = []
         for collection in res['data']['list']:

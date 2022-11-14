@@ -5,7 +5,7 @@
 @Date    ：2022/9/30 10:58 
 """
 from common.db import db_mysql, db_proxy
-from api.collection_details import collection_detail
+from api.collection_details import CollectionDetail
 from data_calculate.sql import BaseSql
 
 
@@ -22,7 +22,7 @@ class CollectionDetailCal:
         # 1.计算地板价
         # 接口返回值
         result = []
-        res = collection_detail.select_collection_details_app(json={"collectionUuid": collection_uuid})
+        res = CollectionDetail().select_collection_details_app(json={"collectionUuid": collection_uuid})
         floor_price_interface = float(res['data']['floorPrice'])
         # 数据库查询的值
         floor_price_sql = float(db_mysql.select_db(BaseSql.floor_price.format(collection_uuid))[0]['floor_price'])
@@ -137,7 +137,7 @@ class CollectionDetailCal:
         :param limit_num:app-30，web-10
         :return:
         """
-        res = collection_detail.recent_transactions_app(params={"collectionUuid": collection_uuid})
+        res = CollectionDetail().recent_transactions_app(params={"collectionUuid": collection_uuid})
         recent_transactions_interface = res['data']
         recent_transactions_sql = db_proxy.select_db(BaseSql.recent_transactions.format(collection_uuid, limit_num))
         recent_transactions_name_interface = [i['tokenName'] for i in recent_transactions_interface]
@@ -164,7 +164,7 @@ class CollectionDetailCal:
             days = 90
         time_now = 0  # 取当前时间的数据就传0
         time_before = days * 24  # 根据时间类型取之前的时间
-        res = collection_detail.collection_floor_price_chart_app(
+        res = CollectionDetail().collection_floor_price_chart_app(
             params={"collectionUuid": collection_uuid, "timeType": self.time_dict[time_type]})
         floor_price_interface = [float(i['floorPrice']) for i in res['data']]
         avg_price_interface = [float(i['avgPrice']) for i in res['data']]
@@ -212,7 +212,7 @@ class CollectionDetailCal:
         time_rate_before = days * 2 * 24
         # time_rate_before = days * 2 * 24 - 1
         last_price = float(db_mysql.select_db(BaseSql.last_price)[0]['last_price'])
-        res = collection_detail.collection_marketcap_and_volume_app(
+        res = CollectionDetail().collection_marketcap_and_volume_app(
             params={"collectionUuid": collection_uuid, "timeType": self.time_dict[time_type]})
         result = []
         # 1. 计算总市值
@@ -273,7 +273,7 @@ class CollectionDetailCal:
         :param collection_uuid:
         :return:
         """
-        res = collection_detail.get_thermodynamic_diagram_app(params={"collectionUuid": collection_uuid})
+        res = CollectionDetail().get_thermodynamic_diagram_app(params={"collectionUuid": collection_uuid})
         # 1. 低于地板价购买
         floor_price = float(
             db_mysql.select_db(BaseSql.history_floor_price.format(collection_uuid, 0))[0]['floor_price'])

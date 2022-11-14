@@ -45,6 +45,3 @@ class CollectionDetail(BaseApi):
     def get_thermodynamic_diagram_app(self, **kwargs):
         """app端-集合详情-热力图"""
         return self.get("/getThermodynamicDiagram/app", **kwargs)
-
-
-collection_detail = CollectionDetail()
