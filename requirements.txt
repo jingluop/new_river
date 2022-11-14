@@ -4,3 +4,5 @@ allure-pytest
 requests~=2.24.0
 PyYAML~=5.3.1
 urllib3~=1.25.9
+redis~=3.5.3
+yaml~=0.2.5
